@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="39bf1cd2-9304-47fe-a4cf-5bcf445f590b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1dn3pqmm97epocsHMzMF3OkZ2QC" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="RunManager" selected="Application.LeetCode198">
+    <configuration name="LeetCode110" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geekbing.easy.LeetCode110" />
+      <module name="leetcode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geekbing.easy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LeetCode112" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geekbing.easy.LeetCode112" />
+      <module name="leetcode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geekbing.easy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LeetCode198" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geekbing.easy.LeetCode198" />
+      <module name="leetcode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geekbing.easy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LeetCode404" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geekbing.easy.LeetCode404" />
+      <module name="leetcode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geekbing.easy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LeetCode590" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geekbing.easy.LeetCode590" />
+      <module name="leetcode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geekbing.easy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.LeetCode198" />
+        <item itemvalue="Application.LeetCode590" />
+        <item itemvalue="Application.LeetCode112" />
+        <item itemvalue="Application.LeetCode404" />
+        <item itemvalue="Application.LeetCode110" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="39bf1cd2-9304-47fe-a4cf-5bcf445f590b" name="Default Changelist" comment="" />
+      <created>1593047215966</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593047215966</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="648" y="283" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1593047587792">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="648" y="283" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1593047587792" />
+    <state width="1878" height="233" key="GridCell.Tab.0.bottom" timestamp="1593161114707">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="233" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1593161114707" />
+    <state width="1878" height="437" key="GridCell.Tab.0.bottom/60.23.1860.1057@60.23.1860.1057" timestamp="1593070523475" />
+    <state width="1878" height="233" key="GridCell.Tab.0.center" timestamp="1593161114706">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="233" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1593161114706" />
+    <state width="1878" height="437" key="GridCell.Tab.0.center/60.23.1860.1057@60.23.1860.1057" timestamp="1593070523474" />
+    <state width="1878" height="233" key="GridCell.Tab.0.left" timestamp="1593161114706">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="233" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1593161114706" />
+    <state width="1878" height="437" key="GridCell.Tab.0.left/60.23.1860.1057@60.23.1860.1057" timestamp="1593070523474" />
+    <state width="1878" height="233" key="GridCell.Tab.0.right" timestamp="1593161114706">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="233" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1593161114706" />
+    <state width="1878" height="437" key="GridCell.Tab.0.right/60.23.1860.1057@60.23.1860.1057" timestamp="1593070523475" />
+    <state width="1878" height="233" key="GridCell.Tab.1.bottom" timestamp="1593161114708">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="233" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1593161114708" />
+    <state width="1878" height="437" key="GridCell.Tab.1.bottom/60.23.1860.1057@60.23.1860.1057" timestamp="1593070523476" />
+    <state width="1878" height="233" key="GridCell.Tab.1.center" timestamp="1593161114707">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="233" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1593161114707" />
+    <state width="1878" height="437" key="GridCell.Tab.1.center/60.23.1860.1057@60.23.1860.1057" timestamp="1593070523476" />
+    <state width="1878" height="233" key="GridCell.Tab.1.left" timestamp="1593161114707">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="233" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1593161114707" />
+    <state width="1878" height="437" key="GridCell.Tab.1.left/60.23.1860.1057@60.23.1860.1057" timestamp="1593070523476" />
+    <state width="1878" height="233" key="GridCell.Tab.1.right" timestamp="1593161114707">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="233" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1593161114707" />
+    <state width="1878" height="437" key="GridCell.Tab.1.right/60.23.1860.1057@60.23.1860.1057" timestamp="1593070523476" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/geekbing/easy/LeetCode21.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/geekbing/easy/LeetCode590.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
