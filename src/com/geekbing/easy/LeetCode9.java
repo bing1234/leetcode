@@ -2,6 +2,7 @@ package com.geekbing.easy;
 
 /**
  * todo
+ *
  * @author bing
  */
 public class LeetCode9 {
