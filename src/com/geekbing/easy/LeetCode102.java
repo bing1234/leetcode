@@ -1,15 +1,12 @@
 package com.geekbing.easy;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author bing
  */
-public class LeetCode107 {
-    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+public class LeetCode102 {
+    public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
             return result;
@@ -17,6 +14,7 @@ public class LeetCode107 {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
+            // 队列的大小就是当前层的大小
             int levelSize = queue.size();
             List<Integer> levelVals = new ArrayList<>();
             for (int i = 0; i < levelSize; i++) {
@@ -24,28 +22,27 @@ public class LeetCode107 {
                 if (node == null) {
                     continue;
                 }
-                levelVals.add(node.val);
                 if (node.left != null) {
                     queue.add(node.left);
                 }
                 if (node.right != null) {
                     queue.add(node.right);
                 }
+                levelVals.add(node.val);
             }
-            result.add(0, levelVals);
+            result.add(levelVals);
         }
         return result;
     }
 
     public static void main(String[] args) {
-        LeetCode107 leetCode107 = new LeetCode107();
-
+        LeetCode102 leetCode102 = new LeetCode102();
         TreeNode root = new TreeNode(3);
         root.left = new TreeNode(9);
         root.right = new TreeNode(20);
         root.right.left = new TreeNode(15);
         root.right.right = new TreeNode(7);
-        System.out.println(leetCode107.levelOrderBottom(root));
+        System.out.println(leetCode102.levelOrder(root));
     }
 
     private static class TreeNode {
