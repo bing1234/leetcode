@@ -1,4 +1,4 @@
-package com.geekbing.easy;
+package com.geekbing.lcp;
 
 /**
  * todo
