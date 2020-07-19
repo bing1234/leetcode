@@ -17,6 +17,13 @@ public class LeetCode231 {
         }
     }
 
+    public boolean isPowerOfTwoV2(int n) {
+        if (n < 1) {
+            return false;
+        }
+        return (n & (n - 1)) == 0;
+    }
+
     public static void main(String[] args) {
         LeetCode231 leetCode231 = new LeetCode231();
         System.out.println(leetCode231.isPowerOfTwo(1));
