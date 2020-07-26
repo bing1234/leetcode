@@ -3,10 +3,10 @@ package com.geekbing.easy;
 /**
  * @author bing
  */
-public class Solution374 {
-    private Integer pick = 6;
+public class LeetCode374 {
+    private Integer pick;
 
-    public void setPick(Integer pick) {
+    public LeetCode374(Integer pick) {
         this.pick = pick;
     }
 
@@ -37,8 +37,7 @@ public class Solution374 {
     }
 
     public static void main(String[] args) {
-        Solution374 solution374 = new Solution374();
-        solution374.setPick(6);
+        LeetCode374 solution374 = new LeetCode374(6);
         System.out.println(solution374.guessNumber(10));
     }
 }

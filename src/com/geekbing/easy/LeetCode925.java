@@ -3,7 +3,7 @@ package com.geekbing.easy;
 /**
  * @author bing
  */
-public class Solution925 {
+public class LeetCode925 {
     public boolean isLongPressedName(String name, String typed) {
         if (name.length() > typed.length()) {
             return false;
@@ -34,7 +34,7 @@ public class Solution925 {
     }
 
     public static void main(String[] args) {
-        Solution925 solution925 = new Solution925();
+        LeetCode925 solution925 = new LeetCode925();
         System.out.println(solution925.isLongPressedName("alex", "aaleex"));
         System.out.println(solution925.isLongPressedName("saeed", "ssaaedd"));
         System.out.println(solution925.isLongPressedName("leelee", "lleeelee"));
