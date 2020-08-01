@@ -3,17 +3,19 @@ package com.geekbing.easy;
 import java.util.Arrays;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode1470 {
     public int[] shuffle(int[] nums, int n) {
-        int temp;
-        for (int i = 1; i < n; i = i + 2) {
-
+        int[] result = new int[2 * n];
+        int index = 0;
+        for (int i = 0; i < n; i++) {
+            // 先放x
+            result[index++] = nums[i];
+            // 再放y
+            result[index++] = nums[n + i];
         }
-        return new int[]{};
+        return result;
     }
 
     public static void main(String[] args) {
