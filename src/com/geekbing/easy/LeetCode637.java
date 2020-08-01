@@ -1,15 +1,16 @@
 package com.geekbing.easy;
 
-import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * todo
+ *
  * @author bing
  */
 public class LeetCode637 {
     public List<Double> averageOfLevels(TreeNode root) {
-        
+
         return new ArrayList<>();
     }
 
