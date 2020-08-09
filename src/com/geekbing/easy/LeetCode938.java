@@ -1,13 +1,44 @@
 package com.geekbing.easy;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode938 {
     public int rangeSumBST(TreeNode root, int L, int R) {
-        return 0;
+        if (root == null) {
+            return 0;
+        }
+        int sum = 0;
+        if (root.left == null && root.right == null) {
+            if (L <= root.val && root.val <= R) {
+                sum = sum + root.val;
+            }
+        } else if (root.left == null) {
+            if (root.val < L) {
+                sum = sum + rangeSumBST(root.right, L, R);
+            } else if (root.val <= R) {
+                sum = sum + root.val;
+                sum = sum + rangeSumBST(root.right, L, R);
+            }
+        } else if (root.right == null) {
+            if (L <= root.val && root.val <= R) {
+                sum = sum + root.val;
+                sum = sum + rangeSumBST(root.left, L, R);
+            } else if (root.val > R) {
+                sum = sum + rangeSumBST(root.left, L, R);
+            }
+        } else {
+            if (root.val < L) {
+                sum = sum + rangeSumBST(root.right, L, R);
+            } else if (root.val <= R) {
+                sum = sum + root.val;
+                sum = sum + rangeSumBST(root.left, L, R);
+                sum = sum + rangeSumBST(root.right, L, R);
+            } else {
+                sum = sum + rangeSumBST(root.left, L, R);
+            }
+        }
+        return sum;
     }
 
     public static void main(String[] args) {
