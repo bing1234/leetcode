@@ -7,6 +7,8 @@ package com.geekbing.easy;
  */
 public class LeetCode1046 {
     public int lastStoneWeight(int[] stones) {
+        // 1. 构建大顶堆
+
         return 0;
     }
 
