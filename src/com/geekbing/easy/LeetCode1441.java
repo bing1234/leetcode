@@ -10,7 +10,23 @@ import java.util.List;
  */
 public class LeetCode1441 {
     public List<String> buildArray(int[] target, int n) {
-        return new ArrayList<>();
+        List<String> result = new ArrayList<>();
+        int i = 1;
+        for (int num : target) {
+            if (num == i) {
+                result.add("Push");
+                i++;
+            } else {
+                while (i < num) {
+                    result.add("Push");
+                    result.add("Pop");
+                    i++;
+                }
+                result.add("Push");
+                i = num + 1;
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {
