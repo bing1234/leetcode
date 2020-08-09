@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode1441 {
