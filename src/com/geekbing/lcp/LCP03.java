@@ -1,5 +1,8 @@
 package com.geekbing.lcp;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * todo
  *
@@ -7,7 +10,36 @@ package com.geekbing.lcp;
  */
 public class LCP03 {
     public boolean robot(String command, int[][] obstacles, int x, int y) {
-        return false;
+        if (x > 0 && !command.contains("R")) {
+            return false;
+        }
+        if (y > 0 && !command.contains("U")) {
+            return false;
+        }
+        // 障碍物
+        Set<String> points = new HashSet<>();
+        for (int[] arr : obstacles) {
+            points.add(arr[0] + "," + arr[1]);
+        }
+        int pointX = 0, pointY = 0;
+        while (true) {
+            for (char c : command.toCharArray()) {
+                if (pointX == x && pointY == y) {
+                    return true;
+                }
+                if (c == 'U') {
+                    pointY++;
+                } else if (c == 'R') {
+                    pointX++;
+                }
+                if (points.contains(pointX + "," + pointY)) {
+                    return false;
+                }
+                if (pointX > x && pointY > y) {
+                    return false;
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {

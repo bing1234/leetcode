@@ -1,34 +1,38 @@
 package com.geekbing.easy;
 
-import com.sun.org.apache.bcel.internal.generic.RET;
-
-import java.util.Stack;
-
 /**
- * todo
  * @author bing
  */
 public class LeetCode206 {
+    /**
+     * 迭代
+     */
     public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return null;
+        if (head == null || head.next == null) {
+            return head;
         }
-
-        Stack<ListNode> stack = new Stack<>();
-
-        ListNode index = head;
-        while (index != null) {
-            stack.push(index);
-            index = index.next;
+        ListNode pre = null, current = head, next = current.next;
+        while (next != null) {
+            current.next = pre;
+            pre = current;
+            current = next;
+            next = next.next;
         }
+        current.next = pre;
+        return current;
+    }
 
-        ListNode newHead = stack.pop();
-        index = newHead;
-        while (!stack.empty()) {
-            index.next = stack.pop();
-            index = index.next;
+    /**
+     * 递归
+     */
+    public ListNode reverseListV2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
         }
-        index.next = null;
+        // 翻转剩下节点并返回头结点
+        ListNode newHead = reverseListV2(head.next);
+        head.next.next = head;
+        head.next = null;
         return newHead;
     }
 
