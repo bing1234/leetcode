@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * todo
  * @author bing
  */
 public class LeetCode590 {
@@ -38,9 +37,7 @@ public class LeetCode590 {
                 }
             }
         }
-
         return result;
-
     }
 
     /**
