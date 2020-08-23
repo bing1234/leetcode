@@ -1,8 +1,6 @@
 package com.geekbing.easy;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode1025 {
@@ -13,7 +11,7 @@ public class LeetCode1025 {
         if (N == 2) {
             return true;
         }
-        // dp[i]表示数字为时，爱丽丝先手是否能赢
+        // dp[i]表示数字为i时，先手是必胜还是必败（true 表示先手必胜，false 表示先手必败）
         boolean[] dp = new boolean[N + 1];
         dp[1] = false;
         dp[2] = true;
