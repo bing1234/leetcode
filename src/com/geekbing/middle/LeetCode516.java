@@ -1,8 +1,6 @@
 package com.geekbing.middle;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode516 {
