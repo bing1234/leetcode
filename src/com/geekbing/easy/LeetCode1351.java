@@ -5,7 +5,16 @@ package com.geekbing.easy;
  */
 public class LeetCode1351 {
     public int countNegatives(int[][] grid) {
-        return 0;
+        int count = 0;
+        for (int i = grid.length - 1; i >= 0; i--) {
+            for (int j = grid[i].length - 1; j >= 0; j--) {
+                if (grid[i][j] >= 0) {
+                    break;
+                }
+                count++;
+            }
+        }
+        return count;
     }
 
     public static void main(String[] args) {
