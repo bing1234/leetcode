@@ -33,23 +33,6 @@ public class LeetCode77 {
         return ans;
     }
 
-    private void backtrack(List<List<Integer>> ans, int n, int k, int level, List<Integer> temp) {
-        if (k == 0) {
-            ans.add(new ArrayList<>(temp));
-            return;
-        }
-        if (level <= n - k) {
-            // 不选择
-            temp.add(level);
-            backtrack(ans, n, k, level + 1, temp);
-        }
-
-        // 选择当前值
-        backtrack(ans, n, k, level + 1, temp);
-
-        temp.remove(temp.size() - 1);
-    }
-
     public static void main(String[] args) {
         LeetCode77 leetCode77 = new LeetCode77();
 
