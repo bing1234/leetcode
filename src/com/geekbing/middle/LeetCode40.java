@@ -11,29 +11,28 @@ import java.util.stream.Collectors;
 public class LeetCode40 {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> ans = new ArrayList<>();
-        backtrack(Arrays.stream(candidates).boxed().collect(Collectors.toList()), target, ans, new ArrayList<>());
+        Arrays.sort(candidates);
+        backtrack(candidates, target, ans, new ArrayList<>(), 0);
         return ans;
     }
 
-    private void backtrack(List<Integer> candidates, int target, List<List<Integer>> ans, List<Integer> cur) {
+    private void backtrack(int[] candidates, int target, List<List<Integer>> ans, List<Integer> cur, int start) {
         if (target == 0) {
             ans.add(new ArrayList<>(cur));
             return;
         }
-
-        for (int i = 0; i < candidates.size(); i++) {
-            if (target < candidates.get(i)) {
+        for (int i = start; i < candidates.length; i++) {
+            if (target < candidates[i]) {
                 continue;
             }
-
+            if (i > start && candidates[i] == candidates[i - 1]) {
+                continue;
+            }
             List<Integer> combo = new ArrayList<>(cur);
-            combo.add(candidates.get(i));
-            List<Integer> newCandidates = new ArrayList<>(candidates);
-            newCandidates.remove(candidates.get(i));
-            backtrack(newCandidates, target - candidates.get(i), ans, combo);
+            combo.add(candidates[i]);
+            backtrack(candidates, target - candidates[i], ans, combo, i + 1);
         }
     }
-
 
     public static void main(String[] args) {
         LeetCode40 leetCode40 = new LeetCode40();
