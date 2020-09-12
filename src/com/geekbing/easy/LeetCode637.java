@@ -38,6 +38,34 @@ public class LeetCode637 {
         return result;
     }
 
+    public List<Double> averageOfLevelsV2(TreeNode root) {
+        List<Double> ans = new ArrayList<>();
+        if (root == null) {
+            return ans;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            long sum = 0;
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (node == null) {
+                    continue;
+                }
+                sum += node.val;
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+            ans.add((double) sum / size);
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         LeetCode637 leetCode637 = new LeetCode637();
 
@@ -46,7 +74,7 @@ public class LeetCode637 {
         root.right = new TreeNode(20);
         root.right.left = new TreeNode(15);
         root.right.right = new TreeNode(7);
-        System.out.println(leetCode637.averageOfLevels(root));
+        System.out.println(leetCode637.averageOfLevelsV2(root));
     }
 
     private static class TreeNode {
