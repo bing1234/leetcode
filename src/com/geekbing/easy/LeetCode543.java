@@ -1,13 +1,29 @@
 package com.geekbing.easy;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode543 {
+    private int max;
+
     public int diameterOfBinaryTree(TreeNode root) {
-        return 0;
+        max = 0;
+        maxLenWithOneSide(root);
+        return max;
+    }
+
+    private int maxLenWithOneSide(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = maxLenWithOneSide(root.left);
+        int leftRoot = root.left == null ? 0 : left + 1;
+
+        int right = maxLenWithOneSide(root.right);
+        int rightRoot = root.right == null ? 0 : right + 1;
+
+        max = Math.max(max, leftRoot + rightRoot);
+        return Math.max(leftRoot, rightRoot);
     }
 
     public static void main(String[] args) {
