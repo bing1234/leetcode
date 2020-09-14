@@ -30,20 +30,20 @@ public class LeetCode94 {
      * 迭代
      */
     public List<Integer> inorderTraversal2(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
-
-        Stack<TreeNode> stack = new Stack<>();
-        while (root != null || !stack.isEmpty()) {
-            if (root != null) {
-                stack.push(root);
-                root = root.left;
+        List<Integer> ans = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack();
+        TreeNode index = root;
+        while (index != null || !stack.isEmpty()) {
+            if (index != null) {
+                stack.push(index);
+                index = index.left;
             } else {
-                root = stack.pop();
-                result.add(root.val);
-                root = root.right;
+                TreeNode node = stack.pop();
+                ans.add(node.val);
+                index = node.right;
             }
         }
-        return result;
+        return ans;
     }
 
     public static void main(String[] args) {
