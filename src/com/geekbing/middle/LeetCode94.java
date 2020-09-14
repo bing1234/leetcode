@@ -31,7 +31,7 @@ public class LeetCode94 {
      */
     public List<Integer> inorderTraversal2(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack();
+        Stack<TreeNode> stack = new Stack<>();
         TreeNode index = root;
         while (index != null || !stack.isEmpty()) {
             if (index != null) {
