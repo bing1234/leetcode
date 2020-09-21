@@ -1,13 +1,25 @@
 package com.geekbing.middle;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode1038 {
+    private int sum;
+
     public TreeNode bstToGst(TreeNode root) {
-        return null;
+        sum = 0;
+        traversal(root);
+        return root;
+    }
+
+    private void traversal(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        traversal(root.right);
+        root.val += sum;
+        sum = root.val;
+        traversal(root.left);
     }
 
     public static void main(String[] args) {
