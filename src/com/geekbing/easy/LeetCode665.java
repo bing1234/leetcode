@@ -7,8 +7,7 @@ package com.geekbing.easy;
  */
 public class LeetCode665 {
     public boolean checkPossibility(int[] nums) {
-
-        return true;
+        return false;
     }
 
     public static void main(String[] args) {
