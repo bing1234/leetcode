@@ -3,7 +3,7 @@ package com.geekbing.middle;
 import java.util.*;
 
 /**
- * 94. 二叉树的中序遍历
+ * 94. 二叉树的中序遍历. 左、中、右
  *
  * @author bing
  */
@@ -46,12 +46,39 @@ public class LeetCode94 {
         return ans;
     }
 
+    public List<Integer> inorderTraversal3(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) {
+            return ans;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            if (node != null) {
+                if (node.right != null) {
+                    stack.push(node.right);
+                }
+                stack.push(node);
+                stack.push(null);
+                if (node.left != null) {
+                    stack.push(node.left);
+                }
+            } else {
+                TreeNode cur = stack.pop();
+                ans.add(cur.val);
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         LeetCode94 leetCode94 = new LeetCode94();
+
         TreeNode root = new TreeNode(1);
         root.right = new TreeNode(2);
         root.right.left = new TreeNode(3);
-        System.out.println(leetCode94.inorderTraversal2(root));
+        System.out.println(leetCode94.inorderTraversal3(root));
     }
 
     private static class TreeNode {
