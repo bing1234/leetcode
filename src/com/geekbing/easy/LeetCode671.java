@@ -2,7 +2,7 @@ package com.geekbing.easy;
 
 public class LeetCode671 {
     public int findSecondMinimumValue(TreeNode root) {
-
+        return 0;
     }
 
     public static void main(String[] args) {

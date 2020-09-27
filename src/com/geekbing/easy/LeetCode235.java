@@ -19,6 +19,37 @@ public class LeetCode235 {
         return null;
     }
 
+    public TreeNode lowestCommonAncestorV2(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) {
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left == null) {
+            return right;
+        }
+        if (right == null) {
+            return left;
+        }
+        return root;
+    }
+
+    public TreeNode lowestCommonAncestorV3(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) {
+            return root;
+        }
+        // p,q分布在root的两侧
+        if ((p.val < root.val && root.val < q.val) || (q.val < root.val && root.val < p.val)) {
+            return root;
+        }
+        // p,q分布在root的左侧
+        if (p.val < root.val && q.val < root.val) {
+            return lowestCommonAncestorV3(root.left, p, q);
+        } else {
+            return lowestCommonAncestorV3(root.right, p, q);
+        }
+    }
+
     private List<TreeNode> pathNodes(TreeNode root, TreeNode p) {
         List<TreeNode> result = new ArrayList<>();
         TreeNode current = root;
@@ -50,8 +81,8 @@ public class LeetCode235 {
         root.right.left = new TreeNode(7);
         root.right.right = new TreeNode(9);
 
-        System.out.println(leetCode235.lowestCommonAncestor(root, node2, node8).val);
-        System.out.println(leetCode235.lowestCommonAncestor(root, node2, node4).val);
+        System.out.println(leetCode235.lowestCommonAncestorV3(root, node2, node8).val);
+        System.out.println(leetCode235.lowestCommonAncestorV3(root, node2, node4).val);
     }
 
     private static class TreeNode {
