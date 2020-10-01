@@ -1,31 +1,31 @@
 package com.geekbing.middle;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode5 {
     public String longestPalindrome(String s) {
-        if (s.length() < 2) {
-            return s;
+        if (s == null || s.equals("")) {
+            return "";
         }
-        String[][] dp = new String[s.length()][s.length()];
+        // dp[i][j] 表示 s[i...j]是否是s的回文子串
+        boolean[][] dp = new boolean[s.length()][s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            dp[i][i] = true;
+        }
+        int left = 0, right = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
-            dp[i][i] = String.valueOf(s.charAt(i));
             for (int j = i + 1; j < s.length(); j++) {
-                if (s.charAt(i) == s.charAt(j)) {
-                    dp[i][j] = s.charAt(i) + (dp[i + 1][j - 1] == null ? "" : dp[i + 1][j - 1]) + s.charAt(i);
-                } else {
-                    if (dp[i + 1][j].length() > dp[i][j - 1].length()) {
-                        dp[i][j] = dp[i + 1][j];
-                    } else {
-                        dp[i][j] = dp[i][j - 1];
+                if (s.charAt(i) == s.charAt(j) && (dp[i + 1][j - 1] || j - i < 3)) {
+                    dp[i][j] = true;
+                    if (right - left < j - i) {
+                        left = i;
+                        right = j;
                     }
                 }
             }
         }
-        return dp[0][s.length() - 1];
+        return s.substring(left, right + 1);
     }
 
     public static void main(String[] args) {
