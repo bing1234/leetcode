@@ -2,7 +2,19 @@ package com.geekbing.easy;
 
 public class LeetCode1009 {
     public int bitwiseComplement(int N) {
-        return 0;
+        if (N == 0) {
+            return 1;
+        }
+        return ((1 << bitLength(N)) - 1) ^ N;
+    }
+
+    private int bitLength(int num) {
+        int ans = 0;
+        while (num > 0) {
+            num = num >> 1;
+            ans++;
+        }
+        return ans;
     }
 
     public static void main(String[] args) {
