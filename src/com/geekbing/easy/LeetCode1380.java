@@ -4,13 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode1380 {
     public List<Integer> luckyNumbers(int[][] matrix) {
-        return new ArrayList<>();
+        // 求每行最小值所在的列
+        int[] minCols = new int[matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            int min = Integer.MAX_VALUE;
+            int col = 0;
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (min > matrix[i][j]) {
+                    min = matrix[i][j];
+                    col = j;
+                }
+            }
+            minCols[i] = col;
+        }
+
+        // 求每列最大值所在的行
+        int[] maxRows = new int[matrix[0].length];
+        for (int j = 0; j < matrix[0].length; j++) {
+            int max = Integer.MIN_VALUE;
+            int row = 0;
+            for (int i = 0; i < matrix.length; i++) {
+                if (max < matrix[i][j]) {
+                    max = matrix[i][j];
+                    row = i;
+                }
+            }
+            maxRows[j] = row;
+        }
+        List<Integer> ans = new ArrayList<>();
+        for (int i = 0; i < minCols.length; i++) {
+            if (maxRows[minCols[i]] == i) {
+                ans.add(matrix[i][minCols[i]]);
+            }
+        }
+        return ans;
     }
 
     public static void main(String[] args) {
