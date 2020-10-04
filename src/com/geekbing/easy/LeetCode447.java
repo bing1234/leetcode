@@ -5,6 +5,7 @@ package com.geekbing.easy;
  */
 public class LeetCode447 {
     public int numberOfBoomerangs(int[][] points) {
+        return 0;
     }
 
     public static void main(String[] args) {
