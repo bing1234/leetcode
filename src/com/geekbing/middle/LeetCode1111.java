@@ -2,6 +2,9 @@ package com.geekbing.middle;
 
 import java.util.Arrays;
 
+/**
+ * todo
+ */
 public class LeetCode1111 {
     public int[] maxDepthAfterSplit(String seq) {
         return new int[]{};
