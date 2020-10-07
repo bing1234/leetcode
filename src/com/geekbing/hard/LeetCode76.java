@@ -1,71 +1,75 @@
 package com.geekbing.hard;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class LeetCode76 {
     public String minWindow(String s, String t) {
-        // 参数检查
         if (s.length() < t.length()) {
             return "";
         }
+        int[][] nextIdxs = buildNextIdxs(s, t);
+        int[] maxIdxs = calMaxIdxsEachCol(nextIdxs);
+        int[] minWindowArr = calMinWindow(maxIdxs);
+        if (minWindowArr[0] == -1) {
+            return "";
+        }
+        return s.substring(minWindowArr[0], minWindowArr[1] + 1);
+    }
 
-        // 记录s1中每个字符出现的次数
-        Map<Character, Integer> needMap = countCharacter(t);
-        // 记录窗口内每个字符出现的次数
-        Map<Character, Integer> window = new HashMap<>();
-
-        int left = 0, right = 0, minLen = Integer.MAX_VALUE;
-        String ans = "";
-        while (left <= right && right < s.length()) {
-            char rightChar = s.charAt(right);
-            window.merge(rightChar, 1, Integer::sum);
-            if (cover(window, needMap)) {
-                if (minLen > right - left + 1) {
-                    minLen = right - left + 1;
-                    ans = s.substring(left, right + 1);
-                }
-                char leftChar = s.charAt(left);
-                window.put(leftChar, window.get(leftChar) - 1);
-                left++;
-
-                while (left <= right && !needMap.containsKey(s.charAt(left))) {
-                    left++;
-                }
-                if (cover(window, needMap)) {
-                    if (minLen > right - left + 1) {
-                        minLen = right - left + 1;
-                        ans = s.substring(left, right + 1);
-                    }
-                }
-                right++;
-            } else {
-                right++;
+    private int[] calMinWindow(int[] maxIdxs) {
+        int minWindow = Integer.MAX_VALUE;
+        int[] ans = new int[]{-1, -1};
+        for (int i = 0; i < maxIdxs.length; i++) {
+            if (maxIdxs[i] == -1) {
+                continue;
+            }
+            if (minWindow > maxIdxs[i] - i + 1) {
+                minWindow = maxIdxs[i] - i + 1;
+                ans = new int[]{i, maxIdxs[i]};
             }
         }
         return ans;
     }
 
-    private boolean cover(Map<Character, Integer> window, Map<Character, Integer> needMap) {
-        for (Character key : needMap.keySet()) {
-            if (!window.containsKey(key) || needMap.get(key) > window.get(key)) {
-                return false;
+    private int[] calMaxIdxsEachCol(int[][] nextIdxs) {
+        int[] maxIdxs = new int[nextIdxs[0].length];
+        for (int col = 0; col < nextIdxs[0].length; col++) {
+            int max = Integer.MIN_VALUE;
+            for (int[] nextIdx : nextIdxs) {
+                if (nextIdx[col] == -1) {
+                    max = -1;
+                    break;
+                }
+                max = Math.max(max, nextIdx[col]);
             }
+            maxIdxs[col] = max;
         }
-        return true;
+        return maxIdxs;
     }
 
-    private Map<Character, Integer> countCharacter(String str) {
-        Map<Character, Integer> map = new HashMap<>();
-        for (Character c : str.toCharArray()) {
-            map.merge(c, 1, Integer::sum);
+    private int[][] buildNextIdxs(String s, String t) {
+        int[][] nextIdxs = new int[t.length()][s.length()];
+        for (int i = 0; i < t.length(); i++) {
+            nextIdxs[i] = buildNextIdx(s, t.charAt(i));
         }
-        return map;
+        return nextIdxs;
+    }
+
+    private int[] buildNextIdx(String s, char c) {
+        int[] nextIdx = new int[s.length()];
+        int idx = -1;
+        for (int i = s.toCharArray().length - 1; i >= 0; i--) {
+            if (s.charAt(i) == c) {
+                idx = i;
+            }
+            nextIdx[i] = idx;
+        }
+        return nextIdx;
     }
 
     public static void main(String[] args) {
         LeetCode76 leetCode76 = new LeetCode76();
-        // System.out.println(leetCode76.minWindow("ADOBECODEBANC", "ABC"));
-        System.out.println(leetCode76.minWindow("ab", "b"));
+//        System.out.println(leetCode76.minWindow("ADOBECODEBANC", "ABC"));
+//        System.out.println(leetCode76.minWindow("ab", "b"));
+//        System.out.println(leetCode76.minWindow("a", "b"));
+        System.out.println(leetCode76.minWindow("aa", "aa"));
     }
 }
