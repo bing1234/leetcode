@@ -1,4 +1,4 @@
-package com.geekbing;
+package com.geekbing.middle;
 
 import java.util.ArrayList;
 import java.util.Arrays;

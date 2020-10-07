@@ -7,6 +7,42 @@ import java.util.List;
  * @author bing
  */
 public class LeetCode160 {
+    public ListNode getIntersectionNodeV2(ListNode headA, ListNode headB) {
+        int lenA = getLength(headA);
+        int lenB = getLength(headB);
+
+        ListNode idxA = headA, idxB = headB;
+        if (lenA > lenB) {
+            idxA = move(idxA, lenA - lenB);
+        } else if (lenA < lenB) {
+            idxB = move(idxB, lenB - lenA);
+        }
+
+        while (idxA != null && idxB != null && idxA != idxB) {
+            idxA = idxA.next;
+            idxB = idxB.next;
+        }
+        return idxA;
+    }
+
+    private ListNode move(ListNode head, int n) {
+        ListNode idx = head;
+        for (int i = 0; i < n; i++) {
+            idx = idx.next;
+        }
+        return idx;
+    }
+
+    private int getLength(ListNode head) {
+        int ans = 0;
+        ListNode idx = head;
+        while (idx != null) {
+            idx = idx.next;
+            ans++;
+        }
+        return ans;
+    }
+
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         List<ListNode> nodesA = travel(headA);
         List<ListNode> nodesB = travel(headB);
