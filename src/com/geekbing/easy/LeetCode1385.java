@@ -1,8 +1,42 @@
 package com.geekbing.easy;
 
+import java.util.Arrays;
+
 public class LeetCode1385 {
     public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
-        return 0;
+        Arrays.sort(arr2);
+        int ans = 0;
+        for (int num : arr1) {
+            if (findMinDistance(num, arr2) > d) {
+                ans++;
+            }
+        }
+        return ans;
+    }
+
+    private int findMinDistance(int num, int[] arr) {
+        if (num < arr[0]) {
+            return arr[0] - num;
+        }
+        if (num > arr[arr.length - 1]) {
+            return num - arr[arr.length - 1];
+        }
+        int left = 0, right = arr.length - 1, mid;
+        // 找到第一个不小于num的数
+        while (left < right) {
+            mid = left + (right - left) / 2;
+            if (arr[mid] < num) {
+                left = mid + 1;
+            } else if (arr[mid] == num) {
+                return 0;
+            } else {
+                right = mid;
+            }
+        }
+        if (right >= 1) {
+            return Math.min(Math.abs(arr[right - 1] - num), arr[right] - num);
+        }
+        return arr[right] - num;
     }
 
     public static void main(String[] args) {
