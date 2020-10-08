@@ -2,7 +2,51 @@ package com.geekbing.easy;
 
 public class LeetCode671 {
     public int findSecondMinimumValue(TreeNode root) {
-        return 0;
+        if (root == null) {
+            return -1;
+        }
+        if (root.left == null && root.right == null) {
+            return -1;
+        }
+        if (root.left == null || root.right == null) {
+            return -1;
+        }
+        if (root.left.val != root.right.val) {
+            int left = findSecondMinimumValue(root.left);
+            int right = findSecondMinimumValue(root.right);
+            if (left == -1 && right == -1) {
+                return Math.max(root.left.val, root.right.val);
+            } else if (left == -1) {
+                return findSecondMinimumValue(new int[]{right, root.left.val, root.right.val});
+            } else if (right == -1) {
+                return findSecondMinimumValue(new int[]{left, root.left.val, root.right.val});
+            } else {
+                return findSecondMinimumValue(new int[]{left, right, root.left.val, root.right.val});
+            }
+        } else {
+            int left = findSecondMinimumValue(root.left);
+            int right = findSecondMinimumValue(root.right);
+            if (left == -1) {
+                return right;
+            }
+            if (right == -1) {
+                return left;
+            }
+            return Math.min(left, right);
+        }
+    }
+
+    private int findSecondMinimumValue(int[] nums) {
+        int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
+        for (int num : nums) {
+            if (num <= min1) {
+                min2 = min1;
+                min1 = num;
+            } else if (num < min2) {
+                min2 = num;
+            }
+        }
+        return min2;
     }
 
     public static void main(String[] args) {
