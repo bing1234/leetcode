@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * todo
+ */
 public class LeetCode1557 {
     public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
-
+        return new ArrayList<>();
     }
 
     public static void main(String[] args) {

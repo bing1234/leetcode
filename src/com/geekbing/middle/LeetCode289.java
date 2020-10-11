@@ -2,9 +2,11 @@ package com.geekbing.middle;
 
 import java.util.Arrays;
 
+/**
+ * todo
+ */
 public class LeetCode289 {
     public void gameOfLife(int[][] board) {
-
     }
 
     public static void main(String[] args) {
