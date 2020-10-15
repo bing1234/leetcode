@@ -4,6 +4,43 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class LeetCode117 {
+    public Node connectV2(Node root) {
+        helper(root, null);
+        return root;
+    }
+
+    private void helper(Node cur, Node next) {
+        if (cur == null) {
+            return;
+        }
+        cur.next = next;
+        if (cur.left != null && cur.right != null) {
+            helper(cur.left, cur.right);
+            helper(cur.right, findNext(next));
+        } else if (cur.left != null) {
+            helper(cur.left, findNext(next));
+        } else if (cur.right != null) {
+            helper(cur.right, findNext(next));
+        }
+    }
+
+    private Node findNext(Node next) {
+        Node idx = next;
+        if (idx == null) {
+            return null;
+        }
+        while (idx != null) {
+            if (idx.left != null) {
+                return idx.left;
+            }
+            if (idx.right != null) {
+                return idx.right;
+            }
+            idx = idx.next;
+        }
+        return null;
+    }
+
     public Node connect(Node root) {
         // 参数校验
         if (root == null) {

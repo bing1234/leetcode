@@ -7,6 +7,21 @@ import java.util.Queue;
  * @author bing
  */
 public class LeetCode116 {
+
+    public Node connectV2(Node root) {
+        helper(root, null);
+        return root;
+    }
+
+    private void helper(Node cur, Node next) {
+        if (cur == null) {
+            return;
+        }
+        cur.next = next;
+        helper(cur.left, cur.right);
+        helper(cur.right, next == null ? null : (next.left != null ? next.left : next.right));
+    }
+
     public Node connect(Node root) {
         if (root == null) {
             return null;
@@ -44,7 +59,7 @@ public class LeetCode116 {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
-        Node node = leetCode116.connect(root);
+        Node node = leetCode116.connectV2(root);
         System.out.println(node);
     }
 
