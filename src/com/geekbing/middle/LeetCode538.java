@@ -1,13 +1,27 @@
-package com.geekbing.easy;
+package com.geekbing.middle;
 
 /**
- * todo
+ * 538. 把二叉搜索树转换为累加树
+ * https://leetcode-cn.com/problems/convert-bst-to-greater-tree/
  *
  * @author bing
  */
 public class LeetCode538 {
+    private int sum;
+
     public TreeNode convertBST(TreeNode root) {
-        return null;
+        sum = 0;
+        travel(root);
+        return root;
+    }
+
+    private void travel(TreeNode root) {
+        if (root != null) {
+            travel(root.right);
+            root.val += sum;
+            sum = root.val;
+            travel(root.left);
+        }
     }
 
     public static void main(String[] args) {
