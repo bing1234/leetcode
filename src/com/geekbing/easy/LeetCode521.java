@@ -1,13 +1,17 @@
 package com.geekbing.easy;
 
 /**
- * todo
+ * 521. 最长特殊序列 Ⅰ
+ * https://leetcode-cn.com/problems/longest-uncommon-subsequence-i/
  *
  * @author bing
  */
 public class LeetCode521 {
     public int findLUSlength(String a, String b) {
-        return 0;
+        if (a.length() != b.length()) {
+            return Math.max(a.length(), b.length());
+        }
+        return a.equals(b) ? -1 : a.length();
     }
 
     public static void main(String[] args) {

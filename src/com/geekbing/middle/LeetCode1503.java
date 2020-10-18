@@ -1,11 +1,25 @@
 package com.geekbing.middle;
 
 /**
- * todo
+ * https://leetcode-cn.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/
+ * 1503. 所有蚂蚁掉下来前的最后一刻
+ *
+ * @author bing
  */
 public class LeetCode1503 {
     public int getLastMoment(int n, int[] left, int[] right) {
-        return 0;
+        int ans = 0;
+        for (int num : left) {
+            if (ans < num) {
+                ans = num;
+            }
+        }
+        for (int num : right) {
+            if (ans < n - num) {
+                ans = n - num;
+            }
+        }
+        return ans;
     }
 
     public static void main(String[] args) {
