@@ -2,7 +2,50 @@ package com.geekbing.middle;
 
 import java.util.*;
 
+/**
+ * https://leetcode-cn.com/problems/redundant-connection/
+ * 684. 冗余连接
+ *
+ * @author bing
+ */
 public class LeetCode684 {
+    public int[] findRedundantConnectionV2(int[][] edges) {
+        int[] parent = new int[edges.length];
+        int[] rank = new int[edges.length];
+        Arrays.fill(parent, -1);
+        for (int[] edge : edges) {
+            if (union(edge[0] - 1, edge[1] - 1, parent, rank) == 0) {
+                return edge;
+            }
+        }
+        return new int[]{-1, -1};
+    }
+
+    private int union(int x, int y, int[] parent, int[] rank) {
+        int rootX = findRoot(x, parent);
+        int rootY = findRoot(y, parent);
+        if (rootX == rootY) {
+            return 0;
+        }
+        if (rank[rootX] > rank[rootY]) {
+            parent[rootY] = rootX;
+        } else if (rank[rootX] < rank[rootY]) {
+            parent[rootX] = rootY;
+        } else {
+            parent[rootY] = rootX;
+            rank[rootX]++;
+        }
+        return 1;
+    }
+
+    private int findRoot(int x, int[] parent) {
+        int root = x;
+        while (parent[root] != -1) {
+            root = parent[root];
+        }
+        return root;
+    }
+
     public int[] findRedundantConnection(int[][] edges) {
         // 度
         Map<Integer, Integer> degree = new HashMap<>();
@@ -52,7 +95,7 @@ public class LeetCode684 {
         edges1[0] = new int[]{1, 2};
         edges1[1] = new int[]{1, 3};
         edges1[2] = new int[]{2, 3};
-        System.out.println(Arrays.toString(leetCode684.findRedundantConnection(edges1)));
+        System.out.println(Arrays.toString(leetCode684.findRedundantConnectionV2(edges1)));
 
         int[][] edges2 = new int[5][2];
         edges2[0] = new int[]{1, 2};
@@ -60,7 +103,7 @@ public class LeetCode684 {
         edges2[2] = new int[]{3, 4};
         edges2[3] = new int[]{1, 4};
         edges2[4] = new int[]{1, 5};
-        System.out.println(Arrays.toString(leetCode684.findRedundantConnection(edges2)));
+        System.out.println(Arrays.toString(leetCode684.findRedundantConnectionV2(edges2)));
 
         int[][] edges3 = new int[5][2];
         edges3[0] = new int[]{1, 3};
@@ -68,6 +111,6 @@ public class LeetCode684 {
         edges3[2] = new int[]{1, 5};
         edges3[3] = new int[]{3, 5};
         edges3[4] = new int[]{2, 3};
-        System.out.println(Arrays.toString(leetCode684.findRedundantConnection(edges3)));
+        System.out.println(Arrays.toString(leetCode684.findRedundantConnectionV2(edges3)));
     }
 }
