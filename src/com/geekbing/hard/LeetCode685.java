@@ -4,57 +4,50 @@ import java.util.Arrays;
 
 /**
  * todo
+ * https://leetcode-cn.com/problems/redundant-connection-ii/
+ * 685. 冗余连接 II
+ *
+ * @author bing
  */
 public class LeetCode685 {
-    private int[] parent = null;
+    public int[] findRedundantDirectedConnection(int[][] edges) {
+        int[] parent = new int[edges.length];
+        Arrays.fill(parent, -1);
 
-    private int find(int u) {
-        while (u != parent[u]) {
-            //压缩路径
-            parent[u] = parent[parent[u]];
-            u = parent[u];
+        // 找到环的一条边了
+        int[] temp = new int[]{-1, -1};
+        for (int[] edge : edges) {
+            if (union(edge, parent) == 0) {
+                temp = edge;
+                System.out.println(Arrays.toString(temp));
+                break;
+            }
         }
-        return u;
+        return temp;
     }
 
-    public int[] findRedundantDirectedConnection(int[][] edges) {
-        // 存放最后一个后向边(环)
-        int[] backedge = new int[2];
-        // 存放最后一个重复的父节点
-        int[] pending = new int[2];
-        parent = new int[edges.length + 1];
+    private int findRoot(int x, int[] parent) {
+        int root = x;
+        while (parent[root] != -1) {
+            root = parent[root];
+        }
+        return root;
+    }
 
-        for (int[] edge : edges) {
-            if (parent[edge[1]] == 0) {
-                //合并有向边
-                parent[edge[1]] = edge[0];
-            } else {
-                //有重复的父节点
-                pending = new int[]{edge[0], edge[1]};
-                backedge = new int[]{parent[edge[1]], edge[1]};
-                edge[1] = 0;
-            }
+    private int union(int[] edge, int[] parent) {
+        int rootX = findRoot(edge[0] - 1, parent);
+        int rootY = findRoot(edge[1] - 1, parent);
+        if (rootX == rootY) {
+            return 0;
         }
-        for (int i = 0; i <= edges.length; i++) {
-            parent[i] = i;
-        }
-
-        for (int[] e : edges) {
-            if (e[1] == 0) {
-                continue;
-            }
-            //判断有没有环
-            if (find(e[0]) == e[1]) {
-                return backedge[0] != 0 ? backedge : e;
-            }
-            parent[e[1]] = e[0];
-        }
-        return pending;
+        parent[edge[1] - 1] = edge[0] - 1;
+        return 1;
     }
 
     public static void main(String[] args) {
         LeetCode685 leetCode685 = new LeetCode685();
-        System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{1, 2}, {1, 3}, {2, 3}})));
-        System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 1}, {1, 5}})));
+//        System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{1, 2}, {1, 3}, {2, 3}})));
+//        System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 1}, {1, 5}})));
+        System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{2, 1}, {3, 1}, {4, 2}, {1, 4}})));
     }
 }
