@@ -22,7 +22,7 @@ public class LeetCode705 {
          * Returns true if this set contains the specified element
          */
         public boolean contains(int key) {
-
+            return false;
         }
     }
 
