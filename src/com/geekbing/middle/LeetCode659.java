@@ -1,7 +1,7 @@
 package com.geekbing.middle;
 
 /**
- * todo 未做出
+ * todo 没有做出来
  */
 public class LeetCode659 {
     public boolean isPossible(int[] nums) {
