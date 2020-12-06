@@ -1,6 +1,8 @@
 package com.geekbing.easy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -8,32 +10,26 @@ import java.util.List;
  */
 public class LeetCode118 {
     public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
         if (numRows == 0) {
-            return result;
+            return ans;
         }
 
-        List<Integer> pre = new ArrayList<>();
-        pre.add(1);
-        result.add(pre);
+        ans.add(new ArrayList<>(Collections.singletonList(1)));
 
-        List<Integer> current;
         for (int i = 1; i < numRows; i++) {
-            current = getNextLevel(pre);
-            result.add(current);
-            pre = current;
-        }
-        return result;
-    }
+            List<Integer> cur = new ArrayList<>();
+            cur.add(1);
 
-    private List<Integer> getNextLevel(List<Integer> nums) {
-        List<Integer> result = new ArrayList<>();
-        result.add(1);
-        for (int i = 0; i < nums.size() - 1; i++) {
-            result.add(nums.get(i) + nums.get(i + 1));
+            List<Integer> last = ans.get(ans.size() - 1);
+            for (int j = 0; j < last.size() - 1; j++) {
+                cur.add(last.get(j) + last.get(j + 1));
+            }
+
+            cur.add(1);
+            ans.add(cur);
         }
-        result.add(1);
-        return result;
+        return ans;
     }
 
     public static void main(String[] args) {
