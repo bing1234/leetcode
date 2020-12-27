@@ -4,11 +4,16 @@ package com.geekbing.middle;
  * https://leetcode-cn.com/problems/single-number-ii/
  * 137. 只出现一次的数字 II
  * todo
+ *
  * @author bing
  */
 public class LeetCode137 {
     public int singleNumber(int[] nums) {
+        for (int i = 0; i < 3; i++) {
+            for (int num : nums) {
 
+            }
+        }
         return 0;
     }
 

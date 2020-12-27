@@ -1,13 +1,25 @@
 package com.geekbing.easy;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * @author bing
  */
 public class LeetCode350 {
     public int[] intersect(int[] nums1, int[] nums2) {
-        return new int[0];
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums1) {
+            map.merge(num, 1, Integer::sum);
+        }
+        List<Integer> ans = new ArrayList<>();
+        for (int num : nums2) {
+            Integer count = map.get(num);
+            if (count != null && count > 0) {
+                ans.add(num);
+                map.put(num, count - 1);
+            }
+        }
+        return ans.stream().mapToInt(Integer::intValue).toArray();
     }
 
     public static void main(String[] args) {
