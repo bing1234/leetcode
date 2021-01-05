@@ -1,8 +1,11 @@
 package com.geekbing.easy;
 
+/**
+ * todo
+ */
 public class LeetCode1598 {
     public int minOperations(String[] logs) {
-
+        return 0;
     }
 
     public static void main(String[] args) {
