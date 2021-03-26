@@ -5,12 +5,28 @@ import java.util.List;
 
 public class LeetCode1656 {
     private static class OrderedStream {
-        public OrderedStream(int n) {
+        private int ptr = 1;
+        private final String[] streamContent;
 
+        public OrderedStream(int n) {
+            streamContent = new String[n + 1];
         }
 
-        public List<String> insert(int id, String value) {
-            return new ArrayList<>();
+        public List<String> insert(int idKey, String value) {
+            streamContent[idKey] = value;
+            if (streamContent[ptr] == null) {
+                return new ArrayList<>();
+            } else {
+                List<String> ans = new ArrayList<>();
+                while (ptr < streamContent.length) {
+                    if (streamContent[ptr] == null) {
+                        break;
+                    }
+                    ans.add(streamContent[ptr]);
+                    ptr++;
+                }
+                return ans;
+            }
         }
     }
 
