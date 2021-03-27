@@ -1,10 +1,8 @@
 package com.geekbing.easy;
 
-/**
- * todo
- */
 public class LeetCode1763 {
     public String longestNiceSubstring(String s) {
+
         return "";
     }
 
