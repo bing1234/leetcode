@@ -2,6 +2,11 @@ package com.geekbing;
 
 import java.math.BigDecimal;
 
+/**
+ * 快速降幂
+ *
+ * @author bing
+ */
 public class Solution {
     private static final BigDecimal MOD = BigDecimal.valueOf(5820210412L);
 
