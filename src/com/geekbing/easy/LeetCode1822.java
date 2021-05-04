@@ -3,7 +3,7 @@ package com.geekbing.easy;
 /**
  * @author bing
  */
-public class Solution1822 {
+public class LeetCode1822 {
     public int arraySign(int[] nums) {
         int negativeNum = 0;
         for (int num : nums) {
@@ -17,7 +17,7 @@ public class Solution1822 {
     }
 
     public static void main(String[] args) {
-        Solution1822 solution1822 = new Solution1822();
+        LeetCode1822 solution1822 = new LeetCode1822();
         System.out.println(solution1822.arraySign(new int[]{-1, -2, -3, -4, 3, 2, 1}));
         System.out.println(solution1822.arraySign(new int[]{1, 5, 0, 2, -3}));
         System.out.println(solution1822.arraySign(new int[]{-1, 1, -1, 1, -1}));

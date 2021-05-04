@@ -3,7 +3,7 @@ package com.geekbing.easy;
 /**
  * @author bing
  */
-public class Solution1848 {
+public class LeetCode1848 {
     public int getMinDistance(int[] nums, int target, int start) {
         int max = Math.max(start, nums.length - 1 - start);
         for (int i = 0; i <= max; i++) {
@@ -18,7 +18,7 @@ public class Solution1848 {
     }
 
     public static void main(String[] args) {
-        Solution1848 solution1848 = new Solution1848();
+        LeetCode1848 solution1848 = new LeetCode1848();
         System.out.println(solution1848.getMinDistance(new int[]{1, 2, 3, 4, 5}, 5, 3));
         System.out.println(solution1848.getMinDistance(new int[]{1}, 1, 0));
         System.out.println(solution1848.getMinDistance(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 1, 0));
