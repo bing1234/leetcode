@@ -1,22 +1,58 @@
 package com.geekbing.easy;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+/**
+ * @author bing
+ */
 public class LeetCode653 {
     public boolean findTarget(TreeNode root, int k) {
-        return false;
+        // 中序遍历得到从小到大排列的列表
+        List<Integer> arrs = inOrderTravel(root);
+        return twoSum(arrs, k);
     }
 
-    public int[] twoSum(int[] numbers, int target) {
-        int left = 0, right = numbers.length - 1;
+    private List<Integer> inOrderTravel(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) {
+            return ans;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            if (node != null) {
+                if (node.right != null) {
+                    stack.push(node.right);
+                }
+                stack.push(node);
+                stack.push(null);
+                if (node.left != null) {
+                    stack.push(node.left);
+                }
+            } else {
+                TreeNode cur = stack.pop();
+                ans.add(cur.val);
+            }
+        }
+        return ans;
+    }
+
+    private boolean twoSum(List<Integer> arrs, int target) {
+        int left = 0, right = arrs.size() - 1;
         while (left != right) {
-            if (numbers[left] + numbers[right] == target) {
-                return new int[]{left + 1, right + 1};
-            } else if (numbers[left] + numbers[right] < target) {
+            int sum = arrs.get(left) + arrs.get(right);
+            if (sum == target) {
+                return true;
+            } else if (sum < target) {
                 left++;
             } else {
                 right--;
             }
         }
-        return new int[]{};
+        return false;
     }
 
     private static final class TreeNode {
