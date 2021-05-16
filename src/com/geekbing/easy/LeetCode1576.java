@@ -5,6 +5,7 @@ package com.geekbing.easy;
  */
 public class LeetCode1576 {
     public String modifyString(String s) {
+
         return "";
     }
 
