@@ -1,5 +1,8 @@
 package com.geekbing.lcp;
 
+/**
+ * @author bing
+ */
 public class LCP17 {
     public int calculate(String s) {
         int x = 1, y = 0;
