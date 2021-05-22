@@ -8,7 +8,13 @@ import java.util.List;
  */
 public class LeetCode1018 {
     public List<Boolean> prefixesDivBy5(int[] nums) {
-        return new ArrayList<>();
+        List<Boolean> ans = new ArrayList<>();
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+            ans.add(sum % 5 == 0);
+        }
+        return ans;
     }
 
     public static void main(String[] args) {
