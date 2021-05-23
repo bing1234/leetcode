@@ -3,6 +3,9 @@ package com.geekbing.easy;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author bing
+ */
 public class LeetCode1748 {
     public int sumOfUnique(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();

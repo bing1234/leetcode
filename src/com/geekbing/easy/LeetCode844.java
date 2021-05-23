@@ -1,14 +1,19 @@
 package com.geekbing.easy;
 
+import java.util.Objects;
+
+/**
+ * @author bing
+ */
 public class LeetCode844 {
-    public boolean backspaceCompare(String S, String T) {
-        int indexS = S.length() - 1, indexT = T.length() - 1;
+    public boolean backspaceCompare(String s, String t) {
+        int indexS = s.length() - 1, indexT = t.length() - 1;
         int countS = 0, countT = 0;
         Character charS = null, charT = null;
         while (indexS >= 0 || indexT >= 0) {
             // 从后往前找到第一个字符
             while (indexS >= 0) {
-                if (S.charAt(indexS) == '#') {
+                if (s.charAt(indexS) == '#') {
                     countS++;
                     indexS--;
                 } else {
@@ -16,14 +21,14 @@ public class LeetCode844 {
                         indexS--;
                         countS--;
                     } else {
-                        charS = S.charAt(indexS);
+                        charS = s.charAt(indexS);
                         indexS--;
                         break;
                     }
                 }
             }
             while (indexT >= 0) {
-                if (T.charAt(indexT) == '#') {
+                if (t.charAt(indexT) == '#') {
                     countT++;
                     indexT--;
                 } else {
@@ -31,13 +36,13 @@ public class LeetCode844 {
                         indexT--;
                         countT--;
                     } else {
-                        charT = T.charAt(indexT);
+                        charT = t.charAt(indexT);
                         indexT--;
                         break;
                     }
                 }
             }
-            if (charS != charT) {
+            if (!Objects.equals(charS, charT)) {
                 return false;
             } else {
                 charS = null;
