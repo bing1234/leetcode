@@ -1,8 +1,11 @@
 package com.geekbing.easy;
 
+/**
+ * @author bing
+ */
 public class LeetCode383 {
     public boolean canConstruct(String ransomNote, String magazine) {
-        if (ransomNote == null || ransomNote.equals("")) {
+        if (ransomNote == null || "".equals(ransomNote)) {
             return true;
         }
         int[] bucket = new int[26];

@@ -1,9 +1,12 @@
 package com.geekbing.easy;
 
+/**
+ * @author bing
+ */
 public class LeetCode434 {
     public int countSegments(String s) {
         int ans = 0;
-        if (s == null || s.equals("")) {
+        if (s == null || "".equals(s)) {
             return ans;
         }
         boolean hasChar = false;

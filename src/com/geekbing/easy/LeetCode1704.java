@@ -3,29 +3,32 @@ package com.geekbing.easy;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author bing
+ */
 public class LeetCode1704 {
-    private static final Set<Character> set = new HashSet<>();
+    private static final Set<Character> VOWEL = new HashSet<>();
 
     static {
-        set.add('a');
-        set.add('e');
-        set.add('i');
-        set.add('o');
-        set.add('u');
-        set.add('A');
-        set.add('E');
-        set.add('I');
-        set.add('O');
-        set.add('U');
+        VOWEL.add('a');
+        VOWEL.add('e');
+        VOWEL.add('i');
+        VOWEL.add('o');
+        VOWEL.add('u');
+        VOWEL.add('A');
+        VOWEL.add('E');
+        VOWEL.add('I');
+        VOWEL.add('O');
+        VOWEL.add('U');
     }
 
     public boolean halvesAreAlike(String s) {
         int left = 0, leftCnt = 0, right = s.length() - 1, rightCnt = 0;
         while (left < right) {
-            if (set.contains(s.charAt(left))) {
+            if (VOWEL.contains(s.charAt(left))) {
                 leftCnt++;
             }
-            if (set.contains(s.charAt(right))) {
+            if (VOWEL.contains(s.charAt(right))) {
                 rightCnt++;
             }
             left++;

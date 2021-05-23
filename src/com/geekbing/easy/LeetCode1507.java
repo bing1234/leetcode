@@ -6,21 +6,21 @@ import java.util.*;
  * @author bing
  */
 public class LeetCode1507 {
-    private static final Map<String, String> monthMap = new HashMap<>(16);
+    private static final Map<String, String> MONTH_MAP = new HashMap<>(16);
 
     static {
-        monthMap.put("Jan", "01");
-        monthMap.put("Feb", "02");
-        monthMap.put("Mar", "03");
-        monthMap.put("Apr", "04");
-        monthMap.put("May", "05");
-        monthMap.put("Jun", "06");
-        monthMap.put("Jul", "07");
-        monthMap.put("Aug", "08");
-        monthMap.put("Sep", "09");
-        monthMap.put("Oct", "10");
-        monthMap.put("Nov", "11");
-        monthMap.put("Dec", "12");
+        MONTH_MAP.put("Jan", "01");
+        MONTH_MAP.put("Feb", "02");
+        MONTH_MAP.put("Mar", "03");
+        MONTH_MAP.put("Apr", "04");
+        MONTH_MAP.put("May", "05");
+        MONTH_MAP.put("Jun", "06");
+        MONTH_MAP.put("Jul", "07");
+        MONTH_MAP.put("Aug", "08");
+        MONTH_MAP.put("Sep", "09");
+        MONTH_MAP.put("Oct", "10");
+        MONTH_MAP.put("Nov", "11");
+        MONTH_MAP.put("Dec", "12");
     }
 
     public String reformatDate(String date) {
@@ -37,7 +37,7 @@ public class LeetCode1507 {
     public String reformatDateV2(String date) {
         String[] arrs = date.split(" ");
         String day = arrs[0].length() == 3 ? "0" + arrs[0].substring(0, 1) : arrs[0].substring(0, 2);
-        return arrs[2] + "-" + monthMap.get(arrs[1]) + "-" + day;
+        return arrs[2] + "-" + MONTH_MAP.get(arrs[1]) + "-" + day;
     }
 
     public static void main(String[] args) {

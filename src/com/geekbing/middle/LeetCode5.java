@@ -5,7 +5,7 @@ package com.geekbing.middle;
  */
 public class LeetCode5 {
     public String longestPalindrome(String s) {
-        if (s == null || s.equals("")) {
+        if (s == null || "".equals(s)) {
             return "";
         }
         // dp[i][j] 表示 s[i...j]是否是s的回文子串

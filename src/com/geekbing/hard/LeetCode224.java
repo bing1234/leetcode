@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * @author bing
+ */
 public class LeetCode224 {
     public int calculate(String s) {
         // 生成中缀表达式
@@ -50,9 +53,9 @@ public class LeetCode224 {
         for (String str : infixExps) {
             if (Character.isDigit(str.charAt(0))) {
                 ans.add(str);
-            } else if (str.equals("(")) {
+            } else if ("(".equals(str)) {
                 stack.push('(');
-            } else if (str.equals(")")) {
+            } else if (")".equals(str)) {
                 while (stack.peek() != '(') {
                     ans.add(String.valueOf(stack.pop()));
                 }

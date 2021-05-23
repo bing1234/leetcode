@@ -5,9 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author bing
+ */
 public class LeetCode763 {
     public List<Integer> partitionLabels(String S) {
-        if (S == null || S.equals("")) {
+        if (S == null || "".equals(S)) {
             return new ArrayList<>();
         }
         // 记录字符最后出现的位置

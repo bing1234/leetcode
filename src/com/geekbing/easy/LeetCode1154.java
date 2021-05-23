@@ -1,7 +1,10 @@
 package com.geekbing.easy;
 
+/**
+ * @author bing
+ */
 public class LeetCode1154 {
-    private static final int[] monthDays = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    private static final int[] MONTH_DAYS = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public int dayOfYear(String date) {
         // 得到年月日
@@ -11,7 +14,7 @@ public class LeetCode1154 {
         int ans = 0;
         // 计算月的所有天数
         for (int i = 0; i < month - 1; i++) {
-            ans += monthDays[i];
+            ans += MONTH_DAYS[i];
         }
         if (month > 2) {
             // 判断是否是闰年

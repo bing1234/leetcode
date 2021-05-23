@@ -6,35 +6,35 @@ import java.util.Map;
 import java.util.Set;
 
 public class LeetCode804 {
-    private static final Map<Character, String> map = new HashMap<>();
+    private static final Map<Character, String> MAP = new HashMap<>();
 
     static {
-        map.put('a', ".-");
-        map.put('b', "-...");
-        map.put('c', "-.-.");
-        map.put('d', "-..");
-        map.put('e', ".");
-        map.put('f', "..-.");
-        map.put('g', "--.");
-        map.put('h', "....");
-        map.put('i', "..");
-        map.put('j', ".---");
-        map.put('k', "-.-");
-        map.put('l', ".-..");
-        map.put('m', "--");
-        map.put('n', "-.");
-        map.put('o', "---");
-        map.put('p', ".--.");
-        map.put('q', "--.-");
-        map.put('r', ".-.");
-        map.put('s', "...");
-        map.put('t', "-");
-        map.put('u', "..-");
-        map.put('v', "...-");
-        map.put('w', ".--");
-        map.put('x', "-..-");
-        map.put('y', "-.--");
-        map.put('z', "--..");
+        MAP.put('a', ".-");
+        MAP.put('b', "-...");
+        MAP.put('c', "-.-.");
+        MAP.put('d', "-..");
+        MAP.put('e', ".");
+        MAP.put('f', "..-.");
+        MAP.put('g', "--.");
+        MAP.put('h', "....");
+        MAP.put('i', "..");
+        MAP.put('j', ".---");
+        MAP.put('k', "-.-");
+        MAP.put('l', ".-..");
+        MAP.put('m', "--");
+        MAP.put('n', "-.");
+        MAP.put('o', "---");
+        MAP.put('p', ".--.");
+        MAP.put('q', "--.-");
+        MAP.put('r', ".-.");
+        MAP.put('s', "...");
+        MAP.put('t', "-");
+        MAP.put('u', "..-");
+        MAP.put('v', "...-");
+        MAP.put('w', ".--");
+        MAP.put('x', "-..-");
+        MAP.put('y', "-.--");
+        MAP.put('z', "--..");
     }
 
     public int uniqueMorseRepresentations(String[] words) {
@@ -48,7 +48,7 @@ public class LeetCode804 {
     private String translateWord(String word) {
         StringBuilder ans = new StringBuilder();
         for (char c : word.toCharArray()) {
-            ans.append(map.get(c));
+            ans.append(MAP.get(c));
         }
         return ans.toString();
     }

@@ -1,5 +1,8 @@
 package com.geekbing.easy;
 
+/**
+ * @author bing
+ */
 public class LeetCode1071 {
     public String gcdOfStringsV2(String str1, String str2) {
         if (!str1.concat(str2).equals(str2.concat(str1))) {
@@ -20,13 +23,13 @@ public class LeetCode1071 {
 
     public String gcdOfStrings(String str1, String str2) {
         // 特殊情况处理
-        if (str1 == null || str1.equals("") || str2 == null || str2.equals("")) {
+        if (str1 == null || "".equals(str1) || str2 == null || "".equals(str2)) {
             return "";
         }
 
         // 最大公共前缀
         String prefix = findMaxCommonPrefix(str1, str2);
-        if (prefix.equals("")) {
+        if ("".equals(prefix)) {
             return "";
         }
 

@@ -1,8 +1,11 @@
 package com.geekbing.easy;
 
+/**
+ * @author bing
+ */
 public class LeetCode1332 {
     public int removePalindromeSub(String s) {
-        if (s == null || s.equals("")) {
+        if (s == null || "".equals(s)) {
             return 0;
         }
         int left = 0, right = s.length() - 1;

@@ -3,11 +3,11 @@ package com.geekbing.middle;
 import java.util.Stack;
 
 /**
- * todo
+ * @author bing
  */
 public class LeetCode678 {
     public boolean checkValidString(String s) {
-        if (s == null || s.equals("")) {
+        if (s == null || "".equals(s)) {
             return true;
         }
         Stack<Character> stack = new Stack<>();

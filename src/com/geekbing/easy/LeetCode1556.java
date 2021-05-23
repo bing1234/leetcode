@@ -8,15 +8,15 @@ public class LeetCode1556 {
         if (n < 10) {
             return String.valueOf(n);
         }
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
         int cnt = 0, remainder = 0;
         while (n != 0) {
             remainder = n % 10;
             cnt++;
 
-            ans = remainder + ans;
+            ans.insert(0, remainder);
             if (cnt == 3) {
-                ans = "." + ans;
+                ans.insert(0, ".");
                 cnt = 0;
             }
             n /= 10;
@@ -24,7 +24,7 @@ public class LeetCode1556 {
         if (ans.length() > 1 && ans.charAt(0) == '.') {
             return ans.substring(1);
         }
-        return ans;
+        return ans.toString();
     }
 
     public static void main(String[] args) {

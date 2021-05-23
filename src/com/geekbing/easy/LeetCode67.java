@@ -5,7 +5,7 @@ package com.geekbing.easy;
  */
 public class LeetCode67 {
     public String addBinary(String a, String b) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         int carry = 0, temp;
         int indexA = a.length() - 1, indexB = b.length() - 1;
         char currentA, currentB;
@@ -16,14 +16,14 @@ public class LeetCode67 {
             temp = currentA + currentB + carry - 96;
             carry = temp < 2 ? 0 : 1;
             if (temp == 0 || temp == 2) {
-                result = "0" + result;
+                result.insert(0, "0");
             } else {
-                result = "1" + result;
+                result.insert(0, "1");
             }
             indexA--;
             indexB--;
         }
-        return carry == 1 ? "1" + result : result;
+        return carry == 1 ? "1" + result : result.toString();
     }
 
     public static void main(String[] args) {

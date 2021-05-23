@@ -2,7 +2,7 @@ package com.geekbing.interview;
 
 public class Interview0101 {
     public boolean isUnique(String astr) {
-        if (astr == null || astr.equals("")) {
+        if (astr == null || "".equals(astr)) {
             return true;
         }
         if (astr.length() > 256) {

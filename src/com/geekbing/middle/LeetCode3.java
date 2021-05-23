@@ -2,9 +2,12 @@ package com.geekbing.middle;
 
 import java.util.HashSet;
 
+/**
+ * @author bing
+ */
 public class LeetCode3 {
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.equals("")) {
+        if (s == null || "".equals(s)) {
             return 0;
         }
         int left = 0, right = 0, maxLen = 0;

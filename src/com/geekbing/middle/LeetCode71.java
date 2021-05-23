@@ -13,10 +13,10 @@ public class LeetCode71 {
         Stack<String> stack = new Stack<>();
         String[] items = path.split("/");
         for (String item : items) {
-            if (item.equals("") || item.equals(".") || item.equals("/")) {
+            if ("".equals(item) || ".".equals(item) || "/".equals(item)) {
                 continue;
             }
-            if (item.equals("..")) {
+            if ("..".equals(item)) {
                 if (!stack.isEmpty()) {
                     stack.pop();
                 }
@@ -27,9 +27,9 @@ public class LeetCode71 {
         if (stack.isEmpty()) {
             return "/";
         }
-        String ans = stack.pop();
+        StringBuilder ans = new StringBuilder(stack.pop());
         while (!stack.isEmpty()) {
-            ans = stack.pop() + "/" + ans;
+            ans.insert(0, stack.pop() + "/");
         }
         return "/" + ans;
     }
