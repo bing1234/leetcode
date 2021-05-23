@@ -2,6 +2,9 @@ package com.geekbing.hard;
 
 import java.util.*;
 
+/**
+ * @author bing
+ */
 public class LeetCode834 {
     // 邻接表
     private Set<Integer>[] graph;

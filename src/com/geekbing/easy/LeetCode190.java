@@ -1,10 +1,9 @@
 package com.geekbing.easy;
 
 /**
- * todo
+ * @author bing
  */
 public class LeetCode190 {
-    // you need treat n as an unsigned value
     public int reverseBits(int n) {
         return 0;
     }
