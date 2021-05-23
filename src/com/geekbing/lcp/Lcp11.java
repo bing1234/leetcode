@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @author bing
  */
-public class LCP11 {
+public class Lcp11 {
     public int expectNumber(int[] scores) {
         Map<Integer, Integer> countMap = new HashMap<>();
         for (int score : scores) {
@@ -20,7 +20,7 @@ public class LCP11 {
     }
 
     public static void main(String[] args) {
-        LCP11 lcp11 = new LCP11();
+        Lcp11 lcp11 = new Lcp11();
         System.out.println(lcp11.expectNumber(new int[]{1, 2, 3}));
         System.out.println(lcp11.expectNumber(new int[]{1, 1}));
     }

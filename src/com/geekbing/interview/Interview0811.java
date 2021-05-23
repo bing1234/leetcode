@@ -1,5 +1,8 @@
 package com.geekbing.interview;
 
+/**
+ * @author bing
+ */
 public class Interview0811 {
     private static final int MOD = 1000000007;
 
@@ -9,7 +12,7 @@ public class Interview0811 {
 
     public static void main(String[] args) {
         Interview0811 interview0811 = new Interview0811();
-//        System.out.println(interview0811.waysToChange(5));
+        System.out.println(interview0811.waysToChange(5));
         System.out.println(interview0811.waysToChange(10));
     }
 }

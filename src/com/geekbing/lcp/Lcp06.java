@@ -3,7 +3,7 @@ package com.geekbing.lcp;
 /**
  * @author bing
  */
-public class LCP06 {
+public class Lcp06 {
     public int minCount(int[] coins) {
         int times = 0;
         for (int coin : coins) {
@@ -17,7 +17,7 @@ public class LCP06 {
     }
 
     public static void main(String[] args) {
-        LCP06 lcp06 = new LCP06();
+        Lcp06 lcp06 = new Lcp06();
         System.out.println(lcp06.minCount(new int[]{4, 2, 1}));
         System.out.println(lcp06.minCount(new int[]{2, 3, 10}));
     }

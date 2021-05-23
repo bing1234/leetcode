@@ -1,6 +1,6 @@
 package com.geekbing.lcp;
 
-public class LCP19 {
+public class Lcp19 {
     public int minimumOperations(String leaves) {
         // dp[i][0] 表示将leaves[0...i]的第i片叶子调整为左边的红色所需要的最少调整数
         // dp[i][0] = dp[i-1][0] + isYellow(leaves[i])
@@ -22,7 +22,7 @@ public class LCP19 {
     }
 
     public static void main(String[] args) {
-        LCP19 lcp19 = new LCP19();
+        Lcp19 lcp19 = new Lcp19();
         System.out.println(lcp19.minimumOperations("rrryyyrryyyrr"));
         System.out.println(lcp19.minimumOperations("ryr"));
         System.out.println(lcp19.minimumOperations("yry"));

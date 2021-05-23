@@ -3,7 +3,7 @@ package com.geekbing.lcp;
 /**
  * @author bing
  */
-public class LCP17 {
+public class Lcp17 {
     public int calculate(String s) {
         int x = 1, y = 0;
         for (char c : s.toCharArray()) {
@@ -17,7 +17,7 @@ public class LCP17 {
     }
 
     public static void main(String[] args) {
-        LCP17 lcp17 = new LCP17();
+        Lcp17 lcp17 = new Lcp17();
         System.out.println(lcp17.calculate("AB"));
     }
 }

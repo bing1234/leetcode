@@ -2,7 +2,7 @@ package com.geekbing.lcp;
 
 import java.util.Arrays;
 
-public class LCP02 {
+public class Lcp02 {
     public int[] fraction(int[] cont) {
         if (cont.length == 0) {
             return new int[]{};
@@ -29,7 +29,7 @@ public class LCP02 {
     }
 
     public static void main(String[] args) {
-        LCP02 lcp02 = new LCP02();
+        Lcp02 lcp02 = new Lcp02();
         System.out.println(Arrays.toString(lcp02.fraction(new int[]{3, 2, 0, 2})));
         System.out.println(Arrays.toString(lcp02.fraction(new int[]{0, 0, 3})));
     }

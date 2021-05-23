@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * @author bing
  */
-public class LCP914 {
+public class Lcp914 {
     public boolean hasGroupsSizeX(int[] deck) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int num : deck) {
@@ -53,7 +53,7 @@ public class LCP914 {
     }
 
     public static void main(String[] args) {
-        LCP914 lcp914 = new LCP914();
+        Lcp914 lcp914 = new Lcp914();
         System.out.println(lcp914.hasGroupsSizeX(new int[]{1, 2, 3, 4, 4, 3, 2, 1}));
         System.out.println(lcp914.hasGroupsSizeX(new int[]{1, 1, 1, 2, 2, 2, 3, 3}));
         System.out.println(lcp914.hasGroupsSizeX(new int[]{1}));

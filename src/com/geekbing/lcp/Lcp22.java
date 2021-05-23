@@ -3,7 +3,7 @@ package com.geekbing.lcp;
 /**
  * @author bing
  */
-public class LCP22 {
+public class Lcp22 {
     public int paintingPlan(int n, int k) {
         // 不涂或涂满都只有1总方案
         if (k == 0 || n * n == k) {
@@ -36,7 +36,7 @@ public class LCP22 {
     }
 
     public static void main(String[] args) {
-        LCP22 lcp22 = new LCP22();
+        Lcp22 lcp22 = new Lcp22();
         System.out.println(lcp22.paintingPlan(2, 2));
         System.out.println(lcp22.paintingPlan(2, 1));
         System.out.println(lcp22.paintingPlan(2, 4));

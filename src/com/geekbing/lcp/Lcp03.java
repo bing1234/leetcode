@@ -8,7 +8,7 @@ import java.util.Set;
  *
  * @author bing
  */
-public class LCP03 {
+public class Lcp03 {
     public boolean robot(String command, int[][] obstacles, int x, int y) {
         if (x > 0 && !command.contains("R")) {
             return false;
@@ -43,7 +43,7 @@ public class LCP03 {
     }
 
     public static void main(String[] args) {
-        LCP03 lcp03 = new LCP03();
+        Lcp03 lcp03 = new Lcp03();
 
         int[][] obstacles1 = new int[0][0];
         int[][] obstacles2 = new int[][]{{2, 2}};

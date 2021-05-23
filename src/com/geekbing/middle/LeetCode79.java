@@ -1,5 +1,8 @@
 package com.geekbing.middle;
 
+/**
+ * @author bing
+ */
 public class LeetCode79 {
     public boolean exist(char[][] board, String word) {
         boolean[][] visited = new boolean[board.length][board[0].length];
@@ -54,13 +57,13 @@ public class LeetCode79 {
     public static void main(String[] args) {
         LeetCode79 leetCode79 = new LeetCode79();
 
-//        char[][] case1 = new char[3][4];
-//        case1[0] = new char[]{'A', 'B', 'C', 'E'};
-//        case1[1] = new char[]{'S', 'F', 'C', 'S'};
-//        case1[2] = new char[]{'A', 'D', 'E', 'E'};
-//        System.out.println(leetCode79.exist(case1, "ABCCED"));
-//        System.out.println(leetCode79.exist(case1, "SEE"));
-//        System.out.println(leetCode79.exist(case1, "ABCB"));
+        char[][] case1 = new char[3][4];
+        case1[0] = new char[]{'A', 'B', 'C', 'E'};
+        case1[1] = new char[]{'S', 'F', 'C', 'S'};
+        case1[2] = new char[]{'A', 'D', 'E', 'E'};
+        System.out.println(leetCode79.exist(case1, "ABCCED"));
+        System.out.println(leetCode79.exist(case1, "SEE"));
+        System.out.println(leetCode79.exist(case1, "ABCB"));
 
         char[][] case2 = new char[1][1];
         case2[0] = new char[]{'a'};

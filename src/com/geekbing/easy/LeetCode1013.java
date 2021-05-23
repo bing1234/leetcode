@@ -65,10 +65,9 @@ public class LeetCode1013 {
 
     public static void main(String[] args) {
         LeetCode1013 leetCode1013 = new LeetCode1013();
-//        System.out.println(leetCode1013.canThreePartsEqualSum(new int[]{0, 2, 1, -6, 6, -7, 9, 1, 2, 0, 1}));
-//        System.out.println(leetCode1013.canThreePartsEqualSum(new int[]{0, 2, 1, -6, 6, 7, 9, -1, 2, 0, 1}));
-//        System.out.println(leetCode1013.canThreePartsEqualSum(new int[]{3, 3, 6, 5, -2, 2, 5, 1, -9, 4}));
+        System.out.println(leetCode1013.canThreePartsEqualSum(new int[]{0, 2, 1, -6, 6, -7, 9, 1, 2, 0, 1}));
+        System.out.println(leetCode1013.canThreePartsEqualSum(new int[]{0, 2, 1, -6, 6, 7, 9, -1, 2, 0, 1}));
+        System.out.println(leetCode1013.canThreePartsEqualSum(new int[]{3, 3, 6, 5, -2, 2, 5, 1, -9, 4}));
         System.out.println(leetCode1013.canThreePartsEqualSum(new int[]{1, -1, 1, -1}));
-
     }
 }

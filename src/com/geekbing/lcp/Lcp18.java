@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author bing
  */
-public class LCP18 {
+public class Lcp18 {
     public int breakfastNumber(int[] staple, int[] drinks, int x) {
         Arrays.sort(staple);
         Arrays.sort(drinks);
@@ -23,7 +23,7 @@ public class LCP18 {
     }
 
     public static void main(String[] args) {
-        LCP18 lcp18 = new LCP18();
+        Lcp18 lcp18 = new Lcp18();
         System.out.println(lcp18.breakfastNumber(new int[]{10, 20, 5}, new int[]{5, 5, 2}, 15));
         System.out.println(lcp18.breakfastNumber(new int[]{2, 1, 1}, new int[]{8, 9, 5, 1}, 9));
     }

@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author bing
+ */
 public class LeetCode1337 {
     public int[] kWeakestRows(int[][] mat, int k) {
         List<Integer>[] idxMap = new List[Math.max(mat.length, mat[0].length) + 1];
@@ -40,9 +43,8 @@ public class LeetCode1337 {
 
     public static void main(String[] args) {
         LeetCode1337 leetCode1337 = new LeetCode1337();
-//        System.out.println(Arrays.toString(leetCode1337.kWeakestRows(new int[][]{{1, 1, 0, 0, 0}, {1, 1, 1, 1, 0}, {1, 0, 0, 0, 0}, {1, 1, 0, 0, 0}, {1, 1, 1, 1, 1}}, 3)));
-//        System.out.println(Arrays.toString(leetCode1337.kWeakestRows(new int[][]{{1, 0, 0, 0}, {1, 1, 1, 1}, {1, 0, 0, 0}, {1, 0, 0, 0}}, 2)));
+        System.out.println(Arrays.toString(leetCode1337.kWeakestRows(new int[][]{{1, 1, 0, 0, 0}, {1, 1, 1, 1, 0}, {1, 0, 0, 0, 0}, {1, 1, 0, 0, 0}, {1, 1, 1, 1, 1}}, 3)));
+        System.out.println(Arrays.toString(leetCode1337.kWeakestRows(new int[][]{{1, 0, 0, 0}, {1, 1, 1, 1}, {1, 0, 0, 0}, {1, 0, 0, 0}}, 2)));
         System.out.println(Arrays.toString(leetCode1337.kWeakestRows(new int[][]{{1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1}}, 1)));
-
     }
 }

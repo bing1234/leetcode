@@ -1,5 +1,8 @@
 package com.geekbing.hard;
 
+/**
+ * @author bing
+ */
 public class LeetCode76 {
     public String minWindow(String s, String t) {
         if (s.length() < t.length()) {
@@ -67,9 +70,9 @@ public class LeetCode76 {
 
     public static void main(String[] args) {
         LeetCode76 leetCode76 = new LeetCode76();
-//        System.out.println(leetCode76.minWindow("ADOBECODEBANC", "ABC"));
-//        System.out.println(leetCode76.minWindow("ab", "b"));
-//        System.out.println(leetCode76.minWindow("a", "b"));
+        System.out.println(leetCode76.minWindow("ADOBECODEBANC", "ABC"));
+        System.out.println(leetCode76.minWindow("ab", "b"));
+        System.out.println(leetCode76.minWindow("a", "b"));
         System.out.println(leetCode76.minWindow("aa", "aa"));
     }
 }

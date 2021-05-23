@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author bing
  */
-public class LCP28 {
+public class Lcp28 {
     public int purchasePlans(int[] nums, int target) {
         Arrays.sort(nums);
         long ans = 0;
@@ -49,7 +49,7 @@ public class LCP28 {
     }
 
     public static void main(String[] args) {
-        LCP28 lcp28 = new LCP28();
+        Lcp28 lcp28 = new Lcp28();
         System.out.println(lcp28.purchasePlans(new int[]{2, 5, 3, 5}, 6));
         System.out.println(lcp28.purchasePlans(new int[]{2, 2, 1, 9}, 10));
         System.out.println(lcp28.purchasePlans(new int[]{3, 1, 2}, 5));
