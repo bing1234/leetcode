@@ -1,5 +1,8 @@
 package com.geekbing.middle;
 
+/**
+ * @author bing
+ */
 public class LeetCode605 {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         int ans = 0;
@@ -46,8 +49,8 @@ public class LeetCode605 {
 
     public static void main(String[] args) {
         LeetCode605 leetCode605 = new LeetCode605();
-//        System.out.println(leetCode605.canPlaceFlowers(new int[]{1, 0, 0, 0, 1}, 1));
-//        System.out.println(leetCode605.canPlaceFlowers(new int[]{1, 0, 0, 0, 1}, 2));
+        System.out.println(leetCode605.canPlaceFlowers(new int[]{1, 0, 0, 0, 1}, 1));
+        System.out.println(leetCode605.canPlaceFlowers(new int[]{1, 0, 0, 0, 1}, 2));
         System.out.println(leetCode605.canPlaceFlowers(new int[]{1, 0, 0, 0, 1, 0, 0}, 2));
     }
 }

@@ -3,6 +3,9 @@ package com.geekbing.easy;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author bing
+ */
 public class LeetCode228 {
     public List<String> summaryRanges(int[] nums) {
         List<String> ans = new ArrayList<>();
@@ -26,12 +29,11 @@ public class LeetCode228 {
 
     public static void main(String[] args) {
         LeetCode228 leetCode228 = new LeetCode228();
-//        System.out.println(leetCode228.summaryRanges(new int[]{0, 1, 2, 4, 5, 7}));
-//        System.out.println(leetCode228.summaryRanges(new int[]{0, 2, 3, 4, 6, 8, 9}));
-//        System.out.println(leetCode228.summaryRanges(new int[]{}));
-//        System.out.println(leetCode228.summaryRanges(new int[]{-1}));
-//        System.out.println(leetCode228.summaryRanges(new int[]{0}));
-
+        System.out.println(leetCode228.summaryRanges(new int[]{0, 1, 2, 4, 5, 7}));
+        System.out.println(leetCode228.summaryRanges(new int[]{0, 2, 3, 4, 6, 8, 9}));
+        System.out.println(leetCode228.summaryRanges(new int[]{}));
+        System.out.println(leetCode228.summaryRanges(new int[]{-1}));
+        System.out.println(leetCode228.summaryRanges(new int[]{0}));
         System.out.println(leetCode228.summaryRanges(new int[]{-2147483648, -2147483647, 2147483647}));
     }
 }

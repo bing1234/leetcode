@@ -28,11 +28,13 @@ public class LeetCode64 {
 
     public static void main(String[] args) {
         LeetCode64 leetCode64 = new LeetCode64();
-//        int[][] case1 = new int[3][3];
-//        case1[0] = new int[]{1, 3, 1};
-//        case1[1] = new int[]{1, 5, 1};
-//        case1[2] = new int[]{4, 2, 1};
-//        System.out.println(leetCode64.minPathSum(case1));
+
+        int[][] case1 = new int[3][3];
+        case1[0] = new int[]{1, 3, 1};
+        case1[1] = new int[]{1, 5, 1};
+        case1[2] = new int[]{4, 2, 1};
+        System.out.println(leetCode64.minPathSum(case1));
+
         int[][] case2 = new int[2][3];
         case2[0] = new int[]{1, 2, 5};
         case2[1] = new int[]{3, 2, 1};

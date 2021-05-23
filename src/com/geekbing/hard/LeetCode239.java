@@ -2,6 +2,9 @@ package com.geekbing.hard;
 
 import java.util.Arrays;
 
+/**
+ * @author bing
+ */
 public class LeetCode239 {
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (k == 1) {
@@ -43,12 +46,12 @@ public class LeetCode239 {
 
     public static void main(String[] args) {
         LeetCode239 leetCode239 = new LeetCode239();
-//        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
-//        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{1}, 1)));
-//        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{1, -1}, 1)));
-//        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{9, 11}, 2)));
-//        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{4, -2}, 2)));
-//        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
+        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
+        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{1}, 1)));
+        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{1, -1}, 1)));
+        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{9, 11}, 2)));
+        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{4, -2}, 2)));
+        System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
         System.out.println(Arrays.toString(leetCode239.maxSlidingWindow(new int[]{7, 2, 4}, 2)));
     }
 }

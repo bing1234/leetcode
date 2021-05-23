@@ -92,7 +92,7 @@ public class LeetCode401 {
     public static void main(String[] args) {
         LeetCode401 leetCode401 = new LeetCode401();
 
-//        System.out.println(leetCode401.combine(UPPER, 2));
+        System.out.println(leetCode401.combine(UPPER, 2));
         System.out.println(leetCode401.readBinaryWatch(1));
         System.out.println(leetCode401.readBinaryWatch(9));
     }

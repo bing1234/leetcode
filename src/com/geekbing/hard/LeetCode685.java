@@ -3,7 +3,6 @@ package com.geekbing.hard;
 import java.util.Arrays;
 
 /**
- * todo
  * https://leetcode-cn.com/problems/redundant-connection-ii/
  * 685. 冗余连接 II
  *
@@ -46,8 +45,8 @@ public class LeetCode685 {
 
     public static void main(String[] args) {
         LeetCode685 leetCode685 = new LeetCode685();
-//        System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{1, 2}, {1, 3}, {2, 3}})));
-//        System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 1}, {1, 5}})));
+        System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{1, 2}, {1, 3}, {2, 3}})));
+        System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 1}, {1, 5}})));
         System.out.println(Arrays.toString(leetCode685.findRedundantDirectedConnection(new int[][]{{2, 1}, {3, 1}, {4, 2}, {1, 4}})));
     }
 }

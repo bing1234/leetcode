@@ -3,6 +3,9 @@ package com.geekbing.easy;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author bing
+ */
 public class LeetCode5511 {
     public int numSpecial(int[][] mat) {
         Map<Integer, Integer> rowMap = new HashMap<>();
@@ -40,17 +43,17 @@ public class LeetCode5511 {
 
     public static void main(String[] args) {
         LeetCode5511 leetCode5511 = new LeetCode5511();
-//        int[][] case1 = new int[3][3];
-//        case1[0] = new int[]{1, 0, 0};
-//        case1[1] = new int[]{0, 0, 1};
-//        case1[2] = new int[]{1, 0, 0};
-//        System.out.println(leetCode5511.numSpecial(case1));
-//
-//        int[][] case2 = new int[3][3];
-//        case2[0] = new int[]{1, 0, 0};
-//        case2[1] = new int[]{0, 1, 0};
-//        case2[2] = new int[]{0, 0, 1};
-//        System.out.println(leetCode5511.numSpecial(case2));
+        int[][] case1 = new int[3][3];
+        case1[0] = new int[]{1, 0, 0};
+        case1[1] = new int[]{0, 0, 1};
+        case1[2] = new int[]{1, 0, 0};
+        System.out.println(leetCode5511.numSpecial(case1));
+
+        int[][] case2 = new int[3][3];
+        case2[0] = new int[]{1, 0, 0};
+        case2[1] = new int[]{0, 1, 0};
+        case2[2] = new int[]{0, 0, 1};
+        System.out.println(leetCode5511.numSpecial(case2));
 
         int[][] case3 = new int[3][2];
         case3[0] = new int[]{0, 0};

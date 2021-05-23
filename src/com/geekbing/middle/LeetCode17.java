@@ -2,18 +2,21 @@ package com.geekbing.middle;
 
 import java.util.*;
 
+/**
+ * @author bing
+ */
 public class LeetCode17 {
-    private static final Map<String, List<String>> map = new HashMap<>();
+    private static final Map<String, List<String>> MAP = new HashMap<>();
 
     static {
-        map.put("2", new ArrayList<>(Arrays.asList("a", "b", "c")));
-        map.put("3", new ArrayList<>(Arrays.asList("d", "e", "f")));
-        map.put("4", new ArrayList<>(Arrays.asList("g", "h", "i")));
-        map.put("5", new ArrayList<>(Arrays.asList("j", "k", "l")));
-        map.put("6", new ArrayList<>(Arrays.asList("m", "n", "o")));
-        map.put("7", new ArrayList<>(Arrays.asList("p", "q", "r", "s")));
-        map.put("8", new ArrayList<>(Arrays.asList("t", "u", "v")));
-        map.put("9", new ArrayList<>(Arrays.asList("w", "x", "y", "z")));
+        MAP.put("2", new ArrayList<>(Arrays.asList("a", "b", "c")));
+        MAP.put("3", new ArrayList<>(Arrays.asList("d", "e", "f")));
+        MAP.put("4", new ArrayList<>(Arrays.asList("g", "h", "i")));
+        MAP.put("5", new ArrayList<>(Arrays.asList("j", "k", "l")));
+        MAP.put("6", new ArrayList<>(Arrays.asList("m", "n", "o")));
+        MAP.put("7", new ArrayList<>(Arrays.asList("p", "q", "r", "s")));
+        MAP.put("8", new ArrayList<>(Arrays.asList("t", "u", "v")));
+        MAP.put("9", new ArrayList<>(Arrays.asList("w", "x", "y", "z")));
     }
 
     public List<String> letterCombinations(String digits) {
@@ -31,7 +34,7 @@ public class LeetCode17 {
             return;
         }
         for (int i = start; i < digits.length; i++) {
-            for (String digit : map.get(String.valueOf(digits[i]))) {
+            for (String digit : MAP.get(String.valueOf(digits[i]))) {
                 backtrack(ans, digits, cur + digit, i + 1);
             }
         }

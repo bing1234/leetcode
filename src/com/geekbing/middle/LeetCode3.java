@@ -34,10 +34,10 @@ public class LeetCode3 {
 
     public static void main(String[] args) {
         LeetCode3 leetCode3 = new LeetCode3();
-//        System.out.println(leetCode3.lengthOfLongestSubstring("aab"));
-//        System.out.println(leetCode3.lengthOfLongestSubstring("abcabcbb"));
-//        System.out.println(leetCode3.lengthOfLongestSubstring("bbbbb"));
-//        System.out.println(leetCode3.lengthOfLongestSubstring("pwwkew"));
+        System.out.println(leetCode3.lengthOfLongestSubstring("aab"));
+        System.out.println(leetCode3.lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(leetCode3.lengthOfLongestSubstring("bbbbb"));
+        System.out.println(leetCode3.lengthOfLongestSubstring("pwwkew"));
         System.out.println(leetCode3.lengthOfLongestSubstring("tmmzuxt"));
     }
 }

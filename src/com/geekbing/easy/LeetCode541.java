@@ -1,5 +1,8 @@
 package com.geekbing.easy;
 
+/**
+ * @author bing
+ */
 public class LeetCode541 {
     public String reverseStr(String s, int k) {
         char[] chars = s.toCharArray();
@@ -36,12 +39,12 @@ public class LeetCode541 {
 
     public static void main(String[] args) {
         LeetCode541 leetCode541 = new LeetCode541();
-//        System.out.println(leetCode541.reverseStr("a", 2));
-//        System.out.println(leetCode541.reverseStr("ab", 2));
-//        System.out.println(leetCode541.reverseStr("abc", 2));
-//        System.out.println(leetCode541.reverseStr("abcd", 2));
-//        System.out.println(leetCode541.reverseStr("abcde", 2));
-//        System.out.println(leetCode541.reverseStr("abcdef", 2));
+        System.out.println(leetCode541.reverseStr("a", 2));
+        System.out.println(leetCode541.reverseStr("ab", 2));
+        System.out.println(leetCode541.reverseStr("abc", 2));
+        System.out.println(leetCode541.reverseStr("abcd", 2));
+        System.out.println(leetCode541.reverseStr("abcde", 2));
+        System.out.println(leetCode541.reverseStr("abcdef", 2));
         System.out.println(leetCode541.reverseStr("abcdefg", 2));
         System.out.println(leetCode541.reverseStr("abcdefgh", 2));
     }

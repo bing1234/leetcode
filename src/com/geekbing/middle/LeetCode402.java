@@ -2,6 +2,9 @@ package com.geekbing.middle;
 
 import java.util.Stack;
 
+/**
+ * @author bing
+ */
 public class LeetCode402 {
     public String removeKdigits(String num, int k) {
         if (num.length() == k) {
@@ -45,9 +48,9 @@ public class LeetCode402 {
 
     public static void main(String[] args) {
         LeetCode402 leetCode402 = new LeetCode402();
-//        System.out.println(leetCode402.removeKdigits("1432219", 3));
-//        System.out.println(leetCode402.removeKdigits("10200", 1));
-//        System.out.println(leetCode402.removeKdigits("10", 2));
+        System.out.println(leetCode402.removeKdigits("1432219", 3));
+        System.out.println(leetCode402.removeKdigits("10200", 1));
+        System.out.println(leetCode402.removeKdigits("10", 2));
         System.out.println(leetCode402.removeKdigits("9", 1));
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * todo 答案错误
+ * @author bing
  */
 public class LeetCode321 {
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
@@ -78,9 +78,9 @@ public class LeetCode321 {
 
     public static void main(String[] args) {
         LeetCode321 leetCode321 = new LeetCode321();
-//        System.out.println(Arrays.toString(leetCode321.maxNumber(new int[]{3, 4, 6, 5}, new int[]{9, 1, 2, 5, 8, 3}, 5)));
-//        System.out.println(Arrays.toString(leetCode321.maxNumber(new int[]{6, 7}, new int[]{6, 0, 4}, 5)));
-//        System.out.println(Arrays.toString(leetCode321.maxNumber(new int[]{3, 9}, new int[]{8, 9}, 3)));
+        System.out.println(Arrays.toString(leetCode321.maxNumber(new int[]{3, 4, 6, 5}, new int[]{9, 1, 2, 5, 8, 3}, 5)));
+        System.out.println(Arrays.toString(leetCode321.maxNumber(new int[]{6, 7}, new int[]{6, 0, 4}, 5)));
+        System.out.println(Arrays.toString(leetCode321.maxNumber(new int[]{3, 9}, new int[]{8, 9}, 3)));
         System.out.println(Arrays.toString(leetCode321.maxNumber(new int[]{8, 6, 9}, new int[]{1, 7, 5}, 3)));
     }
 }

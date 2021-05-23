@@ -3,6 +3,9 @@ package com.geekbing.middle;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author bing
+ */
 public class LeetCode142 {
     public ListNode detectCycle(ListNode head) {
         Set<ListNode> set = new HashSet<>();
@@ -56,7 +59,7 @@ public class LeetCode142 {
         System.out.println(ans1 == null ? "null" : ans1.val);
     }
 
-    private static class ListNode {
+    private static final class ListNode {
         int val;
         ListNode next;
 

@@ -1,8 +1,6 @@
 package com.geekbing.middle;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode718 {
@@ -33,8 +31,9 @@ public class LeetCode718 {
 
     public static void main(String[] args) {
         LeetCode718 leetCode718 = new LeetCode718();
-//        System.out.println(leetCode718.findLength(new int[]{1, 2, 3, 2, 1}, new int[]{3, 2, 1, 4, 7}));
-//        System.out.println(leetCode718.findLength(new int[]{0, 1, 1, 1, 1}, new int[]{1, 0, 1, 0, 1}));
+
+        System.out.println(leetCode718.findLength(new int[]{1, 2, 3, 2, 1}, new int[]{3, 2, 1, 4, 7}));
+        System.out.println(leetCode718.findLength(new int[]{0, 1, 1, 1, 1}, new int[]{1, 0, 1, 0, 1}));
         System.out.println(leetCode718.findLength(new int[]{1, 2, 3, 2, 1}, new int[]{3, 2, 1, 4, 7}));
     }
 }
