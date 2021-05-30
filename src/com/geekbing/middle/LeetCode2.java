@@ -1,5 +1,8 @@
 package com.geekbing.middle;
 
+/**
+ * @author bing
+ */
 public class LeetCode2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode index1 = l1, index2 = l2, head = null, index = null;
