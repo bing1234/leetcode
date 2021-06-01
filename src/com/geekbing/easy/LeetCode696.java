@@ -30,6 +30,7 @@ public class LeetCode696 {
 
     public static void main(String[] args) {
         LeetCode696 leetCode696 = new LeetCode696();
+
         System.out.println(leetCode696.countBinarySubstrings("00110011"));
         System.out.println(leetCode696.countBinarySubstrings("10101"));
     }
