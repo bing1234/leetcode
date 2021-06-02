@@ -19,6 +19,7 @@ public class LeetCode1018 {
 
     public static void main(String[] args) {
         LeetCode1018 leetCode1018 = new LeetCode1018();
+
         System.out.println(leetCode1018.prefixesDivBy5(new int[]{0, 1, 1}));
         System.out.println(leetCode1018.prefixesDivBy5(new int[]{1, 1, 1}));
         System.out.println(leetCode1018.prefixesDivBy5(new int[]{0, 1, 1, 1, 1, 1}));
