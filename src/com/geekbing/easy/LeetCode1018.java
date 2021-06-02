@@ -11,7 +11,7 @@ public class LeetCode1018 {
         List<Boolean> ans = new ArrayList<>();
         int sum = 0;
         for (int num : nums) {
-            sum += num;
+            sum = (sum * 2 + num) % 10;
             ans.add(sum % 5 == 0);
         }
         return ans;
@@ -23,5 +23,7 @@ public class LeetCode1018 {
         System.out.println(leetCode1018.prefixesDivBy5(new int[]{1, 1, 1}));
         System.out.println(leetCode1018.prefixesDivBy5(new int[]{0, 1, 1, 1, 1, 1}));
         System.out.println(leetCode1018.prefixesDivBy5(new int[]{1, 1, 1, 0, 1}));
+        System.out.println(leetCode1018.prefixesDivBy5(new int[]{1, 1, 0, 0, 0, 1, 0, 0, 1}));
+
     }
 }
