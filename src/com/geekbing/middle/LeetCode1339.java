@@ -1,9 +1,8 @@
 package com.geekbing.middle;
 
-import java.util.Stack;
-
 /**
  * todo
+ *
  * @author bing
  */
 public class LeetCode1339 {
@@ -11,41 +10,35 @@ public class LeetCode1339 {
         if (root == null) {
             return 0;
         }
-        int total = sumOfTree(root);
-        long max = Integer.MIN_VALUE;
-        long subSum;
-        long temp;
-
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while (!stack.empty()) {
-            TreeNode node = stack.pop();
-            if (node.left != null) {
-                subSum = sumOfTree(node.left);
-                temp = subSum * (total - subSum);
-                if (max < temp) {
-                    max = temp;
-                }
-
-                stack.push(node.left);
-            }
-            if (node.right != null) {
-                subSum = sumOfTree(node.right);
-                temp = subSum * (total - subSum);
-                if (max < temp) {
-                    max = temp;
-                }
-                stack.push(node.right);
-            }
-        }
-        return (int) max;
+        // 所有和
+        long total = sumOfTree(root);
+        // 遍历二叉树
+        return (int) (travelTree(root, total) % 1000000007L);
     }
 
-    private int sumOfTree(TreeNode root) {
+    private long travelTree(TreeNode root, long total) {
         if (root == null) {
             return 0;
         }
-        int sum = root.val;
+        long max = 0;
+        if (root.left != null) {
+            long leftSum = sumOfTree(root.left);
+            max = Math.max(max, leftSum * (total - leftSum));
+            max = Math.max(max, travelTree(root.left, total));
+        }
+        if (root.right != null) {
+            long rightSum = sumOfTree(root.right);
+            max = Math.max(max, rightSum * (total - rightSum));
+            max = Math.max(max, travelTree(root.right, total));
+        }
+        return max;
+    }
+
+    private long sumOfTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        long sum = root.val;
         if (root.left != null) {
             sum = sum + sumOfTree(root.left);
         }
