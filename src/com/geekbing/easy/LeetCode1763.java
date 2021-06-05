@@ -1,8 +1,11 @@
 package com.geekbing.easy;
 
+/**
+ * @author bing
+ */
 public class LeetCode1763 {
     public String longestNiceSubstring(String s) {
-
+        
         return "";
     }
 
