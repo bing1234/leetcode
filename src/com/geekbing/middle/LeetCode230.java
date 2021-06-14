@@ -5,6 +5,8 @@ package com.geekbing.middle;
  */
 public class LeetCode230 {
     public int kthSmallest(TreeNode root, int k) {
+
+
         return 0;
     }
 
