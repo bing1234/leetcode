@@ -1,5 +1,8 @@
 package com.geekbing.interview;
 
+/**
+ * @author bing
+ */
 public class Interview0102 {
     public boolean CheckPermutation(String s1, String s2) {
         if (s1 == null) {
