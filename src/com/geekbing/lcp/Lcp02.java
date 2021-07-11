@@ -2,6 +2,9 @@ package com.geekbing.lcp;
 
 import java.util.Arrays;
 
+/**
+ * @author bing
+ */
 public class Lcp02 {
     public int[] fraction(int[] cont) {
         if (cont.length == 0) {

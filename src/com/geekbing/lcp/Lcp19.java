@@ -1,5 +1,8 @@
 package com.geekbing.lcp;
 
+/**
+ * @author bing
+ */
 public class Lcp19 {
     public int minimumOperations(String leaves) {
         // dp[i][0] 表示将leaves[0...i]的第i片叶子调整为左边的红色所需要的最少调整数
