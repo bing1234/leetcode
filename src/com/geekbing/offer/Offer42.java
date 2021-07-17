@@ -1,5 +1,7 @@
 package com.geekbing.offer;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -19,8 +21,11 @@ public class Offer42 {
         return max;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         Offer42 offer42 = new Offer42();
-        System.out.println(offer42.maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
+
+        int ans = offer42.maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4});
+        assert ans == 6;
     }
 }
