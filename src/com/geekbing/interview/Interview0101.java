@@ -1,5 +1,8 @@
 package com.geekbing.interview;
 
+/**
+ * @author bing
+ */
 public class Interview0101 {
     public boolean isUnique(String astr) {
         if (astr == null || "".equals(astr)) {
