@@ -1,54 +1,50 @@
 package com.geekbing.easy;
 
-import java.util.Arrays;
-import java.util.Stack;
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * todo
+ *
  * @author bing
  */
 public class LeetCode733 {
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-        dfs(image, sr, sc, newColor, image[sr][sc]);
+        bfs(image, sr, sc, newColor, image[sr][sc]);
         return image;
     }
 
-    private void dfs(int[][] image, int sr, int sc, int newColor, int initColor) {
-        // 按照
-        Stack<Pair<Integer, Integer>> stack = new Stack<>();
-        stack.push(new Pair<>(sr, sc));
-        while (!stack.isEmpty()) {
-            Pair<Integer, Integer> cur = stack.pop();
+    private void bfs(int[][] image, int sr, int sc, int newColor, int initColor) {
+        if (image[sr][sc] == newColor) {
+            return;
+        }
+        // 标记已经访问过的节点
+        Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
+        queue.offer(new Pair<>(sr, sc));
+        image[sr][sc] = newColor;
+        while (!queue.isEmpty()) {
+            Pair<Integer, Integer> node = queue.poll();
             // 上
-            if (cur.sr - 1 >= 0) {
-                if (image[cur.sr - 1][cur.sc] == initColor) {
-                    image[cur.sr - 1][cur.sc] = newColor;
-                    dfs(image, cur.sr - 1, cur.sc, newColor, initColor);
-                }
+            if (node.sr - 1 >= 0 && image[node.sr - 1][node.sc] == initColor) {
+                queue.offer(new Pair<>(node.sr - 1, node.sc));
+                image[node.sr - 1][node.sc] = newColor;
             }
-
             // 右
-            if (cur.sc + 1 < image[0].length) {
-                if (image[cur.sr][cur.sc + 1] == initColor) {
-                    image[cur.sr][cur.sc + 1] = newColor;
-                    dfs(image, cur.sr, cur.sc + 1, newColor, initColor);
-                }
+            if (node.sc + 1 < image[0].length && image[node.sr][node.sc + 1] == initColor) {
+                queue.offer(new Pair<>(node.sr, node.sc + 1));
+                image[node.sr][node.sc + 1] = newColor;
             }
-
             // 下
-            if (cur.sr + 1 < image.length) {
-                if (image[cur.sr + 1][cur.sc] == initColor) {
-                    image[cur.sr + 1][cur.sc] = newColor;
-                    dfs(image, cur.sr + 1, cur.sc, newColor, initColor);
-                }
+            if (node.sr + 1 < image.length && image[node.sr + 1][node.sc] == initColor) {
+                queue.offer(new Pair<>(node.sr + 1, node.sc));
+                image[node.sr + 1][node.sc] = newColor;
             }
-
             // 左
-            if (cur.sc - 1 >= 0) {
-                if (image[cur.sr][cur.sc - 1] == initColor) {
-                    image[cur.sr][cur.sc - 1] = newColor;
-                    dfs(image, cur.sr, cur.sc - 1, newColor, initColor);
-                }
+            if (node.sc - 1 >= 0 && image[node.sr][node.sc - 1] == initColor) {
+                queue.offer(new Pair<>(node.sr, node.sc - 1));
+                image[node.sr][node.sc - 1] = newColor;
             }
         }
     }
@@ -79,9 +75,39 @@ public class LeetCode733 {
         }
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode733 leetCode733 = new LeetCode733();
-//        System.out.println(Arrays.deepToString(leetCode733.floodFill(new int[][]{{1, 1, 1}, {1, 1, 0}, {1, 0, 1}}, 1, 1, 2)));
-        System.out.println(Arrays.deepToString(leetCode733.floodFill(new int[][]{{0, 0, 0}, {0, 1, 0}}, 1, 1, 2)));
+        int[][] image = new int[][]{{1, 1, 1}, {1, 1, 0}, {1, 0, 1}};
+        int[][] result = leetCode733.floodFill(image, 1, 1, 2);
+        int[][] expire = new int[][]{{2, 2, 2}, {2, 2, 0}, {2, 0, 1}};
+        assert Arrays.deepEquals(result, expire);
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode733 leetCode733 = new LeetCode733();
+        int[][] image = new int[][]{{0, 0, 0}, {0, 1, 0}};
+        int[][] result = leetCode733.floodFill(image, 1, 1, 2);
+        int[][] expire = new int[][]{{0, 0, 0}, {0, 2, 0}};
+        assert Arrays.deepEquals(result, expire);
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode733 leetCode733 = new LeetCode733();
+        int[][] image = new int[][]{{0, 0, 0}, {0, 1, 1}};
+        int[][] result = leetCode733.floodFill(image, 1, 1, 2);
+        int[][] expire = new int[][]{{0, 0, 0}, {0, 2, 2}};
+        assert Arrays.deepEquals(result, expire);
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode733 leetCode733 = new LeetCode733();
+        int[][] image = new int[][]{{0, 0, 0}, {0, 1, 1}};
+        int[][] result = leetCode733.floodFill(image, 1, 1, 1);
+        int[][] expire = new int[][]{{0, 0, 0}, {0, 1, 1}};
+        assert Arrays.deepEquals(result, expire);
     }
 }
