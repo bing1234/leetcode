@@ -20,7 +20,6 @@ public class LeetCode733 {
         if (image[sr][sc] == newColor) {
             return;
         }
-        // 标记已经访问过的节点
         Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
         queue.offer(new Pair<>(sr, sc));
         image[sr][sc] = newColor;
