@@ -21,8 +21,18 @@ public class LeetCode1202 {
             list.add(i);
             map.put(p, list);
         }
-
-        return "";
+        char[] chars = s.toCharArray();
+        for (List<Integer> list : map.values()) {
+            char[] temp = new char[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                temp[i] = chars[list.get(i)];
+            }
+            Arrays.sort(temp);
+            for (int i = 0; i < list.size(); i++) {
+                chars[list.get(i)] = temp[i];
+            }
+        }
+        return new String(chars);
     }
 
     private static class UnionFind {
@@ -35,6 +45,7 @@ public class LeetCode1202 {
             for (int i = 0; i < parent.length; i++) {
                 parent[i] = i;
             }
+            Arrays.fill(weight, 1);
         }
 
         private int find(int i) {
