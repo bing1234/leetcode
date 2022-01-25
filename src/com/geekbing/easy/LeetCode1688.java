@@ -1,5 +1,10 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
+/**
+ * @author bing
+ */
 public class LeetCode1688 {
     public int numberOfMatches(int n) {
         if (n == 1) {
@@ -15,9 +20,15 @@ public class LeetCode1688 {
         }
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode1688 leetCode1688 = new LeetCode1688();
-        System.out.println(leetCode1688.numberOfMatches(7));
-        System.out.println(leetCode1688.numberOfMatches(14));
+        assert leetCode1688.numberOfMatches(7) == 6;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode1688 leetCode1688 = new LeetCode1688();
+        assert leetCode1688.numberOfMatches(14) == 13;
     }
 }
