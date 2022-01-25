@@ -2,26 +2,69 @@ package com.geekbing.middle;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.*;
+
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode1722 {
     public int minimumHammingDistance(int[] source, int[] target, int[][] allowedSwaps) {
-        return 0;
+        UnionFind unionFind = new UnionFind(source.length);
+        for (int[] allowedSwap : allowedSwaps) {
+            unionFind.union(allowedSwap[0], allowedSwap[1]);
+        }
+
+        // parent - 该parent下所有的子元素
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < source.length; i++) {
+            int p = unionFind.find(i);
+            List<Integer> list = map.getOrDefault(p, new ArrayList<>());
+            list.add(i);
+            map.put(p, list);
+        }
+
+        int ans = 0;
+        for (List<Integer> indexes : map.values()) {
+            int[] s = new int[indexes.size()];
+            int[] t = new int[indexes.size()];
+            for (int i = 0; i < indexes.size(); i++) {
+                s[i] = source[indexes.get(i)];
+                t[i] = target[indexes.get(i)];
+            }
+            ans += countDiff(s, t);
+        }
+        return ans;
+    }
+
+    private int countDiff(int[] s, int[] t) {
+        Arrays.sort(s);
+        Arrays.sort(t);
+        int idxS = 0, idxT = 0, same = 0;
+        while (idxS < s.length && idxT < t.length) {
+            if (s[idxS] < t[idxT]) {
+                idxS++;
+            } else if (t[idxT] < s[idxS]) {
+                idxT++;
+            } else {
+                same++;
+                idxS++;
+                idxT++;
+            }
+        }
+        return s.length - same;
     }
 
     private static class UnionFind {
-        private int[] parent;
-        private int[] weight;
+        private final int[] parent;
+        private final int[] weight;
 
-        public UnionFind() {
-//            this.parent = new int[];
-//            this.weight = new int[];
+        public UnionFind(int n) {
+            this.parent = new int[n];
+            this.weight = new int[n];
             for (int i = 0; i < parent.length; i++) {
                 parent[i] = i;
             }
+            Arrays.fill(weight, 1);
         }
 
         private int find(int i) {
