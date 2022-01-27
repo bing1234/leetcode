@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -31,9 +33,15 @@ public class LeetCode551 {
         return true;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode551 leetCode551 = new LeetCode551();
-        System.out.println(leetCode551.checkRecord("PPALLP"));
-        System.out.println(leetCode551.checkRecord("PPALLL"));
+        assert leetCode551.checkRecord("PPALLP");
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode551 leetCode551 = new LeetCode551();
+        assert !leetCode551.checkRecord("PPALLL");
     }
 }

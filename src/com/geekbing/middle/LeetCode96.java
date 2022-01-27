@@ -1,5 +1,7 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -26,11 +28,15 @@ public class LeetCode96 {
         return dp[n];
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode96 leetCode96 = new LeetCode96();
+        assert leetCode96.numTrees(3) == 5;
+    }
 
-        System.out.println(leetCode96.numTrees(1));
-        System.out.println(leetCode96.numTrees(2));
-        System.out.println(leetCode96.numTrees(3));
+    @Test
+    public void testCase2() {
+        LeetCode96 leetCode96 = new LeetCode96();
+        assert leetCode96.numTrees(1) == 1;
     }
 }
