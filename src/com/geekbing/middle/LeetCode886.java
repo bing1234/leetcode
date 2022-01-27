@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /**
- * TODO
- *
  * @author bing
  */
 public class LeetCode886 {
