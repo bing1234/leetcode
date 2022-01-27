@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -17,10 +19,27 @@ public class LeetCode168 {
         return ans.toString();
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode168 leetCode168 = new LeetCode168();
-        System.out.println(leetCode168.convertToTitle(1));
-        System.out.println(leetCode168.convertToTitle(28));
-        System.out.println(leetCode168.convertToTitle(701));
+        assert leetCode168.convertToTitle(1).equals("A");
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode168 leetCode168 = new LeetCode168();
+        assert leetCode168.convertToTitle(28).equals("AB");
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode168 leetCode168 = new LeetCode168();
+        assert leetCode168.convertToTitle(701).equals("ZY");
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode168 leetCode168 = new LeetCode168();
+        assert leetCode168.convertToTitle(2147483647).equals("FXSHRXW");
     }
 }

@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -41,14 +43,21 @@ public class LeetCode1668 {
         return true;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode1668 leetCode1668 = new LeetCode1668();
+        assert leetCode1668.maxRepeating("ababc", "ab") == 2;
+    }
 
-//        System.out.println(leetCode1668.maxRepeating("ababc", "ab"));
-//        System.out.println(leetCode1668.maxRepeating("ababc", "ba"));
-//        System.out.println(leetCode1668.maxRepeating("ababc", "ac"));
-//        System.out.println(leetCode1668.maxRepeating("aaabaaaabaaabaaaabaaaabaaaabaaaaba", "aaaba"));
-//        System.out.println(leetCode1668.maxRepeating("a", "a"));
-        System.out.println(leetCode1668.maxRepeating("baaba", "ab"));
+    @Test
+    public void testCase2() {
+        LeetCode1668 leetCode1668 = new LeetCode1668();
+        assert leetCode1668.maxRepeating("ababc", "ba") == 1;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode1668 leetCode1668 = new LeetCode1668();
+        assert leetCode1668.maxRepeating("ababc", "ac") == 0;
     }
 }

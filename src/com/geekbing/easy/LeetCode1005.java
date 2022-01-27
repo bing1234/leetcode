@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
 /**
@@ -53,10 +55,21 @@ public class LeetCode1005 {
         return ans - 2 * min;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode1005 leetCode1005 = new LeetCode1005();
-        System.out.println(leetCode1005.largestSumAfterKNegations(new int[]{4, 2, 3}, 1));
-        System.out.println(leetCode1005.largestSumAfterKNegations(new int[]{3, -1, 0, 2}, 3));
-        System.out.println(leetCode1005.largestSumAfterKNegations(new int[]{2, -3, -1, 5, -4}, 2));
+        assert leetCode1005.largestSumAfterKNegations(new int[]{4, 2, 3}, 1) == 5;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode1005 leetCode1005 = new LeetCode1005();
+        assert leetCode1005.largestSumAfterKNegations(new int[]{3, -1, 0, 2}, 3) == 6;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode1005 leetCode1005 = new LeetCode1005();
+        assert leetCode1005.largestSumAfterKNegations(new int[]{2, -3, -1, 5, -4}, 2) == 13;
     }
 }

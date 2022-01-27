@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,10 +22,21 @@ public class LeetCode219 {
         return false;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode219 leetCode219 = new LeetCode219();
-        System.out.println(leetCode219.containsNearbyDuplicate(new int[]{1, 2, 3, 1}, 3));
-        System.out.println(leetCode219.containsNearbyDuplicate(new int[]{1, 0, 1, 1}, 1));
-        System.out.println(leetCode219.containsNearbyDuplicate(new int[]{1, 2, 3, 1, 2, 3}, 2));
+        assert leetCode219.containsNearbyDuplicate(new int[]{1, 2, 3, 1}, 3);
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode219 leetCode219 = new LeetCode219();
+        assert leetCode219.containsNearbyDuplicate(new int[]{1, 0, 1, 1}, 1);
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode219 leetCode219 = new LeetCode219();
+        assert !leetCode219.containsNearbyDuplicate(new int[]{1, 2, 3, 1, 2, 3}, 2);
     }
 }

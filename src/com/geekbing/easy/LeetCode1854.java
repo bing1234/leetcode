@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -26,10 +28,15 @@ public class LeetCode1854 {
         return maxYear;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode1854 leetCode1854 = new LeetCode1854();
-        System.out.println(leetCode1854.maximumPopulation(new int[][]{{1993, 1999}, {2000, 2010}}));
-        System.out.println(leetCode1854.maximumPopulation(new int[][]{{1950, 1961}, {1960, 1971}, {1970, 1981}}));
-        System.out.println(leetCode1854.maximumPopulation(new int[][]{{2033, 2034}, {2039, 2047}, {1998, 2042}, {2047, 2048}, {2025, 2029}, {2005, 2044}, {1990, 1992}, {1952, 1956}, {1984, 2014}}));
+        assert leetCode1854.maximumPopulation(new int[][]{{1993, 1999}, {2000, 2010}}) == 1993;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode1854 leetCode1854 = new LeetCode1854();
+        assert leetCode1854.maximumPopulation(new int[][]{{1950, 1961}, {1960, 1971}, {1970, 1981}}) == 1960;
     }
 }
