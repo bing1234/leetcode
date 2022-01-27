@@ -2,36 +2,43 @@ package com.geekbing.middle;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * TODO
+ *
  * @author bing
  */
 public class LeetCode886 {
     public boolean possibleBipartition(int n, int[][] dislikes) {
-        Set<String> dislikeSet = new HashSet<>();
-        for (int[] dislike : dislikes) {
-            dislikeSet.add((dislike[0] - 1) + "_" + (dislike[1] - 1));
-        }
+        // 构建并查集
         UnionFind unionFind = new UnionFind(n);
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (!dislikeSet.contains(i + "_" + j)) {
-                    unionFind.union(i, j);
+        // 转换成邻接矩阵, 按照判断二分图的方式
+        Map<Integer, List<Integer>> map = buildMap(dislikes);
+        for (Integer v : map.keySet()) {
+            List<Integer> nums = map.get(v);
+            for (Integer num : nums) {
+                if (unionFind.isConnected(v, num)) {
+                    return false;
                 }
-            }
-        }
-        Set<Integer> roots = new HashSet<>();
-        for (int i = 0; i < n; i++) {
-            roots.add(unionFind.find(i));
-            if (roots.size() > 2) {
-                return false;
+                unionFind.union(nums.get(0), num);
             }
         }
         return true;
+    }
+
+    private Map<Integer, List<Integer>> buildMap(int[][] dislikes) {
+        Map<Integer, List<Integer>> dislikeMap = new HashMap<>();
+        for (int[] dislike : dislikes) {
+            List<Integer> list0 = dislikeMap.getOrDefault(dislike[0] - 1, new ArrayList<>());
+            list0.add(dislike[1] - 1);
+            dislikeMap.put(dislike[0] - 1, list0);
+
+            List<Integer> list1 = dislikeMap.getOrDefault(dislike[1] - 1, new ArrayList<>());
+            list1.add(dislike[0] - 1);
+            dislikeMap.put(dislike[1] - 1, list1);
+        }
+        return dislikeMap;
     }
 
     private static class UnionFind {
@@ -45,6 +52,10 @@ public class LeetCode886 {
                 parent[i] = i;
             }
             Arrays.fill(weight, 1);
+        }
+
+        private boolean isConnected(int i, int j) {
+            return find(i) == find(j);
         }
 
         private int find(int i) {
