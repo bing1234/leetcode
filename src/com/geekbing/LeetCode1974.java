@@ -7,7 +7,19 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode1974 {
     public int minTimeToType(String word) {
-        return 0;
+        int ans = 0;
+        char[] chars = word.toCharArray();
+        char pre = 'a';
+        for (char c : chars) {
+            ans += calDistance(pre, c);
+            ans++;
+            pre = c;
+        }
+        return ans;
+    }
+
+    private int calDistance(char i, char j) {
+        return i >= j ? Math.min(i - j, j + 26 - i) : Math.min(j - i, i + 26 - j);
     }
 
     @Test
