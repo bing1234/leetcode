@@ -1,14 +1,14 @@
-package com.geekbing;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
 /**
+ * todo
+ *
  * @author bing
  */
 public class LeetCode1957 {
     public String makeFancyString(String s) {
-
-
         return "";
     }
 
