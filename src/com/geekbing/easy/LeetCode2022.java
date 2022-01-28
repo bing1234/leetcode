@@ -1,4 +1,4 @@
-package com.geekbing;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
