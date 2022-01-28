@@ -1,5 +1,10 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
+/***
+ * @author bing
+ */
 public class LeetCode1399 {
     public int countLargestGroup(int n) {
         int[] counts = new int[36];
@@ -29,11 +34,27 @@ public class LeetCode1399 {
         return sum;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode1399 leetCode1399 = new LeetCode1399();
-        System.out.println(leetCode1399.countLargestGroup(13));
-        System.out.println(leetCode1399.countLargestGroup(2));
-        System.out.println(leetCode1399.countLargestGroup(15));
-        System.out.println(leetCode1399.countLargestGroup(24));
+        assert leetCode1399.countLargestGroup(13) == 4;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode1399 leetCode1399 = new LeetCode1399();
+        assert leetCode1399.countLargestGroup(2) == 2;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode1399 leetCode1399 = new LeetCode1399();
+        assert leetCode1399.countLargestGroup(15) == 6;
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode1399 leetCode1399 = new LeetCode1399();
+        assert leetCode1399.countLargestGroup(24) == 5;
     }
 }
