@@ -2,12 +2,27 @@ package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 /**
  * @author bing
  */
 public class LeetCode2108 {
     public String firstPalindrome(String[] words) {
-        return null;
+        return Arrays.stream(words).filter(this::isPalindrome).findFirst().orElse("");
+    }
+
+    private boolean isPalindrome(String word) {
+        char[] chars = word.toCharArray();
+        int left = 0, right = word.length() - 1;
+        while (left < right) {
+            if (chars[left] != chars[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 
     @Test
