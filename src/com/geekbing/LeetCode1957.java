@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode1957 {
     public String makeFancyString(String s) {
+
+
         return "";
     }
 
