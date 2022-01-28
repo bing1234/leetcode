@@ -7,7 +7,12 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode2057 {
     public int smallestEqual(int[] nums) {
-        return 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i % 10 == nums[i]) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Test
