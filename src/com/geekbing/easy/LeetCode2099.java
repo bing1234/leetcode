@@ -1,10 +1,9 @@
-package com.geekbing;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
