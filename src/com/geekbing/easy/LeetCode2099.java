@@ -13,7 +13,7 @@ public class LeetCode2099 {
     public int[] maxSubsequence(int[] nums, int k) {
         return IntStream.range(0, nums.length)
                 .mapToObj(i -> new Pair(i, nums[i]))
-                .sorted(((o1, o2) -> Integer.compare(o2.num, o1.num)))
+                .sorted((o1, o2) -> Integer.compare(o2.num, o1.num))
                 .limit(k)
                 .sorted(Comparator.comparingInt(o -> o.index))
                 .map(p -> p.num)
