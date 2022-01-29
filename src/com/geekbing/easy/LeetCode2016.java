@@ -1,4 +1,4 @@
-package com.geekbing;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +7,20 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode2016 {
     public int maximumDifference(int[] nums) {
-        return 0;
+        // dp[i]表示nums所在区间[0...i]内的最小值
+        int[] dp = new int[nums.length];
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            min = Math.min(min, nums[i]);
+            dp[i] = min;
+        }
+        int ans = -1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != dp[i - 1]) {
+                ans = Math.max(ans, nums[i] - dp[i - 1]);
+            }
+        }
+        return ans;
     }
 
     @Test
