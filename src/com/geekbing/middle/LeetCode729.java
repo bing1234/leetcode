@@ -57,7 +57,7 @@ public class LeetCode729 {
     @Test
     public void testCase1() {
         MyCalendar calendar = new MyCalendar();
-        assert calendar.book(10, 20);
+        assert calendar.book(10, 20) == true;
         assert !calendar.book(15, 25);
         assert calendar.book(20, 30);
     }
