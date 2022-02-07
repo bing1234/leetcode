@@ -41,38 +41,39 @@ public class LeetCode731 {
             }
 
             private BookRes addSegment(int start, int end) {
-                Node node = tree;
-                while (true) {
-                    if (node.start >= end) {
-                        if (node.left == null) {
-                            node.left = new Node(start, end);
-                            return new BookRes(true);
-                        }
-                        node = node.left;
-                    } else if (node.end <= start) {
-                        if (node.right == null) {
-                            node.right = new Node(start, end);
-                            return new BookRes(true);
-                        }
-                        node = node.right;
-                    } else {
-                        if (start <= node.start && node.end <= end) {
-                            addSegment(start, node.start);
-                            addSegment(node.end, end);
-                            return new BookRes(false, node.start, node.end);
-                        }
-                        if (node.start <= start && end <= node.end) {
-                            return new BookRes(false, start, end);
-                        }
-                        if (node.start <= start && start <= node.end && node.end <= end) {
-                            return new BookRes(false, start, node.end);
-                        }
-                        if (start <= node.start && node.start <= end && end <= end) {
-                            return new BookRes(false, node.start, end);
-                        }
-                        return new BookRes(false);
-                    }
-                }
+//                Node node = tree;
+//                while (true) {
+//                    if (node.start >= end) {
+//                        if (node.left == null) {
+//                            node.left = new Node(start, end);
+//                            return new BookRes(true);
+//                        }
+//                        node = node.left;
+//                    } else if (node.end <= start) {
+//                        if (node.right == null) {
+//                            node.right = new Node(start, end);
+//                            return new BookRes(true);
+//                        }
+//                        node = node.right;
+//                    } else {
+//                        if (start <= node.start && node.end <= end) {
+//                            addSegment(start, node.start);
+//                            addSegment(node.end, end);
+//                            return new BookRes(false, node.start, node.end);
+//                        }
+//                        if (node.start <= start && end <= node.end) {
+//                            return new BookRes(false, start, end);
+//                        }
+//                        if (node.start <= start && start <= node.end && node.end <= end) {
+//                            return new BookRes(false, start, node.end);
+//                        }
+//                        if (start <= node.start && node.start <= end && end <= end) {
+//                            return new BookRes(false, node.start, end);
+//                        }
+//                        return new BookRes(false);
+//                    }
+//                }
+                return null;
             }
 
             private boolean canAddSegment(int start, int end) {
