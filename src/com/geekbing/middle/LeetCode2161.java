@@ -3,14 +3,41 @@ package com.geekbing.middle;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
- * todo
  * @author bing
  */
 public class LeetCode2161 {
     public int[] pivotArray(int[] nums, int pivot) {
-        return new int[]{};
+        List<Integer> small = new LinkedList<>();
+        List<Integer> bigger = new LinkedList<>();
+        int same = 0;
+        for (int num : nums) {
+            if (num < pivot) {
+                small.add(num);
+            } else if (num == pivot) {
+                same++;
+            } else {
+                bigger.add(num);
+            }
+        }
+        int[] ans = new int[nums.length];
+        int idx = 0;
+        for (int num : small) {
+            ans[idx] = num;
+            idx++;
+        }
+        for (int i = 0; i < same; i++) {
+            ans[idx] = pivot;
+            idx++;
+        }
+        for (int num : bigger) {
+            ans[idx] = num;
+            idx++;
+        }
+        return ans;
     }
 
     @Test

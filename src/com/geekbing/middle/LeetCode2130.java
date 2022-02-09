@@ -3,28 +3,40 @@ package com.geekbing.middle;
 import org.junit.jupiter.api.Test;
 
 /**
- * todo
  * @author bing
  */
 public class LeetCode2130 {
     public int pairSum(ListNode head) {
-        return 0;
+        ListNode fast = head, slow = head;
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next;
+            fast = fast.next;
+            slow = slow.next;
+        }
+        ListNode pre = slow, cur = pre.next, next = cur.next;
+        slow.next = null;
+        while (next != null) {
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+            next = next.next;
+        }
+        ListNode headIdx = head, newHeadIdx = cur;
+        int ans = Integer.MIN_VALUE;
+        while (headIdx != null && newHeadIdx != null) {
+            ans = Math.max(ans, headIdx.val + newHeadIdx.val);
+            headIdx = headIdx.next;
+            newHeadIdx = newHeadIdx.next;
+        }
+        return ans;
     }
 
     private static class ListNode {
         int val;
         ListNode next;
 
-        ListNode() {
-        }
-
         ListNode(int val) {
             this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
         }
     }
 
@@ -35,7 +47,8 @@ public class LeetCode2130 {
         head.next = new ListNode(4);
         head.next.next = new ListNode(2);
         head.next.next.next = new ListNode(1);
-        assert leetCode2130.pairSum(head) == 6;
+        int ans = leetCode2130.pairSum(head);
+        assert ans == 6;
     }
 
     @Test
@@ -45,7 +58,8 @@ public class LeetCode2130 {
         head.next = new ListNode(2);
         head.next.next = new ListNode(2);
         head.next.next.next = new ListNode(3);
-        assert leetCode2130.pairSum(head) == 7;
+        int ans = leetCode2130.pairSum(head);
+        assert ans == 7;
     }
 
     @Test
@@ -53,6 +67,7 @@ public class LeetCode2130 {
         LeetCode2130 leetCode2130 = new LeetCode2130();
         ListNode head = new ListNode(1);
         head.next = new ListNode(100000);
-        assert leetCode2130.pairSum(head) == 100001;
+        int ans = leetCode2130.pairSum(head);
+        assert ans == 100001;
     }
 }

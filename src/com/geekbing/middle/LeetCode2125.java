@@ -3,12 +3,33 @@ package com.geekbing.middle;
 import org.junit.jupiter.api.Test;
 
 /**
- * todo
  * @author bing
  */
 public class LeetCode2125 {
     public int numberOfBeams(String[] bank) {
-        return 0;
+        int ans = 0, preNum = 0;
+        for (String str : bank) {
+            int count = countOfOne(str);
+            if (count != 0) {
+                if (preNum == 0) {
+                    preNum = count;
+                } else {
+                    ans += preNum * count;
+                    preNum = count;
+                }
+            }
+        }
+        return ans;
+    }
+
+    private int countOfOne(String str) {
+        int ans = 0;
+        for (char c : str.toCharArray()) {
+            if (c == '1') {
+                ans++;
+            }
+        }
+        return ans;
     }
 
     @Test
