@@ -21,6 +21,7 @@ public class LeetCode2130 {
             cur = next;
             next = next.next;
         }
+        cur.next = pre;
         ListNode headIdx = head, newHeadIdx = cur;
         int ans = Integer.MIN_VALUE;
         while (headIdx != null && newHeadIdx != null) {
@@ -69,5 +70,24 @@ public class LeetCode2130 {
         head.next = new ListNode(100000);
         int ans = leetCode2130.pairSum(head);
         assert ans == 100001;
+    }
+
+    @Test
+    public void testCase4() {
+        ListNode head = buildListNode(new int[]{47, 22, 81, 46, 94, 95, 90, 22, 55, 91, 6, 83, 49, 65, 10, 32, 41, 26, 83, 99, 14, 85, 42, 99, 89, 69, 30, 92, 32, 74, 9, 81, 5, 9});
+
+        LeetCode2130 leetCode2130 = new LeetCode2130();
+        int ans = leetCode2130.pairSum(head);
+        assert ans == 182;
+    }
+
+    private ListNode buildListNode(int[] arr) {
+        ListNode head = new ListNode(arr[0]);
+        ListNode idx = head;
+        for (int i = 1; i < arr.length; i++) {
+            idx.next = new ListNode(arr[i]);
+            idx = idx.next;
+        }
+        return head;
     }
 }
