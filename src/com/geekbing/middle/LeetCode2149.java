@@ -3,14 +3,23 @@ package com.geekbing.middle;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * todo
  * @author bing
  */
 public class LeetCode2149 {
     public int[] rearrangeArray(int[] nums) {
-        return new int[]{};
+        List<Integer> positives = Arrays.stream(nums).filter(num -> num > 0).boxed().collect(Collectors.toList());
+        List<Integer> negatives = Arrays.stream(nums).filter(num -> num < 0).boxed().collect(Collectors.toList());
+        int[] ans = new int[nums.length];
+        int idx = 0;
+        for (int i = 0; i < positives.size(); i++) {
+            ans[idx++] = positives.get(i);
+            ans[idx++] = negatives.get(i);
+        }
+        return ans;
     }
 
     @Test
