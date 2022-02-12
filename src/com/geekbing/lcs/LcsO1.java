@@ -1,5 +1,7 @@
 package com.geekbing.lcs;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -20,10 +22,15 @@ public class LcsO1 {
         return ans;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LcsO1 lcsO1 = new LcsO1();
+        assert lcsO1.leastMinutes(2) == 2;
+    }
 
-        System.out.println(lcsO1.leastMinutes(2));
-        System.out.println(lcsO1.leastMinutes(4));
+    @Test
+    public void testCase2() {
+        LcsO1 lcsO1 = new LcsO1();
+        assert lcsO1.leastMinutes(4) == 3;
     }
 }
