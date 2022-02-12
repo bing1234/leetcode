@@ -13,13 +13,8 @@ public class LeetCode1079 {
         Map<Character, Integer> map = new HashMap<>();
         char[] chars = tiles.toCharArray();
         for (char c : chars) {
-            Integer count = map.get(c);
-            if (count == null) {
-                count = 0;
-            }
-            map.put(c, count + 1);
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
-
         return 0;
     }
 
