@@ -1,5 +1,7 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +23,21 @@ public class LeetCode1079 {
         return 0;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
+        LeetCode1079 leetCode1079 = new LeetCode1079();
+        assert leetCode1079.numTilePossibilities("AAB") == 8;
+    }
 
+    @Test
+    public void testCase2() {
+        LeetCode1079 leetCode1079 = new LeetCode1079();
+        assert leetCode1079.numTilePossibilities("AAABBC") == 188;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode1079 leetCode1079 = new LeetCode1079();
+        assert leetCode1079.numTilePossibilities("V") == 1;
     }
 }
