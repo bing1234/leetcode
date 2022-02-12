@@ -9,7 +9,7 @@ import java.util.List;
  * @author bing
  */
 public class LeetCode1545 {
-    private static List<char[]> list = new ArrayList<>();
+    private static final List<char[]> list = new ArrayList<>();
 
     static {
         char[] chars = new char[]{'0'};
