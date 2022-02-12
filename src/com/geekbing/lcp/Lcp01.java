@@ -1,5 +1,7 @@
 package com.geekbing.lcp;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -14,9 +16,15 @@ public class Lcp01 {
         return count;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         Lcp01 lcp01 = new Lcp01();
-        System.out.println(lcp01.game(new int[]{1, 2, 3}, new int[]{1, 2, 3}));
-        System.out.println(lcp01.game(new int[]{2, 2, 3}, new int[]{3, 2, 1}));
+        assert lcp01.game(new int[]{1, 2, 3}, new int[]{1, 2, 3}) == 3;
+    }
+
+    @Test
+    public void testCase2() {
+        Lcp01 lcp01 = new Lcp01();
+        assert lcp01.game(new int[]{2, 2, 3}, new int[]{3, 2, 1}) == 1;
     }
 }

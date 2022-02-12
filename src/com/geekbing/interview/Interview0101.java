@@ -1,5 +1,7 @@
 package com.geekbing.interview;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -21,9 +23,15 @@ public class Interview0101 {
         return true;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         Interview0101 interview0101 = new Interview0101();
-        System.out.println(interview0101.isUnique("leetcode"));
-        System.out.println(interview0101.isUnique("abc"));
+        assert !interview0101.isUnique("leetcode");
+    }
+
+    @Test
+    public void testCase2() {
+        Interview0101 interview0101 = new Interview0101();
+        assert interview0101.isUnique("abc");
     }
 }

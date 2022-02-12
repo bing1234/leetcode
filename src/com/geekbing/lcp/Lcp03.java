@@ -1,5 +1,7 @@
 package com.geekbing.lcp;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,14 +44,21 @@ public class Lcp03 {
         }
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         Lcp03 lcp03 = new Lcp03();
+        assert lcp03.robot("URR", new int[][]{}, 3, 2);
+    }
 
-        int[][] obstacles1 = new int[0][0];
-        int[][] obstacles2 = new int[][]{{2, 2}};
-        int[][] obstacles3 = new int[][]{{4, 2}};
-        System.out.println(lcp03.robot("URR", obstacles1, 3, 2));
-        System.out.println(lcp03.robot("URR", obstacles2, 3, 2));
-        System.out.println(lcp03.robot("URR", obstacles3, 3, 2));
+    @Test
+    public void testCase2() {
+        Lcp03 lcp03 = new Lcp03();
+        assert !lcp03.robot("URR", new int[][]{{2, 2}}, 3, 2);
+    }
+
+    @Test
+    public void testCase3() {
+        Lcp03 lcp03 = new Lcp03();
+        assert lcp03.robot("URR", new int[][]{{4, 2}}, 3, 2);
     }
 }

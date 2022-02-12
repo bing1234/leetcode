@@ -1,10 +1,11 @@
-package com.geekbing.middle;
+package com.geekbing;
 
 /**
  * @author bing
  */
 public class LeetCode92 {
     public ListNode reverseBetween(ListNode head, int left, int right) {
+
 
 
         return null;
