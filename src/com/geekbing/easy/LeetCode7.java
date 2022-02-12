@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -16,11 +18,27 @@ public class LeetCode7 {
         return (int) sum;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode7 leetCode7 = new LeetCode7();
-        System.out.println(leetCode7.reverse(123));
-        System.out.println(leetCode7.reverse(-123));
-        System.out.println(leetCode7.reverse(120));
-        System.out.println(leetCode7.reverse(1534236469));
+        assert leetCode7.reverse(123) == 321;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode7 leetCode7 = new LeetCode7();
+        assert leetCode7.reverse(-123) == -321;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode7 leetCode7 = new LeetCode7();
+        assert leetCode7.reverse(120) == 21;
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode7 leetCode7 = new LeetCode7();
+        assert leetCode7.reverse(0) == 0;
     }
 }

@@ -1,5 +1,10 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
+/**
+ * @author bing
+ */
 public class LeetCode877 {
     public boolean stoneGame(int[] piles) {
         // dp[i,j]表示nums[i,j]先手获得的利润
@@ -15,9 +20,15 @@ public class LeetCode877 {
         return dp[0][piles.length - 1] > 0;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode877 leetCode877 = new LeetCode877();
-        System.out.println(leetCode877.stoneGame(new int[]{5, 3, 4, 5}));
-        System.out.println(leetCode877.stoneGame(new int[]{7, 7, 12, 16, 41, 48, 41, 48, 11}));
+        assert leetCode877.stoneGame(new int[]{5, 3, 4, 5});
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode877 leetCode877 = new LeetCode877();
+        assert leetCode877.stoneGame(new int[]{3, 7, 2, 3});
     }
 }

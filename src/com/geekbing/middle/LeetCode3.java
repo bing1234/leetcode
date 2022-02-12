@@ -1,5 +1,7 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashSet;
 
 /**
@@ -32,12 +34,27 @@ public class LeetCode3 {
         return maxLen;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode3 leetCode3 = new LeetCode3();
-        System.out.println(leetCode3.lengthOfLongestSubstring("aab"));
-        System.out.println(leetCode3.lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(leetCode3.lengthOfLongestSubstring("bbbbb"));
-        System.out.println(leetCode3.lengthOfLongestSubstring("pwwkew"));
-        System.out.println(leetCode3.lengthOfLongestSubstring("tmmzuxt"));
+        assert leetCode3.lengthOfLongestSubstring("abcabcbb") == 3;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode3 leetCode3 = new LeetCode3();
+        assert leetCode3.lengthOfLongestSubstring("bbbbb") == 1;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode3 leetCode3 = new LeetCode3();
+        assert leetCode3.lengthOfLongestSubstring("pwwkew") == 3;
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode3 leetCode3 = new LeetCode3();
+        assert leetCode3.lengthOfLongestSubstring("") == 0;
     }
 }
