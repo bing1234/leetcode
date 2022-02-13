@@ -1,4 +1,4 @@
-package com.geekbing;
+package com.geekbing.middle;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +12,7 @@ import java.util.Set;
 public class LeetCode162 {
     public int findPeakElement(int[] nums) {
         int left = 0, right = nums.length - 1;
+        // 朝着上坡方向走，总能找到波峰
         while (left < right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] > nums[mid + 1]) {
