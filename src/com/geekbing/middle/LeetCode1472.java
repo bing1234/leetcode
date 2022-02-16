@@ -23,21 +23,21 @@ public class LeetCode1472 {
         }
 
         public void visit(String url) {
-            if (capacity == urls.size()) {
+            if (idx == urls.size() - 1) {
                 urls.add(url);
                 idx++;
+                capacity++;
             } else {
-                urls.set(capacity, url);
+                idx++;
+                urls.set(idx, url);
+                capacity = idx + 1;
             }
-            capacity++;
         }
 
         public String back(int steps) {
             idx -= steps;
-            capacity -= steps;
             if (idx < 0) {
                 idx = 0;
-                capacity = 1;
             }
             return urls.get(idx);
         }
