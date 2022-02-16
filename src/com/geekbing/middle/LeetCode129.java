@@ -1,41 +1,24 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 /**
- * https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/
- * 129. 求根到叶子节点数字之和
- *
  * @author bing
  */
 public class LeetCode129 {
-    private int ans;
-
     public int sumNumbers(TreeNode root) {
-        ans = 0;
-        travel(root, 0);
-        return ans;
+        return sumNumbersHelper(root, 0);
     }
 
-    private void travel(TreeNode root, int parent) {
-        if (root != null) {
-            int temp = parent * 10 + root.val;
-            if (root.left == null && root.right == null) {
-                ans += temp;
-            }
-            if (root.left != null) {
-                travel(root.left, temp);
-            }
-            if (root.right != null) {
-                travel(root.right, temp);
-            }
+    private int sumNumbersHelper(TreeNode root, int sum) {
+        if (root == null) {
+            return 0;
         }
-    }
-
-    public static void main(String[] args) {
-        LeetCode129 leetCode129 = new LeetCode129();
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        System.out.println(leetCode129.sumNumbers(root));
+        sum = sum * 10 + root.val;
+        if (root.left == null && root.right == null) {
+            return sum;
+        }
+        return sumNumbersHelper(root.left, sum) + sumNumbersHelper(root.right, sum);
     }
 
     private static class TreeNode {
@@ -46,5 +29,25 @@ public class LeetCode129 {
         TreeNode(int x) {
             val = x;
         }
+    }
+
+    @Test
+    public void testCase1() {
+        LeetCode129 leetCode129 = new LeetCode129();
+        TreeNode tree = new TreeNode(1);
+        tree.left = new TreeNode(2);
+        tree.right = new TreeNode(3);
+        assert leetCode129.sumNumbers(tree) == 25;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode129 leetCode129 = new LeetCode129();
+        TreeNode tree = new TreeNode(4);
+        tree.left = new TreeNode(9);
+        tree.left.left = new TreeNode(5);
+        tree.left.right = new TreeNode(1);
+        tree.right = new TreeNode(0);
+        assert leetCode129.sumNumbers(tree) == 1026;
     }
 }
