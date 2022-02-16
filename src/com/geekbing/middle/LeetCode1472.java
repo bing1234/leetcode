@@ -7,8 +7,6 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode1472 {
