@@ -3,6 +3,7 @@ package com.geekbing.middle;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * todo
@@ -11,7 +12,22 @@ import java.util.Arrays;
  */
 public class LeetCode739 {
     public int[] dailyTemperatures(int[] temperatures) {
-        return new int[]{};
+        int[] ans = new int[temperatures.length];
+        // 单调递减栈存储下标
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
+        for (int i = 1; i < temperatures.length; i++) {
+            while (!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
+                int idx = stack.pop();
+                ans[idx] = i - idx;
+            }
+            stack.push(i);
+        }
+        while (!stack.isEmpty()) {
+            int idx = stack.pop();
+            ans[idx] = 0;
+        }
+        return ans;
     }
 
     @Test
