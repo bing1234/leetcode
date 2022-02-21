@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author bing
  */
-public class LeetCode1438 {
+public class  LeetCode1438 {
     public int longestSubarray(int[] nums, int limit) {
         return 0;
     }
