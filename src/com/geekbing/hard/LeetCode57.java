@@ -1,41 +1,76 @@
 package com.geekbing.hard;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
- * https://leetcode-cn.com/problems/insert-interval/
  * 57. 插入区间
  *
  * @author bing
  */
 public class LeetCode57 {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        int[][] ans = new int[intervals.length + 1][2];
-        int idx = 0, left = newInterval[0], right = newInterval[1];
-        boolean used = false;
-        for (int[] interval : intervals) {
-            if (interval[1] < newInterval[0]) {
-                ans[idx++] = interval;
-            } else if (interval[0] > newInterval[1]) {
-                if (!used) {
-                    ans[idx++] = new int[]{left, right};
-                    used = true;
-                }
-                ans[idx++] = interval;
+        // 先合并intervals与newInterval
+        int[][] temp = new int[intervals.length + 1][2];
+        System.arraycopy(intervals, 0, temp, 0, intervals.length);
+        temp[temp.length - 1] = newInterval;
+
+        // 按照左端点从小到大合并
+        Arrays.sort(temp, Comparator.comparing(o -> o[0]));
+
+        int[][] ans = new int[temp.length][2];
+        ans[0] = temp[0];
+        int idx = 0;
+        for (int i = 1; i < temp.length; i++) {
+            if (temp[i][0] > ans[idx][1]) {
+                idx++;
+                ans[idx] = temp[i];
             } else {
-                left = Math.min(left, interval[0]);
-                right = Math.max(right, interval[1]);
+                ans[idx][1] = Math.max(ans[idx][1], temp[i][1]);
             }
         }
-        if (!used) {
-            ans[idx++] = new int[]{left, right};
-        }
-        return Arrays.copyOf(ans, idx);
+        return Arrays.copyOf(ans, idx + 1);
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode57 leetCode57 = new LeetCode57();
-        System.out.println(Arrays.deepToString(leetCode57.insert(new int[][]{{1, 3}, {6, 9}}, new int[]{2, 5})));
-        System.out.println(Arrays.deepToString(leetCode57.insert(new int[][]{{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}}, new int[]{4, 8})));
+        int[][] ans = leetCode57.insert(new int[][]{{1, 3}, {6, 9}}, new int[]{2, 5});
+        int[][] expert = new int[][]{{1, 5}, {6, 9}};
+        assert Arrays.deepEquals(expert, ans);
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode57 leetCode57 = new LeetCode57();
+        int[][] ans = leetCode57.insert(new int[][]{{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}}, new int[]{4, 8});
+        int[][] expert = new int[][]{{1, 2}, {3, 10}, {12, 16}};
+        assert Arrays.deepEquals(expert, ans);
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode57 leetCode57 = new LeetCode57();
+        int[][] ans = leetCode57.insert(new int[][]{}, new int[]{5, 7});
+        int[][] expert = new int[][]{{5, 7}};
+        assert Arrays.deepEquals(expert, ans);
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode57 leetCode57 = new LeetCode57();
+        int[][] ans = leetCode57.insert(new int[][]{{1, 5}}, new int[]{2, 3});
+        int[][] expert = new int[][]{{1, 5}};
+        assert Arrays.deepEquals(expert, ans);
+    }
+
+    @Test
+    public void testCase5() {
+        LeetCode57 leetCode57 = new LeetCode57();
+        int[][] ans = leetCode57.insert(new int[][]{{1, 5}}, new int[]{2, 7});
+        int[][] expert = new int[][]{{1, 7}};
+        assert Arrays.deepEquals(expert, ans);
     }
 }

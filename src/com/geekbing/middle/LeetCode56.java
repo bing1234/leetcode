@@ -1,8 +1,13 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * @author bing
+ */
 public class LeetCode56 {
     public int[][] merge(int[][] intervals) {
         // 按照左区间进行排序
@@ -20,22 +25,19 @@ public class LeetCode56 {
         return Arrays.copyOf(ans, index + 1);
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode56 leetCode56 = new LeetCode56();
+        int[][] ans = leetCode56.merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}});
+        int[][] expert = new int[][]{{1, 6}, {8, 10}, {15, 18}};
+        assert Arrays.deepEquals(expert, ans);
+    }
 
-        int[][] ans1 = leetCode56.merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}});
-        for (int[] item : ans1) {
-            System.out.println(Arrays.toString(item));
-        }
-
-        int[][] ans2 = leetCode56.merge(new int[][]{{1, 4}, {4, 5}});
-        for (int[] item : ans2) {
-            System.out.println(Arrays.toString(item));
-        }
-
-        int[][] ans3 = leetCode56.merge(new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}});
-        for (int[] item : ans3) {
-            System.out.println(Arrays.toString(item));
-        }
+    @Test
+    public void testCase2() {
+        LeetCode56 leetCode56 = new LeetCode56();
+        int[][] ans = leetCode56.merge(new int[][]{{1, 4}, {4, 5}});
+        int[][] expert = new int[][]{{1, 5}};
+        assert Arrays.deepEquals(expert, ans);
     }
 }
