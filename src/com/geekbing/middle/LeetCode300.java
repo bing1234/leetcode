@@ -1,33 +1,43 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 /**
  * @author bing
  */
 public class LeetCode300 {
     public int lengthOfLIS(int[] nums) {
-        // dp[i]表示以num[i]结尾的最长上升子序列的长度
-        // dp[i] = max(dp[j] + 1, 0<=j<i && num[j] < num[i])
-        if (nums.length == 0) {
-            return 0;
-        }
         int[] dp = new int[nums.length];
-        int max = Integer.MIN_VALUE;
-        dp[0] = 1;
-        for (int i = 0; i < nums.length; i++) {
-            int temp = 1;
+        Arrays.fill(dp, 1);
+        int ans = 1;
+        for (int i = 1; i < nums.length; i++) {
             for (int j = 0; j < i; j++) {
-                if (nums[j] < nums[i] && temp < dp[j] + 1) {
-                    temp = dp[j] + 1;
+                if (nums[j] < nums[i]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
-            dp[i] = temp;
-            max = Math.max(max, dp[i]);
+            ans = Math.max(ans, dp[i]);
         }
-        return max;
+        return ans;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode300 leetCode300 = new LeetCode300();
-        System.out.println(leetCode300.lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
+        assert leetCode300.lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}) == 4;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode300 leetCode300 = new LeetCode300();
+        assert leetCode300.lengthOfLIS(new int[]{0, 1, 0, 3, 2, 3}) == 4;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode300 leetCode300 = new LeetCode300();
+        assert leetCode300.lengthOfLIS(new int[]{7, 7, 7, 7, 7, 7, 7}) == 1;
     }
 }
