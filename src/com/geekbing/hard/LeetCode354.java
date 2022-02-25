@@ -53,6 +53,7 @@ public class LeetCode354 {
                 return Integer.compare(o2[1], o1[1]);
             }
         });
+        // dp[i]表示已arr[i]为结尾的最大递增子序列的长度
         int[] dp = new int[envelopes.length];
         Arrays.fill(dp, 1);
         int ans = 1;
