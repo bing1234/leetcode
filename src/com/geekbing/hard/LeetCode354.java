@@ -91,4 +91,28 @@ public class LeetCode354 {
         LeetCode354 leetCode354 = new LeetCode354();
         assert leetCode354.maxEnvelopesV2(new int[][]{{1, 15}, {7, 18}, {7, 6}, {7, 100}, {2, 200}, {17, 30}, {17, 45}, {3, 5}, {7, 8}, {3, 6}, {3, 10}, {7, 20}, {17, 3}, {17, 45}}) == 3;
     }
+
+    @Test
+    public void testCase5() {
+        LeetCode354 leetCode354 = new LeetCode354();
+        assert leetCode354.maxEnvelopes(new int[][]{{5, 4}, {6, 4}, {6, 7}, {2, 3}}) == 3;
+    }
+
+    @Test
+    public void testCase6() {
+        LeetCode354 leetCode354 = new LeetCode354();
+        assert leetCode354.maxEnvelopes(new int[][]{{1, 1}, {1, 1}, {1, 1}}) == 1;
+    }
+
+    @Test
+    public void testCase7() {
+        LeetCode354 leetCode354 = new LeetCode354();
+        assert leetCode354.maxEnvelopes(new int[][]{{4, 5}, {4, 6}, {6, 7}, {2, 3}, {1, 1}}) == 4;
+    }
+
+    @Test
+    public void testCase8() {
+        LeetCode354 leetCode354 = new LeetCode354();
+        assert leetCode354.maxEnvelopes(new int[][]{{1, 15}, {7, 18}, {7, 6}, {7, 100}, {2, 200}, {17, 30}, {17, 45}, {3, 5}, {7, 8}, {3, 6}, {3, 10}, {7, 20}, {17, 3}, {17, 45}}) == 3;
+    }
 }
