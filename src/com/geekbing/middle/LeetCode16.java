@@ -2,6 +2,8 @@ package com.geekbing.middle;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 /**
  * todo
  *
@@ -9,7 +11,24 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode16 {
     public int threeSumClosest(int[] nums, int target) {
-        return 0;
+        Arrays.sort(nums);
+        int ans = 0, minDiff = Integer.MAX_VALUE;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int left = 0, right = i - 1;
+            while (left < right) {
+                int diff = Math.abs(nums[left] + nums[right] + nums[i] - target);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    ans = nums[left] + nums[right] + nums[i];
+                }
+                if (nums[left] + nums[right] + nums[i] > target) {
+                    right--;
+                } else {
+                    left++;
+                }
+            }
+        }
+        return ans;
     }
 
     @Test
