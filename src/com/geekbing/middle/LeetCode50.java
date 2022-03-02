@@ -3,13 +3,25 @@ package com.geekbing.middle;
 import org.junit.jupiter.api.Test;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode50 {
     public double myPow(double x, int n) {
-        return 0D;
+        return n >= 0 ? quickMul(x, n) : 1.0D / quickMul(x, -(long) n);
+    }
+
+    private double quickMul(double x, long n) {
+        if (n == 0) {
+            return 1.0D;
+        }
+        if (n == 1) {
+            return x;
+        }
+        double y = quickMul(x, n / 2);
+        if (n % 2 == 0) {
+            return y * y;
+        }
+        return y * y * x;
     }
 
     @Test
@@ -44,5 +56,11 @@ public class LeetCode50 {
         assert Math.abs(expert - ans) < 0.00001D;
     }
 
-
+    @Test
+    public void testCase5() {
+        LeetCode50 leetCode50 = new LeetCode50();
+        double ans = leetCode50.myPow(0.00001, 2147483647);
+        double expert = 0.0000D;
+        assert Math.abs(expert - ans) < 0.00001D;
+    }
 }
