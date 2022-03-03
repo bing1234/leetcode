@@ -52,8 +52,7 @@ public class LeetCode50 {
     public void testCase4() {
         LeetCode50 leetCode50 = new LeetCode50();
         double ans = leetCode50.myPow(0.00001, -2147483647);
-        double expert = 0.25000D;
-        assert Math.abs(expert - ans) < 0.00001D;
+        assert Double.isInfinite(ans);
     }
 
     @Test
