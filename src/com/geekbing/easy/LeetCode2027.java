@@ -3,13 +3,22 @@ package com.geekbing.easy;
 import org.junit.jupiter.api.Test;
 
 /**
- * TODO
- *
  * @author bing
  */
 public class LeetCode2027 {
     public int minimumMoves(String s) {
-        return 0;
+        char[] chars = s.toCharArray();
+        int ans = 0;
+        int i = 0;
+        while (i < chars.length) {
+            if (chars[i] == 'X') {
+                ans++;
+                i += 3;
+            } else {
+                i++;
+            }
+        }
+        return ans;
     }
 
     @Test

@@ -5,13 +5,18 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode2138 {
     public String[] divideString(String s, int k, char fill) {
-        String[] ans = new String[]{};
+        int len = (s.length() % k == 0) ? s.length() / k : s.length() / k + 1;
+        String[] ans = new String[len];
+        for (int i = 0; i < len; i++) {
+            ans[i] = s.substring(i * k, Math.min((i + 1) * k, s.length()));
+        }
+        char[] remain = new char[k - ans[len - 1].length()];
+        Arrays.fill(remain, fill);
+        ans[len - 1] += new String(remain);
         return ans;
     }
 
