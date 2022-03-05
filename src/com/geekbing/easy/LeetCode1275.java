@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 public class LeetCode1275 {
     public String tictactoe(int[][] moves) {
         // 棋盘
@@ -56,11 +58,31 @@ public class LeetCode1275 {
         return (lines[0] == 'X' || lines[0] == 'O') && lines[0] == lines[1] && lines[1] == lines[2];
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode1275 leetCode1275 = new LeetCode1275();
-        System.out.println(leetCode1275.tictactoe(new int[][]{{0, 0}, {2, 0}, {1, 1}, {2, 1}, {2, 2}}));
-        System.out.println(leetCode1275.tictactoe(new int[][]{{0, 0}, {1, 1}, {0, 1}, {0, 2}, {1, 0}, {2, 0}}));
-        System.out.println(leetCode1275.tictactoe(new int[][]{{0, 0}, {1, 1}, {2, 0}, {1, 0}, {1, 2}, {2, 1}, {0, 1}, {0, 2}, {2, 2}}));
-        System.out.println(leetCode1275.tictactoe(new int[][]{{0, 0}, {1, 1}}));
+        String ans = leetCode1275.tictactoe(new int[][]{{0, 0}, {2, 0}, {1, 1}, {2, 1}, {2, 2}});
+        assert "A".equals(ans);
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode1275 leetCode1275 = new LeetCode1275();
+        String ans = leetCode1275.tictactoe(new int[][]{{0, 0}, {1, 1}, {0, 1}, {0, 2}, {1, 0}, {2, 0}});
+        assert "B".equals(ans);
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode1275 leetCode1275 = new LeetCode1275();
+        String ans = leetCode1275.tictactoe(new int[][]{{0, 0}, {1, 1}, {2, 0}, {1, 0}, {1, 2}, {2, 1}, {0, 1}, {0, 2}, {2, 2}});
+        assert "Draw".equals(ans);
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode1275 leetCode1275 = new LeetCode1275();
+        String ans = leetCode1275.tictactoe(new int[][]{{0, 0}, {1, 1}});
+        assert "Pending".equals(ans);
     }
 }

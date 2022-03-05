@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -21,13 +23,33 @@ public class LeetCode1446 {
         return ans;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode1446 leetCode1446 = new LeetCode1446();
-        System.out.println(leetCode1446.maxPower("leetcode"));
-        System.out.println(leetCode1446.maxPower("abbcccddddeeeeedcba"));
-        System.out.println(leetCode1446.maxPower("triplepillooooow"));
-        System.out.println(leetCode1446.maxPower("hooraaaaaaaaaaay"));
-        System.out.println(leetCode1446.maxPower("tourist"));
-        System.out.println(leetCode1446.maxPower("j"));
+        assert leetCode1446.maxPower("leetcode") == 2;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode1446 leetCode1446 = new LeetCode1446();
+        assert leetCode1446.maxPower("abbcccddddeeeeedcba") == 5;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode1446 leetCode1446 = new LeetCode1446();
+        assert leetCode1446.maxPower("triplepillooooow") == 5;
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode1446 leetCode1446 = new LeetCode1446();
+        assert leetCode1446.maxPower("hooraaaaaaaaaaay") == 11;
+    }
+
+    @Test
+    public void testCase5q() {
+        LeetCode1446 leetCode1446 = new LeetCode1446();
+        assert leetCode1446.maxPower("tourist") == 1;
     }
 }
