@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,15 +62,33 @@ public class LeetCode1592 {
         return ans.toString();
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode1592 leetCode1592 = new LeetCode1592();
-        System.out.println(leetCode1592.reorderSpaces("  this   is  a sentence "));
-        System.out.println(leetCode1592.reorderSpaces(" practice   makes   perfect"));
-        System.out.println(leetCode1592.reorderSpaces("hello   world"));
-        System.out.println(leetCode1592.reorderSpaces("  walks  udp package   into  bar a"));
-        System.out.println(leetCode1592.reorderSpaces("a"));
-        System.out.println(leetCode1592.reorderSpaces("a "));
-        System.out.println(leetCode1592.reorderSpaces(" a"));
-        System.out.println(leetCode1592.reorderSpaces(" a "));
+        assert "this   is   a   sentence".equals(leetCode1592.reorderSpaces("  this   is  a sentence "));
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode1592 leetCode1592 = new LeetCode1592();
+        assert "practice   makes   perfect ".equals(leetCode1592.reorderSpaces(" practice   makes   perfect"));
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode1592 leetCode1592 = new LeetCode1592();
+        assert "hello   world".equals(leetCode1592.reorderSpaces("hello   world"));
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode1592 leetCode1592 = new LeetCode1592();
+        assert "walks  udp  package  into  bar  a ".equals(leetCode1592.reorderSpaces("  walks  udp package   into  bar a"));
+    }
+
+    @Test
+    public void testCase5() {
+        LeetCode1592 leetCode1592 = new LeetCode1592();
+        assert "a".equals(leetCode1592.reorderSpaces("a"));
     }
 }
