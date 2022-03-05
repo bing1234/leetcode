@@ -7,13 +7,25 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode1957 {
     public String makeFancyString(String s) {
-        int len = 0;
         char[] chars = s.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-
+        int idx = 1, pre = chars[0], cnt = 1;
+        for (int i = 1; i < chars.length; i++) {
+            if (chars[i] == pre) {
+                cnt++;
+                if (cnt < 3) {
+                    chars[idx] = chars[i];
+                    idx++;
+                }
+            } else {
+                cnt = 1;
+                chars[idx] = chars[i];
+                idx++;
+            }
+            pre = chars[i];
         }
-
-        return "";
+        char[] ans = new char[idx];
+        System.arraycopy(chars, 0, ans, 0, idx);
+        return new String(ans);
     }
 
     @Test
@@ -25,7 +37,7 @@ public class LeetCode1957 {
     @Test
     public void testCase2() {
         LeetCode1957 leetCode1957 = new LeetCode1957();
-        assert leetCode1957.makeFancyString("aaabaaaa").equals("aaabaaaa");
+        assert leetCode1957.makeFancyString("aaabaaaa").equals("aabaa");
     }
 
     @Test
