@@ -1,12 +1,13 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Stack;
 
 /**
  * @author bing
  */
 public class LeetCode1290 {
-
     public int getDecimalValue(ListNode head) {
         StringBuilder str = new StringBuilder();
         ListNode index = head;
@@ -53,43 +54,6 @@ public class LeetCode1290 {
         return value;
     }
 
-    public static void main(String[] args) {
-        LeetCode1290 leetCode1290 = new LeetCode1290();
-
-        ListNode head1 = new ListNode(1);
-        head1.next = new ListNode(0);
-        head1.next.next = new ListNode(1);
-        System.out.println(leetCode1290.getDecimalValueV3(head1));
-
-        ListNode head2 = new ListNode(0);
-        System.out.println(leetCode1290.getDecimalValueV3(head2));
-
-        ListNode head3 = new ListNode(1);
-        System.out.println(leetCode1290.getDecimalValueV3(head3));
-
-        // 1,0,0,1,0,0,1,1,1,0,0,0,0,0,0
-        ListNode head4 = new ListNode(1);
-        head4.next = new ListNode(0);
-        head4.next.next = new ListNode(0);
-        head4.next.next.next = new ListNode(1);
-        head4.next.next.next.next = new ListNode(0);
-        head4.next.next.next.next.next = new ListNode(0);
-        head4.next.next.next.next.next.next = new ListNode(1);
-        head4.next.next.next.next.next.next.next = new ListNode(1);
-        head4.next.next.next.next.next.next.next.next = new ListNode(1);
-        head4.next.next.next.next.next.next.next.next.next = new ListNode(0);
-        head4.next.next.next.next.next.next.next.next.next.next = new ListNode(0);
-        head4.next.next.next.next.next.next.next.next.next.next.next = new ListNode(0);
-        head4.next.next.next.next.next.next.next.next.next.next.next.next = new ListNode(0);
-        head4.next.next.next.next.next.next.next.next.next.next.next.next.next = new ListNode(0);
-        head4.next.next.next.next.next.next.next.next.next.next.next.next.next.next = new ListNode(0);
-        System.out.println(leetCode1290.getDecimalValueV3(head4));
-
-        ListNode head5 = new ListNode(0);
-        head5.next = new ListNode(0);
-        System.out.println(leetCode1290.getDecimalValueV3(head5));
-    }
-
     private static class ListNode {
         int val;
         ListNode next;
@@ -97,5 +61,53 @@ public class LeetCode1290 {
         ListNode(int x) {
             val = x;
         }
+    }
+
+    private ListNode buildListNode(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return null;
+        }
+        ListNode head = new ListNode(arr[0]);
+        ListNode idx = head;
+        for (int i = 1; i < arr.length; i++) {
+            idx.next = new ListNode(arr[i]);
+            idx = idx.next;
+        }
+        return head;
+    }
+
+    @Test
+    public void testCase1() {
+        LeetCode1290 leetCode1290 = new LeetCode1290();
+        ListNode head = buildListNode(new int[]{1, 0, 1});
+        assert leetCode1290.getDecimalValue(head) == 5;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode1290 leetCode1290 = new LeetCode1290();
+        ListNode head = buildListNode(new int[]{0});
+        assert leetCode1290.getDecimalValue(head) == 0;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode1290 leetCode1290 = new LeetCode1290();
+        ListNode head = buildListNode(new int[]{1});
+        assert leetCode1290.getDecimalValue(head) == 1;
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode1290 leetCode1290 = new LeetCode1290();
+        ListNode head = buildListNode(new int[]{1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0});
+        assert leetCode1290.getDecimalValue(head) == 18880;
+    }
+
+    @Test
+    public void testCase5() {
+        LeetCode1290 leetCode1290 = new LeetCode1290();
+        ListNode head = buildListNode(new int[]{0, 0});
+        assert leetCode1290.getDecimalValue(head) == 0;
     }
 }

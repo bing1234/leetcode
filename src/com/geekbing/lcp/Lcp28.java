@@ -1,5 +1,7 @@
 package com.geekbing.lcp;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
 /**
@@ -48,11 +50,27 @@ public class Lcp28 {
         return -1;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         Lcp28 lcp28 = new Lcp28();
-        System.out.println(lcp28.purchasePlans(new int[]{2, 5, 3, 5}, 6));
-        System.out.println(lcp28.purchasePlans(new int[]{2, 2, 1, 9}, 10));
-        System.out.println(lcp28.purchasePlans(new int[]{3, 1, 2}, 5));
-        System.out.println(lcp28.purchasePlans(new int[]{43877, 10848, 10442, 48132, 83395, 71523, 60275, 39527}, 50642));
+        assert lcp28.purchasePlans(new int[]{2, 5, 3, 5}, 6) == 1;
+    }
+
+    @Test
+    public void testCase2() {
+        Lcp28 lcp28 = new Lcp28();
+        assert lcp28.purchasePlans(new int[]{2, 2, 1, 9}, 10) == 4;
+    }
+
+    @Test
+    public void testCase3() {
+        Lcp28 lcp28 = new Lcp28();
+        assert lcp28.purchasePlans(new int[]{3, 1, 2}, 5) == 3;
+    }
+
+    @Test
+    public void testCase4() {
+        Lcp28 lcp28 = new Lcp28();
+        assert lcp28.purchasePlans(new int[]{43877, 10848, 10442, 48132, 83395, 71523, 60275, 39527}, 50642) == 3;
     }
 }
