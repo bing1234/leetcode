@@ -1,5 +1,7 @@
 package com.geekbing.lcp;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.*;
 
 /**
@@ -52,12 +54,33 @@ public class Lcp914 {
         return ans;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         Lcp914 lcp914 = new Lcp914();
-        System.out.println(lcp914.hasGroupsSizeX(new int[]{1, 2, 3, 4, 4, 3, 2, 1}));
-        System.out.println(lcp914.hasGroupsSizeX(new int[]{1, 1, 1, 2, 2, 2, 3, 3}));
-        System.out.println(lcp914.hasGroupsSizeX(new int[]{1}));
-        System.out.println(lcp914.hasGroupsSizeX(new int[]{1, 1}));
-        System.out.println(lcp914.hasGroupsSizeX(new int[]{1, 1, 2, 2, 2, 2}));
+        assert lcp914.hasGroupsSizeX(new int[]{1, 2, 3, 4, 4, 3, 2, 1});
+    }
+
+    @Test
+    public void testCase2() {
+        Lcp914 lcp914 = new Lcp914();
+        assert !lcp914.hasGroupsSizeX(new int[]{1, 1, 1, 2, 2, 2, 3, 3});
+    }
+
+    @Test
+    public void testCase3() {
+        Lcp914 lcp914 = new Lcp914();
+        assert !lcp914.hasGroupsSizeX(new int[]{1});
+    }
+
+    @Test
+    public void testCase4() {
+        Lcp914 lcp914 = new Lcp914();
+        assert lcp914.hasGroupsSizeX(new int[]{1, 1});
+    }
+
+    @Test
+    public void testCase5() {
+        Lcp914 lcp914 = new Lcp914();
+        assert lcp914.hasGroupsSizeX(new int[]{1, 1, 2, 2, 2, 2});
     }
 }
