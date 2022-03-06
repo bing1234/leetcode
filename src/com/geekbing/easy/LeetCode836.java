@@ -1,27 +1,33 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
 public class LeetCode836 {
     public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
-        // 第一个矩形在第二个的上方、下方、左方、右方，没有交集
-        if (rec1[0] >= rec2[2] || rec1[2] <= rec2[0] || rec1[3] <= rec2[1] || rec1[1] >= rec2[3]) {
-            return false;
-        }
-        // 计算水平交集长度
-        int rowDis = rec1[0] <= rec2[0] ? Math.min(rec1[2], rec2[2]) - rec2[0] : Math.min(rec2[2], rec1[2]) - rec1[0];
-        // 计算垂直交集长度
-        int colDis = rec1[1] <= rec2[1] ? Math.min(rec1[3], rec2[3]) - rec2[1] : Math.min(rec2[3], rec1[3]) - rec1[1];
-        return rowDis > 0 && colDis > 0;
+        long overWidth = Math.min(rec1[2], rec2[2]) - Math.max(rec1[0], rec2[0]);
+        long overHeight = Math.min(rec1[3], rec2[3]) - Math.max(rec1[1], rec2[1]);
+        long over = Math.max(overWidth, 0) * Math.max(overHeight, 0);
+        return over > 0L;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode836 leetCode836 = new LeetCode836();
-        System.out.println(leetCode836.isRectangleOverlap(new int[]{0, 0, 2, 2}, new int[]{1, 1, 3, 3}));
-        System.out.println(leetCode836.isRectangleOverlap(new int[]{0, 0, 1, 1}, new int[]{1, 0, 2, 1}));
-        System.out.println(leetCode836.isRectangleOverlap(new int[]{0, 0, 1, 1}, new int[]{2, 2, 3, 3}));
-        System.out.println(leetCode836.isRectangleOverlap(new int[]{7, 8, 13, 15}, new int[]{10, 8, 12, 20}));
-        System.out.println(leetCode836.isRectangleOverlap(new int[]{-1, 0, 1, 1}, new int[]{0, -1, 0, 1}));
+        assert leetCode836.isRectangleOverlap(new int[]{0, 0, 2, 2}, new int[]{1, 1, 3, 3});
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode836 leetCode836 = new LeetCode836();
+        assert !leetCode836.isRectangleOverlap(new int[]{0, 0, 1, 1}, new int[]{1, 0, 2, 1});
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode836 leetCode836 = new LeetCode836();
+        assert !leetCode836.isRectangleOverlap(new int[]{0, 0, 1, 1}, new int[]{2, 2, 3, 3});
     }
 }
