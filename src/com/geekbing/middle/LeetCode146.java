@@ -1,15 +1,28 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author bing
+ */
 public class LeetCode146 {
     private static class LRUCache {
-        // map用于存储key，value（指向双向链表的节点）
+        /**
+         * map用于存储key，value（指向双向链表的节点）
+         */
         private final Map<Integer, ListNode> map;
-        // 存储value的双向链表
+
+        /**
+         * 存储value的双向链表
+         */
         private final ListNode head, tail;
-        // 容量
+
+        /**
+         * 容量
+         */
         private final int capacity;
 
         public LRUCache(int capacity) {
@@ -109,17 +122,17 @@ public class LeetCode146 {
         }
     }
 
-    public static void main(String[] args) {
-        LRUCache cache = new LRUCache(2 /* 缓存容量 */);
-
+    @Test
+    public void testCase1() {
+        LRUCache cache = new LRUCache(2);
         cache.put(1, 1);
         cache.put(2, 2);
-        System.out.println(cache.get(1));       // 返回  1
-        cache.put(3, 3);                        // 该操作会使得关键字 2 作废
-        System.out.println(cache.get(2));       // 返回 -1 (未找到)
-        cache.put(4, 4);                        // 该操作会使得关键字 1 作废
-        System.out.println(cache.get(1));       // 返回 -1 (未找到)
-        System.out.println(cache.get(3));       // 返回  3
-        System.out.println(cache.get(4));       // 返回  4
+        assert cache.get(1) == 1;       // 返回  1
+        cache.put(3, 3);                // 该操作会使得关键字 2 作废
+        assert cache.get(2) == -1;      // 返回 -1 (未找到)
+        cache.put(4, 4);                // 该操作会使得关键字 1 作废
+        assert cache.get(1) == -1;      // 返回 -1 (未找到)
+        assert cache.get(3) == 3;       // 返回  3
+        assert cache.get(4) == 4;       // 返回  4
     }
 }
