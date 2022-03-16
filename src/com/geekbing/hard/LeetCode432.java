@@ -136,5 +136,6 @@ public class LeetCode432 {
         allOne.inc("leet");
         assert "hello".equals(allOne.getMaxKey()); // 返回 "hello"
         assert "leet".equals(allOne.getMinKey()); // 返回 "leet"
+        allOne.dec("hello");
     }
 }
