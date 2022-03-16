@@ -10,7 +10,7 @@ import java.util.*;
 public class LeetCode460 {
     private static class LFUCache {
         /**
-         * map用于存储key，value（指向双向链表的节点）
+         * 用于存储key - 指向双向链表的节点
          */
         private final Map<Integer, Node> cache;
 
@@ -43,31 +43,32 @@ public class LeetCode460 {
                 return -1;
             }
             Node cur = cache.get(key);
+            int value = cur.map.get(key);
             Node prev = cur.prev;
             if (prev == head || prev.cnt > cur.cnt + 1) {
                 // 需要新增节点
-                cache.put(key, prev.insert(new Node(key, cur.value, cur.cnt + 1)));
+                cache.put(key, prev.insert(new Node(key, value, cur.cnt + 1)));
             } else {
-                prev.keys.add(key);
+                prev.map.put(key, value);
                 cache.put(key, prev);
             }
-            cur.keys.remove(key);
-            if (cur.keys.isEmpty()) {
+            cur.map.remove(key);
+            if (cur.map.isEmpty()) {
                 cur.remove();
             }
-            return cur.value;
+            return value;
         }
 
         public void put(int key, int value) {
             if (capacity == 0) {
                 return;
             }
-            if (cache.size() == capacity) {
-                // 容量达到上限后，需要先移除最不经常使用的项
+            if (!cache.containsKey(key) && cache.size() == capacity) {
+                // 容量达到上限后，写入新数据的话需要先移除最不经常使用的项
                 if (tail.prev != head) {
-                    Integer delKey = tail.prev.keys.(0);
-                    tail.prev.keys.remove(delKey);
-                    if (tail.prev.keys.isEmpty()) {
+                    Integer delKey = tail.prev.map.keySet().iterator().next();
+                    tail.prev.map.remove(delKey);
+                    if (tail.prev.map.isEmpty()) {
                         tail.prev.remove();
                     }
                     cache.remove(delKey);
@@ -80,11 +81,11 @@ public class LeetCode460 {
                     // 需要新增节点
                     cache.put(key, prev.insert(new Node(key, value, cur.cnt + 1)));
                 } else {
-                    prev.keys.add(key);
+                    prev.map.put(key, value);
                     cache.put(key, prev);
                 }
-                cur.keys.remove(key);
-                if (cur.keys.isEmpty()) {
+                cur.map.remove(key);
+                if (cur.map.isEmpty()) {
                     cur.remove();
                 }
             } else {
@@ -92,7 +93,7 @@ public class LeetCode460 {
                     // 需要新增节点
                     cache.put(key, tail.prev.insert(new Node(key, value, 1)));
                 } else {
-                    tail.prev.keys.add(key);
+                    tail.prev.map.put(key, value);
                     cache.put(key, tail.prev);
                 }
             }
@@ -101,17 +102,15 @@ public class LeetCode460 {
         private static class Node {
             private Node prev;
             private Node next;
-            private Set<Integer> keys;
-            private int value;
+            private Map<Integer, Integer> map;
             private int cnt;
 
             public Node() {
             }
 
-            public Node(int key, int value, int cnt) {
-                this.keys = new LinkedHashSet<>();
-                this.keys.add(key);
-                this.value = value;
+            public Node(int key, int val, int cnt) {
+                map = new LinkedHashMap<>();
+                map.put(key, val);
                 this.cnt = cnt;
             }
 
@@ -151,5 +150,20 @@ public class LeetCode460 {
         // cache=[3,4], cnt(4)=1, cnt(3)=3
         assert lfu.get(4) == 4;      // 返回 4
         // cache=[3,4], cnt(4)=2, cnt(3)=3
+    }
+
+    @Test
+    public void testCase2() {
+        //        ["LFUCache","get",    "put",   "get",     "put",      "put",      "get",      "get"]
+//                [[2],        [2],     [2,6],   [1],       [1,5],      [1,2],      [1],        [2]]
+//               [null,        -1,      null,    -1,        null,       null,       2,          6]
+        LFUCache lfu = new LFUCache(2);
+        assert lfu.get(2) == -1;
+        lfu.put(2, 6);
+        assert lfu.get(1) == -1;
+        lfu.put(1, 5);
+        lfu.put(1, 2);
+        assert lfu.get(1) == 2;
+        assert lfu.get(2) == 6;
     }
 }
