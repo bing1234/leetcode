@@ -2,8 +2,6 @@ package com.geekbing.hard;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 /**
  * @author bing
  */
