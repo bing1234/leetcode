@@ -14,6 +14,17 @@ public class LeetCode653 {
         return twoSum(arrs, k);
     }
 
+    private List<Integer> inOrderTravelV2(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) {
+            return ans;
+        }
+        ans.addAll(inOrderTravelV2(root.left));
+        ans.add(root.val);
+        ans.addAll(inOrderTravelV2(root.right));
+        return ans;
+    }
+
     private List<Integer> inOrderTravel(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
         if (root == null) {
