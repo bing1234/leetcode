@@ -7,9 +7,24 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode641 {
     private static class MyCircularDeque {
+        /**
+         * 双向链表头结点（虚节点）
+         */
         private final Node head;
+
+        /**
+         * 双向链表尾节点（虚节点）
+         */
         private final Node tail;
+
+        /**
+         * 双向链表的最大容量
+         */
         private final int capacity;
+
+        /**
+         * 双向链表的实际节点数
+         */
         private int size;
 
         public MyCircularDeque(int k) {
