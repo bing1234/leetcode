@@ -32,7 +32,7 @@ public class LeetCode133 {
         return head;
     }
 
-    static class Node {
+    private static class Node {
         public int val;
         public List<Node> neighbors;
 

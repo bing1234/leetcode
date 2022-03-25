@@ -7,25 +7,45 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode1670 {
     private static class FrontMiddleBackQueue {
+        private Node head;
+        private Node middle;
+        private Node tail;
 
         public FrontMiddleBackQueue() {
-
+            head = new Node();
+            tail = new Node();
+            head.next = tail;
+            tail.prev = head;
         }
 
         public void pushFront(int val) {
-
+            Node cur = new Node(val);
+            cur.prev = head;
+            cur.next = head.next;
+            head.next.prev = cur;
+            head.next = cur;
         }
 
         public void pushMiddle(int val) {
-
+            
         }
 
         public void pushBack(int val) {
-
+            Node cur = new Node(val);
+            cur.prev = tail.prev;
+            cur.next = tail;
+            tail.prev.next = cur;
+            tail.prev = cur;
         }
 
         public int popFront() {
-            return 0;
+            if (head.next == tail) {
+                return -1;
+            }
+            Node cur = head.next;
+            cur.prev.next = cur.next;
+            cur.next.prev = cur.prev;
+            return cur.val;
         }
 
         public int popMiddle() {
@@ -33,7 +53,23 @@ public class LeetCode1670 {
         }
 
         public int popBack() {
-            return 0;
+            Node cur = tail.prev;
+            cur.prev.next = cur.next;
+            cur.next.prev = cur.prev;
+            return cur.val;
+        }
+
+        private static class Node {
+            private int val;
+            private Node prev;
+            private Node next;
+
+            public Node() {
+            }
+
+            public Node(int val) {
+                this.val = val;
+            }
         }
     }
 
