@@ -53,7 +53,7 @@ public class LeetCode622 {
             if (isEmpty()) {
                 return false;
             }
-            Node cur = tail.prev;
+            Node cur = head.next;
             cur.prev.next = cur.next;
             cur.next.prev = cur.prev;
             size--;
