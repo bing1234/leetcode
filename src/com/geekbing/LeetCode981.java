@@ -62,8 +62,8 @@ public class LeetCode981 {
         }
 
         private static class Pair {
-            private int timestamp;
-            private String val;
+            private final int timestamp;
+            private final String val;
 
             public Pair(int timestamp, String val) {
                 this.timestamp = timestamp;
