@@ -1,4 +1,4 @@
-package com.geekbing;
+package com.geekbing.middle;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class LeetCode457 {
     public boolean circularArrayLoop(int[] nums) {
         int slow = 0, fast = 0;
-        while ()
+        return false;
     }
 
     @Test
