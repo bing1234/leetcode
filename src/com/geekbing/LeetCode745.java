@@ -2,7 +2,14 @@ package com.geekbing;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
+ * 超时
+ *
  * @author bing
  */
 public class LeetCode745 {
@@ -20,9 +27,15 @@ public class LeetCode745 {
         }
 
         public int f(String prefix, String suffix) {
-            int preMaxIdx = prefixTree.startWithWorldsMaxIdx(prefix);
-            int suffixIdx = suffixTree.startWithWorldsMaxIdx(suffix);
-            return Math.min(preMaxIdx, suffixIdx);
+            Set<Integer> prefixIdxs = prefixTree.startWithWorldsMaxIdx(prefix);
+            Set<Integer> suffixIdxs = suffixTree.startWithWorldsMaxIdx(suffix);
+            int maxIdx = -1;
+            for (Integer idx : prefixIdxs) {
+                if (suffixIdxs.contains(idx)) {
+                    maxIdx = Math.max(maxIdx, idx);
+                }
+            }
+            return maxIdx;
         }
 
         private static class Trie {
@@ -53,17 +66,18 @@ public class LeetCode745 {
                         cur = cur.childs[c - 'a'];
                     }
                 }
-                cur.maxIdx = Math.max(cur.maxIdx, idx);
+                cur.idxs.add(idx);
                 cur.isEnd = true;
             }
 
-            public int startWithWorldsMaxIdx(String str) {
+            public Set<Integer> startWithWorldsMaxIdx(String str) {
+                Set<Integer> ans = new HashSet<>();
                 Node cur = root;
                 if (ifPrefix) {
                     for (int i = 0; i < str.length(); i++) {
                         char c = str.charAt(i);
                         if (cur.childs[c - 'a'] == null) {
-                            return -1;
+                            return ans;
                         }
                         cur = cur.childs[c - 'a'];
                     }
@@ -71,7 +85,7 @@ public class LeetCode745 {
                     for (int i = str.length() - 1; i >= 0; i--) {
                         char c = str.charAt(i);
                         if (cur.childs[c - 'a'] == null) {
-                            return -1;
+                            return ans;
                         }
                         cur = cur.childs[c - 'a'];
                     }
@@ -79,33 +93,32 @@ public class LeetCode745 {
                 return travelTree(cur);
             }
 
-            private int travelTree(Node root) {
-                int maxIdx = -1;
+            private Set<Integer> travelTree(Node root) {
+                Set<Integer> ans = new HashSet<>();
                 if (root == null) {
-                    return maxIdx;
+                    return ans;
                 }
                 if (root.isEnd) {
-                    maxIdx = root.maxIdx;
+                    ans.addAll(root.idxs);
                 }
                 for (Node node : root.childs) {
                     if (node != null) {
-                        int ans = travelTree(node);
-                        maxIdx = Math.max(maxIdx, ans);
+                        ans.addAll(travelTree(node));
                     }
                 }
-                return maxIdx;
+                return ans;
             }
         }
 
         private static class Node {
             private final Node[] childs;
+            private final List<Integer> idxs;
             private boolean isEnd;
-            private int maxIdx;
 
             public Node() {
                 this.childs = new Node[26];
+                this.idxs = new ArrayList<>();
                 this.isEnd = false;
-                this.maxIdx = -1;
             }
         }
     }
