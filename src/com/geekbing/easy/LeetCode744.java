@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -8,35 +10,33 @@ public class LeetCode744 {
         if (target >= letters[letters.length - 1]) {
             return letters[0];
         }
-        int left = 0, right = letters.length - 1, mid;
+        int left = 0, right = letters.length - 1;
         while (left < right) {
-            mid = left + (right - left) / 2;
-            if (letters[mid] > target) {
-                right = mid;
-            } else {
+            int mid = left + (right - left) / 2;
+            if (letters[mid] <= target) {
                 left = mid + 1;
+            } else {
+                right = mid;
             }
         }
-        if (letters[left] > target) {
-            return letters[left];
-        }
-        mid = left + (right - left) / 2;
-        if (letters[mid] > target) {
-            return letters[mid];
-        }
-        if (letters[right] > target) {
-            return letters[right];
-        }
-        return letters[0];
+        return letters[left];
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode744 leetCode744 = new LeetCode744();
-        System.out.println((char) leetCode744.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'a'));
-        System.out.println((char) leetCode744.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'c'));
-        System.out.println((char) leetCode744.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'd'));
-        System.out.println((char) leetCode744.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'g'));
-        System.out.println((char) leetCode744.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'j'));
-        System.out.println((char) leetCode744.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'k'));
+        assert leetCode744.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'a') == 'c';
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode744 leetCode744 = new LeetCode744();
+        assert leetCode744.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'c') == 'f';
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode744 leetCode744 = new LeetCode744();
+        assert leetCode744.nextGreatestLetter(new char[]{'c', 'f', 'j'}, 'd') == 'f';
     }
 }
