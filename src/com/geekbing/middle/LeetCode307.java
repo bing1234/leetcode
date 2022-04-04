@@ -1,11 +1,33 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
+/**
+ * @author bing
+ */
 public class LeetCode307 {
-    public static void main(String[] args) {
-        NumArray obj = new NumArray(new int[]{1, 3, 5});
-        System.out.println(obj.sumRange(0, 2));
-        obj.update(1, 2);
-        System.out.println(obj.sumRange(0, 2));
+    private static class NumArray {
+        private final SegmentTree segmentTree;
+
+        public NumArray(int[] nums) {
+            segmentTree = new SegmentTree(nums);
+        }
+
+        public void update(int index, int val) {
+            segmentTree.update(index, val);
+        }
+
+        public int sumRange(int left, int right) {
+            return segmentTree.sumRange(left, right);
+        }
+    }
+
+    @Test
+    public void testCase1() {
+        NumArray numArray = new NumArray(new int[]{1, 3, 5});
+        assert numArray.sumRange(0, 2) == 9;    // 返回 1 + 3 + 5 = 9
+        numArray.update(1, 2);                  // nums = [1,2,5]
+        assert numArray.sumRange(0, 2) == 8;    // 返回 1 + 2 + 5 = 8
     }
 
     private static class TreeNode {
@@ -21,8 +43,12 @@ public class LeetCode307 {
         }
     }
 
-    private static class NumArray {
+    private static class SegmentTree {
         private final TreeNode root;
+
+        public SegmentTree(int[] nums) {
+            root = buildTree(nums, 0, nums.length - 1);
+        }
 
         private TreeNode buildTree(int[] nums, int start, int end) {
             if (nums == null || nums.length == 0) {
@@ -67,16 +93,12 @@ public class LeetCode307 {
             return queryTree(node.left, i, j) + queryTree(node.right, i, j);
         }
 
-        public NumArray(int[] nums) {
-            root = buildTree(nums, 0, nums.length - 1);
+        public void update(int index, int val) {
+            updateTree(root, index, val);
         }
 
-        public void update(int i, int val) {
-            updateTree(root, i, val);
-        }
-
-        public int sumRange(int i, int j) {
-            return queryTree(root, i, j);
+        public int sumRange(int left, int right) {
+            return queryTree(root, left, right);
         }
     }
 }
