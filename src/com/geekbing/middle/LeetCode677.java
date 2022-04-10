@@ -10,7 +10,7 @@ public class LeetCode677 {
         private final Node root;
 
         public MapSum() {
-            root = new Node(' ');
+            root = new Node();
         }
 
         public void insert(String key, int val) {
@@ -18,7 +18,7 @@ public class LeetCode677 {
             for (int i = 0; i < key.length(); i++) {
                 char c = key.charAt(i);
                 if (cur.childs[c - 'a'] == null) {
-                    cur.childs[c - 'a'] = new Node(c);
+                    cur.childs[c - 'a'] = new Node();
                 }
                 cur = cur.childs[c - 'a'];
             }
@@ -53,13 +53,11 @@ public class LeetCode677 {
         }
 
         private static class Node {
-            private final char c;
             private final Node[] childs;
             private boolean isWord;
             private int val;
 
-            public Node(char c) {
-                this.c = c;
+            public Node() {
                 this.childs = new Node[26];
                 this.isWord = false;
                 this.val = 0;

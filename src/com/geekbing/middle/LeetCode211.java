@@ -10,7 +10,7 @@ public class LeetCode211 {
         private final Node root;
 
         public WordDictionary() {
-            root = new Node(' ');
+            root = new Node();
         }
 
         public void addWord(String word) {
@@ -18,7 +18,7 @@ public class LeetCode211 {
             for (int i = 0; i < word.length(); i++) {
                 char c = word.charAt(i);
                 if (cur.childs[c - 'a'] == null) {
-                    cur.childs[c - 'a'] = new Node(c);
+                    cur.childs[c - 'a'] = new Node();
                 }
                 cur = cur.childs[c - 'a'];
             }
@@ -53,12 +53,10 @@ public class LeetCode211 {
         }
 
         private static class Node {
-            private final char c;
             private final Node[] childs;
             private boolean isWord;
 
-            public Node(char c) {
-                this.c = c;
+            public Node() {
                 this.childs = new Node[26];
                 this.isWord = false;
             }
