@@ -3,21 +3,55 @@ package com.geekbing.middle;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author bing
  */
 public class LeetCode725 {
     public ListNode[] splitListToParts(ListNode head, int k) {
-        ListNode[] ans = new ListNode[k];
+        // 特殊情况处理
+        if (k == 1) {
+            return new ListNode[]{head};
+        }
 
         // 统计链表节点数
         int count = countListNode(head);
         if (count <= k) {
+            // 每段节点数为1，且不够的为空链表
+            return splitListToSingle(head, k);
+        }
 
-        } else {
+        // 每段长度数组
+        int[] lens = new int[k];
+        Arrays.fill(lens, count / k);
+        for (int i = 0; i < count % k; i++) {
+            lens[i]++;
+        }
 
+        ListNode[] ans = new ListNode[k];
+        int index = 0;
+        ListNode idx = head, pre = head;
+        for (int i = 0; i < k; i++) {
+            ans[index] = idx;
+            for (int j = 0; j < lens[i]; j++) {
+                pre = idx;
+                idx = idx.next;
+            }
+            pre.next = null;
+            index++;
+        }
+        return ans;
+    }
+
+    private ListNode[] splitListToSingle(ListNode head, int k) {
+        ListNode[] ans = new ListNode[k];
+        int i = 0;
+        ListNode idx = head;
+        while (idx != null) {
+            ans[i] = idx;
+            idx = idx.next;
+            ans[i].next = null;
+            i++;
         }
         return ans;
     }
@@ -36,16 +70,8 @@ public class LeetCode725 {
         int val;
         ListNode next;
 
-        ListNode() {
-        }
-
         ListNode(int val) {
             this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
         }
     }
 
@@ -85,11 +111,11 @@ public class LeetCode725 {
         LeetCode725 leetCode725 = new LeetCode725();
         ListNode[] ans = leetCode725.splitListToParts(buildListNode(new int[]{1, 2, 3}), 5);
         assert ans.length == 5;
-        assert ans[0].equals(buildListNode(new int[]{1}));
-        assert ans[1].equals(buildListNode(new int[]{2}));
-        assert ans[2].equals(buildListNode(new int[]{3}));
-        assert ans[3].equals(buildListNode(new int[]{}));
-        assert ans[4].equals(buildListNode(new int[]{}));
+        assert equalListNode(ans[0], buildListNode(new int[]{1}));
+        assert equalListNode(ans[1], buildListNode(new int[]{2}));
+        assert equalListNode(ans[2], buildListNode(new int[]{3}));
+        assert equalListNode(ans[3], buildListNode(new int[]{}));
+        assert equalListNode(ans[4], buildListNode(new int[]{}));
     }
 
     @Test
@@ -97,8 +123,18 @@ public class LeetCode725 {
         LeetCode725 leetCode725 = new LeetCode725();
         ListNode[] ans = leetCode725.splitListToParts(buildListNode(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}), 3);
         assert ans.length == 3;
-        assert ans[0].equals(buildListNode(new int[]{1, 2, 3, 4}));
-        assert ans[1].equals(buildListNode(new int[]{5, 6, 7}));
-        assert ans[2].equals(buildListNode(new int[]{8, 9, 10}));
+        assert equalListNode(ans[0], buildListNode(new int[]{1, 2, 3, 4}));
+        assert equalListNode(ans[1], buildListNode(new int[]{5, 6, 7}));
+        assert equalListNode(ans[2], buildListNode(new int[]{8, 9, 10}));
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode725 leetCode725 = new LeetCode725();
+        ListNode[] ans = leetCode725.splitListToParts(buildListNode(new int[]{0, 1, 2, 3, 4}), 3);
+        assert ans.length == 3;
+        assert equalListNode(ans[0], buildListNode(new int[]{0, 1}));
+        assert equalListNode(ans[1], buildListNode(new int[]{2, 3}));
+        assert equalListNode(ans[2], buildListNode(new int[]{4}));
     }
 }
