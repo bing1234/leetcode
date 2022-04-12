@@ -1,5 +1,7 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -15,14 +17,6 @@ public class LeetCode227 {
         List<String> postfixExps = convertInfixToPostfix(infixExps);
         // 计算后缀表达式
         return calPostfixExps(postfixExps);
-    }
-
-    public static void main(String[] args) {
-        LeetCode227 leetCode227 = new LeetCode227();
-        System.out.println(leetCode227.calculate("1*2-3/4+5*6-7*8+9/10"));
-//        System.out.println(leetCode227.calculate("3+2*2"));
-//        System.out.println(leetCode227.calculate(" 3/2 "));
-//        System.out.println(leetCode227.calculate(" 3+5 / 2 "));
     }
 
     private List<String> genInfixExps(String str) {
@@ -47,50 +41,41 @@ public class LeetCode227 {
         return list;
     }
 
-    private List<String> convertInfixToPostfix(List<String> infixExps) {
+    public List<String> convertInfixToPostfix(List<String> list) {
         List<String> ans = new ArrayList<>();
-        Stack<Character> stack = new Stack<>();
-        stack.push('#');
-        for (String str : infixExps) {
-            if (Character.isDigit(str.charAt(0))) {
-                ans.add(str);
-            } else if ("(".equals(str)) {
-                stack.push('(');
-            } else if (")".equals(str)) {
-                while (stack.peek() != '(') {
-                    ans.add(String.valueOf(stack.pop()));
+        // 符号栈
+        Stack<String> stack = new Stack<>();
+        for (String item : list) {
+            // 如果是一个数
+            if (item.matches("\\d+")) {
+                ans.add(item);
+            } else if (item.equals("(")) {
+                stack.push(item);
+            } else if (item.equals(")")) {
+                while (!stack.peek().equals("(")) {
+                    ans.add(stack.pop());
                 }
                 stack.pop();
             } else {
-                Character cur = str.charAt(0);
-                Character stackTop = stack.peek();
-                // 比较当前操作符和栈顶操作符的优先级
-                int temp = comparePriority(cur, stackTop);
-                if (temp <= 0) {
-                    ans.add(String.valueOf(stack.pop()));
+                while (!stack.isEmpty() && getPriority(stack.peek()) >= getPriority(item)) {
+                    ans.add(stack.pop());
                 }
-                stack.push(cur);
+                stack.push(item);
             }
         }
-        while (!stack.isEmpty() && stack.peek() != '#') {
-            ans.add(String.valueOf(stack.pop()));
+        while (stack.size() != 0) {
+            ans.add(stack.pop());
         }
         return ans;
     }
 
-    private int comparePriority(Character op1, Character op2) {
-        Integer p1 = getPriority(op1);
-        Integer p2 = getPriority(op2);
-        return p1.compareTo(p2);
-    }
-
-    private Integer getPriority(Character op) {
+    private Integer getPriority(String op) {
         switch (op) {
-            case '+':
-            case '-':
+            case "+":
+            case "-":
                 return 1;
-            case '*':
-            case '/':
+            case "*":
+            case "/":
                 return 2;
             default:
                 return 0;
@@ -124,5 +109,23 @@ public class LeetCode227 {
             }
         }
         return stack.pop();
+    }
+
+    @Test
+    public void testCase1() {
+        LeetCode227 leetCode227 = new LeetCode227();
+        assert leetCode227.calculate("3+2*2") == 7;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode227 leetCode227 = new LeetCode227();
+        assert leetCode227.calculate(" 3/2 ") == 1;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode227 leetCode227 = new LeetCode227();
+        assert leetCode227.calculate(" 3+5 / 2 ") == 5;
     }
 }

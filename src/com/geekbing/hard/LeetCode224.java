@@ -1,8 +1,8 @@
 package com.geekbing.hard;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
 
 /**
  * @author bing
@@ -15,13 +15,6 @@ public class LeetCode224 {
         List<String> postfixExps = convertInfixToPostfix(infixExps);
         // 计算后缀表达式
         return calPostfixExps(postfixExps);
-    }
-
-    public static void main(String[] args) {
-        LeetCode224 leetCode224 = new LeetCode224();
-        System.out.println(leetCode224.calculate("1 + 1"));
-        System.out.println(leetCode224.calculate(" 2-1 + 2 "));
-        System.out.println(leetCode224.calculate("(1+(4+5+2)-3)+(6+8)"));
     }
 
     private List<String> genInfixExps(String str) {
@@ -43,53 +36,52 @@ public class LeetCode224 {
                 i++;
             }
         }
+        if (!list.isEmpty() && "-".equals(list.get(0))) {
+            list.add(0, "0");
+        }
         return list;
     }
 
-    private List<String> convertInfixToPostfix(List<String> infixExps) {
+    public List<String> convertInfixToPostfix(List<String> list) {
         List<String> ans = new ArrayList<>();
-        Stack<Character> stack = new Stack<>();
-        stack.push('#');
-        for (String str : infixExps) {
-            if (Character.isDigit(str.charAt(0))) {
-                ans.add(str);
-            } else if ("(".equals(str)) {
-                stack.push('(');
-            } else if (")".equals(str)) {
-                while (stack.peek() != '(') {
-                    ans.add(String.valueOf(stack.pop()));
+        // 符号栈
+        Stack<String> stack = new Stack<>();
+        for (String item : list) {
+            // 操作符
+            if (isOperator(item)) {
+                while (!stack.isEmpty() && getPriority(stack.peek()) >= getPriority(item)) {
+                    ans.add(stack.pop());
+                }
+                stack.push(item);
+            } else if (item.equals("(")) {
+                stack.push(item);
+            } else if (item.equals(")")) {
+                while (!stack.peek().equals("(")) {
+                    ans.add(stack.pop());
                 }
                 stack.pop();
             } else {
-                Character cur = str.charAt(0);
-                Character stackTop = stack.peek();
-                // 比较当前操作符和栈顶操作符的优先级
-                int temp = comparePriority(cur, stackTop);
-                if (temp <= 0) {
-                    ans.add(String.valueOf(stack.pop()));
-                }
-                stack.push(cur);
+                // 数字
+                ans.add(item);
             }
         }
-        while (!stack.isEmpty() && stack.peek() != '#') {
-            ans.add(String.valueOf(stack.pop()));
+        while (stack.size() != 0) {
+            ans.add(stack.pop());
         }
         return ans;
     }
 
-    private int comparePriority(Character op1, Character op2) {
-        Integer p1 = getPriority(op1);
-        Integer p2 = getPriority(op2);
-        return p1.compareTo(p2);
+    private boolean isOperator(String str) {
+        return "+".equals(str) || "-".equals(str) || "*".equals(str) || "/".equals(str);
     }
 
-    private Integer getPriority(Character op) {
+    private Integer getPriority(String op) {
         switch (op) {
-            case '+':
-            case '-':
+            case "+":
+            case "-":
                 return 1;
-            case '*':
-            case '/':
+            case "*":
+            case "/":
                 return 2;
             default:
                 return 0;
@@ -99,9 +91,7 @@ public class LeetCode224 {
     private int calPostfixExps(List<String> list) {
         Stack<Integer> stack = new Stack<>();
         for (String str : list) {
-            if (Character.isDigit(str.charAt(0))) {
-                stack.push(Integer.parseInt(str));
-            } else {
+            if (isOperator(str)) {
                 int num2 = stack.pop();
                 int num1 = stack.pop();
                 switch (str) {
@@ -120,8 +110,52 @@ public class LeetCode224 {
                     default:
                         break;
                 }
+            } else {
+                stack.push(Integer.parseInt(str));
             }
         }
         return stack.pop();
+    }
+
+    @Test
+    public void testCase1() {
+        LeetCode224 leetCode224 = new LeetCode224();
+        assert leetCode224.calculate("1 + 1") == 2;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode224 leetCode224 = new LeetCode224();
+        assert leetCode224.calculate(" 2-1 + 2 ") == 3;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode224 leetCode224 = new LeetCode224();
+        assert leetCode224.calculate("(1+(4+5+2)-3)+(6+8)") == 23;
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode224 leetCode224 = new LeetCode224();
+        assert leetCode224.calculate("10 * 9 / 8 + 7 - 6 * 5 / 4 + 3 - 2 * 1") == 12;
+    }
+
+    @Test
+    public void testCase5() {
+        LeetCode224 leetCode224 = new LeetCode224();
+        assert leetCode224.calculate("-2+ 1") == -1;
+    }
+
+    @Test
+    public void testCase6() {
+        LeetCode224 leetCode224 = new LeetCode224();
+        assert leetCode224.calculate("- (3 + (4 + 5))") == -12;
+    }
+
+    @Test
+    public void testCase7() {
+        LeetCode224 leetCode224 = new LeetCode224();
+        assert leetCode224.calculate("1-(-2)") == 3;
     }
 }
