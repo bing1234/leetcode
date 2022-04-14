@@ -1,4 +1,4 @@
-package com.geekbing;
+package com.geekbing.middle;
 
 import java.util.Random;
 
@@ -22,7 +22,20 @@ public class LeetCode470 {
      */
     private static class Solution extends SolBase {
         public int rand10() {
-            return 0;
+            int r = rand7();
+            while (r == 7) {
+                r = rand7();
+            }
+            r = r % 2;
+            return rand5() + r * 5;
+        }
+
+        private int rand5() {
+            int r = rand7();
+            while (r > 5) {
+                r = rand7();
+            }
+            return r;
         }
     }
 }
