@@ -2,8 +2,6 @@ package com.geekbing.middle;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 /**
@@ -11,104 +9,38 @@ import java.util.Stack;
  */
 public class LeetCode227 {
     public int calculate(String s) {
-        // 生成中缀表达式
-        List<String> infixExps = genInfixExps(s);
-        // 中缀表达式转后缀表达式
-        List<String> postfixExps = convertInfixToPostfix(infixExps);
-        // 计算后缀表达式
-        return calPostfixExps(postfixExps);
-    }
-
-    private List<String> genInfixExps(String str) {
-        List<String> list = new ArrayList<>();
-        int i = 0;
-        while (i < str.length()) {
-            char c = str.charAt(i);
-            if (c == ' ') {
-                i++;
-            } else if (Character.isDigit(c)) {
+        Stack<Integer> stack = new Stack<>();
+        char op = '+';
+        int idx = 0;
+        while (idx < s.length()) {
+            char c = s.charAt(idx);
+            if (c == '+' || c == '-' || c == '*' || c == '/') {
+                op = c;
+            } else if ('0' <= c && c <= '9') {
+                // 得到当前数字
                 int num = 0;
-                while (i < str.length() && Character.isDigit(str.charAt(i))) {
-                    num = num * 10 + (str.charAt(i) - '0');
-                    i++;
+                while (idx < s.length() && '0' <= s.charAt(idx) && s.charAt(idx) <= '9') {
+                    num = num * 10 + (s.charAt(idx) - '0');
+                    idx++;
                 }
-                list.add(String.valueOf(num));
-            } else {
-                list.add(String.valueOf(c));
-                i++;
+                idx--;
+                if (op == '+') {
+                    stack.push(num);
+                } else if (op == '-') {
+                    stack.push(-num);
+                } else if (op == '*') {
+                    stack.push(stack.pop() * num);
+                } else {
+                    stack.push(stack.pop() / num);
+                }
             }
+            idx++;
         }
-        return list;
-    }
-
-    public List<String> convertInfixToPostfix(List<String> list) {
-        List<String> ans = new ArrayList<>();
-        // 符号栈
-        Stack<String> stack = new Stack<>();
-        for (String item : list) {
-            // 如果是一个数
-            if (item.matches("\\d+")) {
-                ans.add(item);
-            } else if (item.equals("(")) {
-                stack.push(item);
-            } else if (item.equals(")")) {
-                while (!stack.peek().equals("(")) {
-                    ans.add(stack.pop());
-                }
-                stack.pop();
-            } else {
-                while (!stack.isEmpty() && getPriority(stack.peek()) >= getPriority(item)) {
-                    ans.add(stack.pop());
-                }
-                stack.push(item);
-            }
-        }
-        while (stack.size() != 0) {
-            ans.add(stack.pop());
+        int ans = 0;
+        while (!stack.isEmpty()) {
+            ans += stack.pop();
         }
         return ans;
-    }
-
-    private Integer getPriority(String op) {
-        switch (op) {
-            case "+":
-            case "-":
-                return 1;
-            case "*":
-            case "/":
-                return 2;
-            default:
-                return 0;
-        }
-    }
-
-    private int calPostfixExps(List<String> list) {
-        Stack<Integer> stack = new Stack<>();
-        for (String str : list) {
-            if (Character.isDigit(str.charAt(0))) {
-                stack.push(Integer.parseInt(str));
-            } else {
-                int num2 = stack.pop();
-                int num1 = stack.pop();
-                switch (str) {
-                    case "+":
-                        stack.push(num1 + num2);
-                        break;
-                    case "-":
-                        stack.push(num1 - num2);
-                        break;
-                    case "*":
-                        stack.push(num1 * num2);
-                        break;
-                    case "/":
-                        stack.push(num1 / num2);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-        return stack.pop();
     }
 
     @Test
