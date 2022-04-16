@@ -1,4 +1,4 @@
-package com.geekbing.middle;
+package com.geekbing;
 
 import java.util.List;
 
