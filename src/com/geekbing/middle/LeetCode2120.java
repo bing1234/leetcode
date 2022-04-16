@@ -5,12 +5,42 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 /**
- * todo
  * @author bing
  */
 public class LeetCode2120 {
     public int[] executeInstructions(int n, int[] startPos, String s) {
-        return new int[]{};
+        int[] ans = new int[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            ans[i] = executeInstruction(n, startPos, s, i);
+        }
+        return ans;
+    }
+
+    private int executeInstruction(int n, int[] startPos, String s, int idx) {
+        int x = startPos[0], y = startPos[1], count = 0;
+        for (int i = idx; i < s.length(); i++) {
+            switch (s.charAt(i)) {
+                case 'U':
+                    x--;
+                    break;
+                case 'D':
+                    x++;
+                    break;
+                case 'L':
+                    y--;
+                    break;
+                case 'R':
+                    y++;
+                    break;
+                default:
+                    break;
+            }
+            if (x < 0 || x >= n || y < 0 || y >= n) {
+                return count;
+            }
+            count++;
+        }
+        return count;
     }
 
     @Test
