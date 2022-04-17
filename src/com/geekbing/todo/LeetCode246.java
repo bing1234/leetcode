@@ -7,7 +7,20 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode246 {
     public boolean isStrobogrammatic(String num) {
-        return true;
+        StringBuilder ans = new StringBuilder();
+        for (int i = num.length() - 1; i >= 0; i--) {
+            char c = num.charAt(i);
+            if (c == '6') {
+                ans.append('9');
+            } else if (c == '9') {
+                ans.append('6');
+            } else if (c == '0' || c == '1' || c == '8') {
+                ans.append(c);
+            } else {
+                return false;
+            }
+        }
+        return ans.toString().equals(num);
     }
 
     @Test
