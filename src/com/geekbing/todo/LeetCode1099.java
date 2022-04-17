@@ -2,11 +2,18 @@ package com.geekbing.todo;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 /**
  * @author bing
  */
 public class LeetCode1099 {
     public int twoSumLessThanK(int[] nums, int k) {
+        // 特殊情况处理
+        if (nums.length <= 1 || nums[0] + nums[1] >= k) {
+            return -1;
+        }
+        Arrays.sort(nums);
         return 0;
     }
 
