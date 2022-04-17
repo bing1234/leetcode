@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -13,19 +15,15 @@ public class LeetCode819 {
 
         String ans = "", curWord = "";
         int cnt = 0;
-        char[] chars = paragraph.toCharArray();
-        for (char c : chars) {
+        for (int i = 0; i < paragraph.length(); i++) {
+            char c = paragraph.charAt(i);
             if ('a' <= c && c <= 'z') {
                 curWord += c;
             } else if ('A' <= c && c <= 'Z') {
                 curWord += (char) (c + 32);
             } else {
                 if (!"".equals(curWord) && !ban.contains(curWord)) {
-                    Integer count = map.get(curWord);
-                    if (count == null) {
-                        count = 0;
-                    }
-                    count++;
+                    int count = map.getOrDefault(curWord, 0) + 1;
                     map.put(curWord, count);
                     if (count > cnt) {
                         cnt = count;
@@ -36,11 +34,7 @@ public class LeetCode819 {
             }
         }
         if (!"".equals(curWord)) {
-            Integer count = map.get(curWord);
-            if (count == null) {
-                count = 0;
-            }
-            count++;
+            int count = map.getOrDefault(curWord, 0) + 1;
             if (count > cnt) {
                 ans = curWord;
             }
@@ -48,9 +42,9 @@ public class LeetCode819 {
         return ans;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode819 leetCode819 = new LeetCode819();
-        System.out.println(leetCode819.mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", new String[]{"hit"}));
-        System.out.println(leetCode819.mostCommonWord("Bob", new String[]{}));
+        assert leetCode819.mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", new String[]{"hit"}).equals("ball");
     }
 }
