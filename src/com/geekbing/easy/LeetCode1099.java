@@ -1,4 +1,4 @@
-package com.geekbing.todo;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,11 +10,20 @@ import java.util.Arrays;
 public class LeetCode1099 {
     public int twoSumLessThanK(int[] nums, int k) {
         // 特殊情况处理
-        if (nums.length <= 1 || nums[0] + nums[1] >= k) {
+        if (nums.length <= 1) {
             return -1;
         }
         Arrays.sort(nums);
-        return 0;
+        int left = 0, right = nums.length - 1, ans = -1;
+        while (left < right) {
+            if (nums[left] + nums[right] >= k) {
+                right--;
+            } else {
+                ans = Math.max(ans, nums[left] + nums[right]);
+                left++;
+            }
+        }
+        return ans;
     }
 
     @Test
