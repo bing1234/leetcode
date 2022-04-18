@@ -1,35 +1,58 @@
-package com.geekbing.todo;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Stack;
 
 /**
  * @author bing
  */
 public class LeetCode716 {
     private static class MaxStack {
+        private static Stack<Integer> dataStack;
+        private static Stack<Integer> maxStack;
 
         public MaxStack() {
-
+            dataStack = new Stack<>();
+            maxStack = new Stack<>();
         }
 
         public void push(int x) {
-
+            dataStack.push(x);
+            if (maxStack.isEmpty()) {
+                maxStack.push(x);
+            } else {
+                maxStack.push(x > maxStack.peek() ? x : maxStack.peek());
+            }
         }
 
         public int pop() {
-            return 0;
+            int ans = dataStack.pop();
+            maxStack.pop();
+            return ans;
         }
 
         public int top() {
-            return 0;
+            return dataStack.peek();
         }
 
         public int peekMax() {
-            return 0;
+            return maxStack.peek();
         }
 
         public int popMax() {
-            return 0;
+            int max = maxStack.peek();
+            Stack<Integer> temp = new Stack<>();
+            while (dataStack.peek() != max) {
+                temp.push(dataStack.pop());
+                maxStack.pop();
+            }
+            dataStack.pop();
+            maxStack.pop();
+            while (!temp.isEmpty()) {
+                push(temp.pop());
+            }
+            return max;
         }
     }
 
