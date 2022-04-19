@@ -1,4 +1,4 @@
-package com.geekbing.todo;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,13 +6,30 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author bing
  */
 public class LeetCode1469 {
     public List<Integer> getLonelyNodes(TreeNode root) {
-        return new ArrayList<>();
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) {
+            return ans;
+        }
+        if (root.left == null && root.right == null) {
+            return ans;
+        } else if (root.right == null) {
+            ans.add(root.left.val);
+            ans.addAll(getLonelyNodes(root.left));
+        } else if (root.left == null) {
+            ans.add(root.right.val);
+            ans.addAll(getLonelyNodes(root.right));
+        } else {
+            ans.addAll(getLonelyNodes(root.left));
+            ans.addAll(getLonelyNodes(root.right));
+        }
+        return ans;
     }
 
     private static class TreeNode {
@@ -50,7 +67,8 @@ public class LeetCode1469 {
 
         LeetCode1469 leetCode1469 = new LeetCode1469();
         List<Integer> ans = leetCode1469.getLonelyNodes(root);
-        List<Integer> expert = new ArrayList<>(Arrays.asList(6, 2));
+        ans = ans.stream().sorted().collect(Collectors.toList());
+        List<Integer> expert = new ArrayList<>(Arrays.asList(2, 6));
         assert expert.equals(ans);
     }
 
@@ -68,14 +86,14 @@ public class LeetCode1469 {
 
         LeetCode1469 leetCode1469 = new LeetCode1469();
         List<Integer> ans = leetCode1469.getLonelyNodes(root);
-        List<Integer> expert = new ArrayList<>(Arrays.asList(77, 55, 33, 66, 44, 22));
+        ans = ans.stream().sorted().collect(Collectors.toList());
+        List<Integer> expert = new ArrayList<>(Arrays.asList(22, 33, 44, 55, 66, 77));
         assert expert.equals(ans);
     }
 
     @Test
     public void testCase4() {
         TreeNode root = new TreeNode(197);
-
         LeetCode1469 leetCode1469 = new LeetCode1469();
         List<Integer> ans = leetCode1469.getLonelyNodes(root);
         assert new ArrayList<>().equals(ans);
@@ -85,11 +103,12 @@ public class LeetCode1469 {
     public void testCase5() {
         TreeNode root = new TreeNode(31);
         root.right = new TreeNode(78);
-        root.right.left = new TreeNode(28);
+        root.right.right = new TreeNode(28);
 
         LeetCode1469 leetCode1469 = new LeetCode1469();
         List<Integer> ans = leetCode1469.getLonelyNodes(root);
-        List<Integer> expert = new ArrayList<>(Arrays.asList(78, 28));
+        ans = ans.stream().sorted().collect(Collectors.toList());
+        List<Integer> expert = new ArrayList<>(Arrays.asList(28, 78));
         assert expert.equals(ans);
     }
 }

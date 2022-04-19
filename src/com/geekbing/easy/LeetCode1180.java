@@ -1,13 +1,27 @@
-package com.geekbing.todo;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 /**
  * @author bing
  */
 public class LeetCode1180 {
     public int countLetters(String s) {
-        return 0;
+        // dp[i]是表示以s[i]结尾的只含单一字母的子串个数
+        int[] dp = new int[s.length()];
+        Arrays.fill(dp, 1);
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                dp[i] = dp[i - 1] + 1;
+            }
+        }
+        int ans = 0;
+        for (int num : dp) {
+            ans += num;
+        }
+        return ans;
     }
 
     @Test

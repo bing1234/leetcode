@@ -1,4 +1,4 @@
-package com.geekbing.todo;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +7,17 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode1165 {
     public int calculateTime(String keyboard, String word) {
-        return 0;
+        int[] keys = new int[26];
+        for (int i = 0; i < keyboard.length(); i++) {
+            keys[keyboard.charAt(i) - 'a'] = i;
+        }
+        int ans = 0, pre = 0;
+        for (int i = 0; i < word.length(); i++) {
+            int cur = keys[word.charAt(i) - 'a'];
+            ans += Math.abs(cur - pre);
+            pre = cur;
+        }
+        return ans;
     }
 
     @Test
