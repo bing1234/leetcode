@@ -7,13 +7,57 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode346 {
     private static class MovingAverage {
+        /**
+         * 链表当前长度、总和、最大容量
+         */
+        private int len, sum;
+        private final int size;
+
+        /**
+         * 双链表的头尾指针(虚节点)
+         */
+        private final Node head, tail;
 
         public MovingAverage(int size) {
+            this.len = 0;
+            this.size = size;
+            this.sum = 0;
+            head = new Node(0);
+            tail = new Node(0);
 
+            head.next = tail;
+            tail.prev = head;
         }
 
         public double next(int val) {
-            return 0D;
+            // 在尾巴添加当前一个元素
+            Node cur = new Node(val);
+            cur.prev = tail.prev;
+            cur.next = tail;
+            tail.prev.next = cur;
+            tail.prev = cur;
+
+            sum += val;
+            if (len < size) {
+                len++;
+            } else {
+                sum -= head.next.val;
+                // 删除头部的节点
+                Node del = head.next;
+                head.next = del.next;
+                del.next.prev = head;
+            }
+            return (double) sum / (double) len;
+        }
+    }
+
+    private static class Node {
+        private final int val;
+        private Node prev;
+        private Node next;
+
+        public Node(int val) {
+            this.val = val;
         }
     }
 
