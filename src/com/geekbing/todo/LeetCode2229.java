@@ -2,12 +2,25 @@ package com.geekbing.todo;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * @author bing
  */
 public class LeetCode2229 {
     public boolean isConsecutive(int[] nums) {
-        return true;
+        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+        Set<Integer> set = new HashSet<>(nums.length);
+        for (int num : nums) {
+            min = Math.min(min, num);
+            max = Math.max(max, num);
+            set.add(num);
+        }
+        return max - min == set.size() - 1 && nums.length == set.size();
     }
 
     @Test
