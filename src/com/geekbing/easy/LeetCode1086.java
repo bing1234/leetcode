@@ -2,15 +2,34 @@ package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author bing
  */
 public class LeetCode1086 {
     public int[][] highFive(int[][] items) {
-
-        return new int[][]{};
+        Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();
+        for (int[] item : items) {
+            PriorityQueue<Integer> queue = map.getOrDefault(item[0], new PriorityQueue<>(5));
+            queue.offer(item[1]);
+            if (queue.size() > 5) {
+                queue.poll();
+            }
+            map.put(item[0], queue);
+        }
+        int[][] ans = new int[map.size()][2];
+        List<Integer> ids = map.keySet().stream().sorted().collect(Collectors.toList());
+        for (int i = 0; i < ids.size(); i++) {
+            ans[i][0] = ids.get(i);
+            PriorityQueue<Integer> queue = map.get(ids.get(i));
+            while (!queue.isEmpty()) {
+                ans[i][1] += queue.poll();
+            }
+            ans[i][1] /= 5;
+        }
+        return ans;
     }
 
     @Test
