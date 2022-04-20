@@ -9,6 +9,7 @@ import java.util.Arrays;
  */
 public class LeetCode1086 {
     public int[][] highFive(int[][] items) {
+
         return new int[][]{};
     }
 
