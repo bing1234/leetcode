@@ -1,18 +1,31 @@
-package com.geekbing.todo;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author bing
  */
 public class LeetCode359 {
     private static class Logger {
+        private final Map<String, Integer> map;
 
         public Logger() {
-
+            map = new HashMap<>();
         }
 
         public boolean shouldPrintMessage(int timestamp, String message) {
+            Integer time = map.get(message);
+            if (time == null) {
+                map.put(message, timestamp);
+                return true;
+            }
+            if (time + 10 > timestamp) {
+                return false;
+            }
+            map.put(message, timestamp);
             return true;
         }
     }

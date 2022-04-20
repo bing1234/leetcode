@@ -1,4 +1,4 @@
-package com.geekbing.todo;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +7,16 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode1085 {
     public int sumOfDigits(int[] nums) {
-        return 0;
+        int min = nums[0];
+        for (int num : nums) {
+            min = Math.min(min, num);
+        }
+        int bitSum = 0;
+        while (min != 0) {
+            bitSum += min % 10;
+            min /= 10;
+        }
+        return bitSum % 2 == 0 ? 1 : 0;
     }
 
     @Test
