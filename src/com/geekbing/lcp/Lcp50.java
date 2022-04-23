@@ -2,12 +2,24 @@ package com.geekbing.lcp;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 /**
  * @author bing
  */
 public class Lcp50 {
     public int giveGem(int[] gem, int[][] operations) {
-        return 0;
+        for (int[] opera : operations) {
+            int num = gem[opera[0]] / 2;
+            gem[opera[0]] -= num;
+            gem[opera[1]] += num;
+        }
+        int max = gem[0], min = gem[0];
+        for (int i = 1; i < gem.length; i++) {
+            max = Math.max(max, gem[i]);
+            min = Math.min(min, gem[i]);
+        }
+        return max - min;
     }
 
     @Test
