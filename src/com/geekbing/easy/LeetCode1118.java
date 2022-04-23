@@ -1,13 +1,29 @@
-package com.geekbing.todo;
+package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author bing
  */
 public class LeetCode1118 {
+    private static final Set<Integer> MONTHS_31 = new HashSet<>(Arrays.asList(1, 3, 5, 7, 8, 10, 12));
+    private static final Set<Integer> MONTHS_30 = new HashSet<>(Arrays.asList(4, 6, 9, 11));
+
     public int numberOfDays(int year, int month) {
-        return 0;
+        if (MONTHS_31.contains(month)) {
+            return 31;
+        }
+        if (MONTHS_30.contains(month)) {
+            return 30;
+        }
+        if ((year % 400 == 0) || (year % 100 != 0 && year % 4 == 0)) {
+            return 29;
+        }
+        return 28;
     }
 
     @Test
