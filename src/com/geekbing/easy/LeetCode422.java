@@ -11,30 +11,64 @@ import java.util.List;
  */
 public class LeetCode422 {
     public boolean validWordSquare(List<String> words) {
-        List<String> cols = new ArrayList<>();
-        return cols.equals(words);
-    }
-
-    private List<String> getCols(List<String> words) {
-        List<String> ans = new ArrayList<>();
-        return ans;
+        for (int i = 0; i < words.size(); i++) {
+            for (int j = 0; j < words.get(i).length(); j++) {
+                if (j >= words.size()) {
+                    return false;
+                }
+                if (i >= words.get(j).length()) {
+                    return false;
+                }
+                // 不相等
+                if (words.get(i).charAt(j) != words.get(j).charAt(i)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Test
     public void testCase1() {
         LeetCode422 leetCode422 = new LeetCode422();
-        assert leetCode422.validWordSquare(new ArrayList<>(Arrays.asList("abcd", "bnrt", "crmy", "dtye")));
+        assert leetCode422.validWordSquare(new ArrayList<>(Arrays.asList(
+                "abcd",
+                "bnrt",
+                "crmy",
+                "dtye"
+        )));
     }
 
     @Test
     public void testCase2() {
         LeetCode422 leetCode422 = new LeetCode422();
-        assert leetCode422.validWordSquare(new ArrayList<>(Arrays.asList("abcd", "bnrt", "crm", "dt")));
+        assert leetCode422.validWordSquare(new ArrayList<>(Arrays.asList(
+                "abcd",
+                "bnrt",
+                "crm",
+                "dt"
+        )));
     }
 
     @Test
     public void testCase3() {
         LeetCode422 leetCode422 = new LeetCode422();
-        assert leetCode422.validWordSquare(new ArrayList<>(Arrays.asList("ball", "area", "read", "lady")));
+        assert !leetCode422.validWordSquare(new ArrayList<>(Arrays.asList(
+                "ball",
+                "area",
+                "read",
+                "lady"
+        )));
+    }
+
+    @Test
+    public void testCase4() {
+        LeetCode422 leetCode422 = new LeetCode422();
+        assert !leetCode422.validWordSquare(new ArrayList<>(Arrays.asList(
+                "ball",
+                "asee",
+                "let",
+                "lep"
+        )));
     }
 }
