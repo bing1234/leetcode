@@ -16,12 +16,7 @@ public class LeetCode1708 {
                 maxIdx = i;
             }
         }
-        int[] ans = new int[k];
-        int idx = 0;
-        for (int i = maxIdx; i < maxIdx + k; i++) {
-            ans[idx++] = nums[i];
-        }
-        return ans;
+        return Arrays.copyOfRange(nums, maxIdx, maxIdx + k);
     }
 
     @Test
