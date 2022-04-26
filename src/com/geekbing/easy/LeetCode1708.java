@@ -9,7 +9,19 @@ import java.util.Arrays;
  */
 public class LeetCode1708 {
     public int[] largestSubarray(int[] nums, int k) {
-        return new int[]{};
+        int max = Integer.MIN_VALUE, maxIdx = Integer.MAX_VALUE;
+        for (int i = nums.length - k; i >= 0; i--) {
+            if (nums[i] > max) {
+                max = nums[i];
+                maxIdx = i;
+            }
+        }
+        int[] ans = new int[k];
+        int idx = 0;
+        for (int i = maxIdx; i < maxIdx + k; i++) {
+            ans[idx++] = nums[i];
+        }
+        return ans;
     }
 
     @Test
