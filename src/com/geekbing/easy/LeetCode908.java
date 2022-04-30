@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * @author bing
  */
@@ -14,14 +16,24 @@ public class LeetCode908 {
                 min = num;
             }
         }
-        int result = max - min - 2 * K;
-        return Math.max(result, 0);
+        return Math.max(max - min - 2 * K, 0);
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode908 leetCode908 = new LeetCode908();
-        System.out.println(leetCode908.smallestRangeI(new int[]{1}, 0));
-        System.out.println(leetCode908.smallestRangeI(new int[]{0, 10}, 2));
-        System.out.println(leetCode908.smallestRangeI(new int[]{1, 3, 6}, 3));
+        assert leetCode908.smallestRangeI(new int[]{1}, 0) == 0;
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode908 leetCode908 = new LeetCode908();
+        assert leetCode908.smallestRangeI(new int[]{0, 10}, 2) == 6;
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode908 leetCode908 = new LeetCode908();
+        assert leetCode908.smallestRangeI(new int[]{1, 3, 6}, 3) == 0;
     }
 }
