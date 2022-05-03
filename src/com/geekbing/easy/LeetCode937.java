@@ -1,5 +1,7 @@
 package com.geekbing.easy;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,17 +11,16 @@ import java.util.List;
  */
 public class LeetCode937 {
     public String[] reorderLogFiles(String[] logs) {
-        String[] ans = new String[logs.length];
-
+        int len = logs.length;
+        String[] ans = new String[len];
         // 保存字母日志
         List<String> letterLogs = new ArrayList<>();
 
         // 先从后向前排列数字日志
-        int idx = ans.length - 1;
+        int idx = len - 1;
         for (int i = logs.length - 1; i >= 0; i--) {
-            if (isNumLog(logs[i])) {
-                ans[idx] = logs[i];
-                idx--;
+            if (Character.isDigit(logs[i].charAt(logs[i].length() - 1))) {
+                ans[idx--] = logs[i];
             } else {
                 letterLogs.add(logs[i]);
             }
@@ -41,24 +42,27 @@ public class LeetCode937 {
             }
             return Integer.compare(words1.length, words2.length);
         });
-
         idx = 0;
         for (String log : letterLogs) {
             ans[idx] = log;
             idx++;
         }
-
         return ans;
     }
 
-    private boolean isNumLog(String log) {
-        char last = log.charAt(log.length() - 1);
-        return '0' <= last && last <= '9';
+    @Test
+    public void testCase1() {
+        LeetCode937 leetCode937 = new LeetCode937();
+        String[] ans = leetCode937.reorderLogFiles(new String[]{"dig1 8 1 5 1", "let1 art can", "dig2 3 6", "let2 own kit dig", "let3 art zero"});
+        String[] expert = new String[]{"let1 art can", "let3 art zero", "let2 own kit dig", "dig1 8 1 5 1", "dig2 3 6"};
+        assert Arrays.equals(expert, ans);
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase2() {
         LeetCode937 leetCode937 = new LeetCode937();
-        System.out.println(Arrays.toString(leetCode937.reorderLogFiles(new String[]{"dig1 8 1 5 1", "let1 art can", "dig2 3 6", "let2 own kit dig", "let3 art zero"})));
-        System.out.println(Arrays.toString(leetCode937.reorderLogFiles(new String[]{"a1 9 2 3 1", "g1 act car", "zo4 4 7", "ab1 off key dog", "a8 act zoo"})));
+        String[] ans = leetCode937.reorderLogFiles(new String[]{"a1 9 2 3 1", "g1 act car", "zo4 4 7", "ab1 off key dog", "a8 act zoo"});
+        String[] expert = new String[]{"g1 act car", "a8 act zoo", "ab1 off key dog", "a1 9 2 3 1", "zo4 4 7"};
+        assert Arrays.equals(expert, ans);
     }
 }
