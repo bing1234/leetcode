@@ -2,39 +2,20 @@ package com.geekbing.middle;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author bing
  */
 public class LeetCode421 {
     public int findMaximumXOR(int[] nums) {
         Trie trie = new Trie();
-        List<String> strs = new ArrayList<>();
         for (int num : nums) {
-            String str = toBinaryString(num);
-            strs.add(str);
-            trie.insertNum(str);
+            trie.insertNum(num);
         }
-        int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            max = Math.max(max, trie.search(strs.get(i), nums[i]));
+        int ans = 0;
+        for (int num : nums) {
+            ans = Math.max(ans, trie.search(num));
         }
-        return max;
-    }
-
-    private String toBinaryString(int num) {
-        String str = Integer.toBinaryString(num);
-        int padding = 32 - str.length();
-        StringBuilder ans = new StringBuilder();
-        for (int i = 0; i < padding; i++) {
-            ans.append("0");
-        }
-        for (int i = 0; i < str.length(); i++) {
-            ans.append(str.charAt(i));
-        }
-        return ans.toString();
+        return ans;
     }
 
     private static class Trie {
@@ -44,41 +25,31 @@ public class LeetCode421 {
             root = new Node();
         }
 
-        private void insertNum(String num) {
+        private void insertNum(int num) {
             Node cur = root;
-            for (int i = 0; i < num.length(); i++) {
-                char c = num.charAt(i);
-                if (cur.childs[c - '0'] == null) {
-                    cur.childs[c - '0'] = new Node();
+            for (int i = 31; i >= 0; i--) {
+                int curBit = (num >> i) & 1;
+                if (cur.childs[curBit] == null) {
+                    cur.childs[curBit] = new Node();
                 }
-                cur = cur.childs[c - '0'];
+                cur = cur.childs[curBit];
             }
         }
 
-        private int search(String numStr, int num) {
+        private int search(int num) {
             int other = 0;
             Node cur = root;
-            for (int i = 0; i < numStr.length(); i++) {
-                char c = numStr.charAt(i);
-                if (c == '0') {
-                    if (cur.childs[1] != null) {
-                        cur = cur.childs[1];
-                        other = other * 2 + 1;
-                    } else {
-                        cur = cur.childs[0];
-                        other = other * 2;
-                    }
+            for (int i = 31; i >= 0; i--) {
+                int curBit = (num >> i) & 1;
+                int otherBit = (curBit == 1) ? 0 : 1;
+                if (cur.childs[otherBit] == null) {
+                    cur = cur.childs[curBit];
                 } else {
-                    if (cur.childs[0] != null) {
-                        cur = cur.childs[0];
-                        other = other * 2;
-                    } else {
-                        cur = cur.childs[1];
-                        other = other * 2 + 1;
-                    }
+                    cur = cur.childs[otherBit];
+                    other += (1 << i);
                 }
             }
-            return num ^ other;
+            return other;
         }
     }
 
@@ -88,17 +59,6 @@ public class LeetCode421 {
         public Node() {
             childs = new Node[2];
         }
-    }
-
-    @Test
-    public void toBinaryStringTest() {
-        LeetCode421 leetCode421 = new LeetCode421();
-        System.out.println(leetCode421.toBinaryString(1));
-        System.out.println(leetCode421.toBinaryString(2));
-        System.out.println(leetCode421.toBinaryString(3));
-        System.out.println(Integer.toBinaryString(1));
-        System.out.println(Integer.toBinaryString(2));
-        System.out.println(Integer.toBinaryString(3));
     }
 
     @Test
