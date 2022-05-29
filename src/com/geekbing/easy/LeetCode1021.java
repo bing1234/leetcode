@@ -4,10 +4,10 @@ package com.geekbing.easy;
  * @author bing
  */
 public class LeetCode1021 {
-    public String removeOuterParentheses(String S) {
+    public String removeOuterParentheses(String s) {
         StringBuilder result = new StringBuilder();
         int leftCount = 0;
-        for (char c : S.toCharArray()) {
+        for (char c : s.toCharArray()) {
             if (c == '(') {
                 leftCount++;
             } else {
