@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author bing
@@ -12,7 +13,41 @@ import java.util.List;
 public class LeetCode2273 {
     public List<String> removeAnagrams(String[] words) {
         List<String> ans = new ArrayList<>();
+        String[] newWords = convertArr(words);
+        int idx = 0, len = words.length;
+        while (idx < len) {
+            int i;
+            for (i = idx + 1; i < len; i++) {
+                if (!Objects.equals(newWords[idx], newWords[i])) {
+                    break;
+                }
+            }
+            ans.add(words[idx]);
+            idx = i;
+        }
+        return ans;
+    }
 
+    private String[] convertArr(String[] words) {
+        String[] ans = new String[words.length];
+        for (int i = 0; i < words.length; i++) {
+            ans[i] = convertWord(words[i]);
+        }
+        return ans;
+    }
+
+    private String convertWord(String word) {
+        int[] bucket = new int[26];
+        char[] chars = word.toCharArray();
+        for (char c : chars) {
+            bucket[c - 'a']++;
+        }
+        String ans = "";
+        for (int i = 0; i < 26; i++) {
+            if (bucket[i] != 0) {
+                ans += String.valueOf((char) ('a' + i)) + bucket[i];
+            }
+        }
         return ans;
     }
 
