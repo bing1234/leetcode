@@ -1,8 +1,13 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.Collections;
 
+/**
+ * @author bing
+ */
 public class LeetCode698 {
     public boolean canPartitionKSubsets(int[] nums, int k) {
         if (nums.length < k) {
@@ -53,8 +58,15 @@ public class LeetCode698 {
         return false;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode698 leetCode698 = new LeetCode698();
-        System.out.println(leetCode698.canPartitionKSubsets(new int[]{4, 3, 2, 3, 5, 2, 1}, 4));
+        assert leetCode698.canPartitionKSubsets(new int[]{4, 3, 2, 3, 5, 2, 1}, 4);
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode698 leetCode698 = new LeetCode698();
+        assert leetCode698.canPartitionKSubsets(new int[]{1, 2, 3, 4}, 3);
     }
 }
