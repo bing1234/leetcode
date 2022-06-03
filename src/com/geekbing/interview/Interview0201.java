@@ -1,32 +1,34 @@
 package com.geekbing.interview;
 
-import java.util.List;
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
 
 /**
  * @author bing
  */
 public class Interview0201 {
     public ListNode removeDuplicateNodes(ListNode head) {
-        return null;
-    }
-
-    public static void main(String[] args) {
-        Interview0201 interview0201 = new Interview0201();
-
-        ListNode head1 = new ListNode(1);
-        head1.next = new ListNode(2);
-        head1.next.next = new ListNode(3);
-        head1.next.next.next = new ListNode(3);
-        head1.next.next.next.next = new ListNode(2);
-        head1.next.next.next.next.next = new ListNode(1);
-        System.out.println(interview0201.removeDuplicateNodes(head1));
-
-        ListNode head2 = new ListNode(1);
-        head2.next = new ListNode(1);
-        head2.next.next = new ListNode(1);
-        head2.next.next.next = new ListNode(1);
-        head2.next.next.next.next = new ListNode(2);
-        System.out.println(interview0201.removeDuplicateNodes(head2));
+        if (head == null) {
+            return head;
+        }
+        Set<Integer> set = new HashSet<>();
+        set.add(head.val);
+        ListNode pre = head, idx = head;
+        while (idx != null) {
+            while (idx != null && set.contains(idx.val)) {
+                idx = idx.next;
+            }
+            if (idx == null) {
+                pre.next = null;
+            } else {
+                set.add(idx.val);
+                pre.next = idx;
+                pre = pre.next;
+                idx = idx.next;
+            }
+        }
+        return head;
     }
 
     private static final class ListNode {
@@ -36,5 +38,48 @@ public class Interview0201 {
         ListNode(int x) {
             val = x;
         }
+    }
+
+    private ListNode buildListNode(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return null;
+        }
+        ListNode head = new ListNode(arr[0]);
+        ListNode idx = head;
+        for (int i = 1; i < arr.length; i++) {
+            idx.next = new ListNode(arr[i]);
+            idx = idx.next;
+        }
+        return head;
+    }
+
+    private List<Integer> travelListNode(ListNode head) {
+        List<Integer> ans = new ArrayList<>();
+        ListNode idx = head;
+        while (idx != null) {
+            ans.add(idx.val);
+            idx = idx.next;
+        }
+        return ans;
+    }
+
+    @Test
+    public void testCase1() {
+        Interview0201 interview0201 = new Interview0201();
+        ListNode head = buildListNode(new int[]{1, 2, 3, 3, 2, 1});
+        ListNode newHead = interview0201.removeDuplicateNodes(head);
+        List<Integer> ans = travelListNode(newHead);
+        List<Integer> expert = new ArrayList<>(Arrays.asList(1, 2, 3));
+        assert expert.equals(ans);
+    }
+
+    @Test
+    public void testCase2() {
+        Interview0201 interview0201 = new Interview0201();
+        ListNode head = buildListNode(new int[]{1, 1, 1, 1, 2});
+        ListNode newHead = interview0201.removeDuplicateNodes(head);
+        List<Integer> ans = travelListNode(newHead);
+        List<Integer> expert = new ArrayList<>(Arrays.asList(1, 2));
+        assert expert.equals(ans);
     }
 }
