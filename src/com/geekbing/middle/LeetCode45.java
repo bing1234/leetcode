@@ -7,7 +7,15 @@ import org.junit.jupiter.api.Test;
  */
 public class LeetCode45 {
     public int jump(int[] nums) {
-        return 0;
+        int len = nums.length, maxPosition = 0, end = 0, steps = 0;
+        for (int i = 0; i < len - 1; i++) {
+            maxPosition = Math.max(maxPosition, i + nums[i]);
+            if (i == end) {
+                end = maxPosition;
+                steps++;
+            }
+        }
+        return steps;
     }
 
     @Test
