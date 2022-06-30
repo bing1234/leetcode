@@ -1,15 +1,33 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 /**
- * todo
+ * @author bing
  */
 public class LeetCode464 {
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        return false;
+        if (maxChoosableInteger >= desiredTotal) {
+            return true;
+        }
+        return true;
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode464 leetCode464 = new LeetCode464();
-        System.out.println(leetCode464.canIWin(10, 11));
+        assert !leetCode464.canIWin(10, 11);
+    }
+
+    @Test
+    public void testCase2() {
+        LeetCode464 leetCode464 = new LeetCode464();
+        assert leetCode464.canIWin(10, 0);
+    }
+
+    @Test
+    public void testCase3() {
+        LeetCode464 leetCode464 = new LeetCode464();
+        assert leetCode464.canIWin(10, 1);
     }
 }
