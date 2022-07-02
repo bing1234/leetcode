@@ -2,6 +2,9 @@ package com.geekbing.middle;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author bing
+ */
 public class LeetCode647 {
     public int countSubstrings(String s) {
         int ans = 0;
