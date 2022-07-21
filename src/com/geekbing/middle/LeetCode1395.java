@@ -1,5 +1,8 @@
 package com.geekbing.middle;
 
+/**
+ * @author bing
+ */
 public class LeetCode1395 {
     public int numTeams(int[] rating) {
         // big[i] 表示第i个元素右边比其大的元素的个数

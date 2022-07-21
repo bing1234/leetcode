@@ -49,7 +49,7 @@ public class LeetCode662 {
     }
 
 
-    public class Node extends TreeNode {
+    public static class Node extends TreeNode {
         int idx;
 
         public Node(TreeNode node, int idx) {
@@ -81,7 +81,9 @@ public class LeetCode662 {
         root.left.left = new TreeNode(5);
         root.left.right = new TreeNode(3);
         root.right.right = new TreeNode(9);
-        int ans = widthOfBinaryTree(root);
+
+        LeetCode662 leetCode662 = new LeetCode662();
+        int ans = leetCode662.widthOfBinaryTree(root);
         assert ans == 4;
     }
 
@@ -91,7 +93,10 @@ public class LeetCode662 {
         root.left = new TreeNode(3);
         root.left.left = new TreeNode(5);
         root.left.right = new TreeNode(3);
-        assert widthOfBinaryTree(root) == 2;
+
+        LeetCode662 leetCode662 = new LeetCode662();
+        int ans = leetCode662.widthOfBinaryTree(root);
+        assert ans == 2;
     }
 
     @Test
@@ -100,7 +105,9 @@ public class LeetCode662 {
         root.left = new TreeNode(3);
         root.right = new TreeNode(2);
         root.left.left = new TreeNode(5);
-        int ans = widthOfBinaryTree(root);
+
+        LeetCode662 leetCode662 = new LeetCode662();
+        int ans = leetCode662.widthOfBinaryTree(root);
         assert ans == 2;
     }
 
@@ -113,7 +120,9 @@ public class LeetCode662 {
         root.right = new TreeNode(2);
         root.right.right = new TreeNode(9);
         root.right.right.right = new TreeNode(7);
-        int ans = widthOfBinaryTree(root);
+
+        LeetCode662 leetCode662 = new LeetCode662();
+        int ans = leetCode662.widthOfBinaryTree(root);
         assert ans == 8;
     }
 
