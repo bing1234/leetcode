@@ -16,7 +16,7 @@ public class LeetCode71 {
             if ("".equals(item) || ".".equals(item) || "/".equals(item)) {
                 continue;
             }
-            if ("..".equals(item)) {
+            if ("src/main".equals(item)) {
                 if (!stack.isEmpty()) {
                     stack.pop();
                 }

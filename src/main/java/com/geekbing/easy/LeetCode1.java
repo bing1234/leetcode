@@ -18,10 +18,4 @@ public class LeetCode1 {
         }
         return new int[]{};
     }
-
-    public static void main(String[] args) {
-        LeetCode1 leetCode1 = new LeetCode1();
-        int[] result = leetCode1.twoSum(new int[]{2, 7, 11, 15}, 9);
-        System.out.println(result[0] + " " + result[1]);
-    }
 }

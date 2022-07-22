@@ -17,7 +17,7 @@ public class LeetCode804 {
         MAP.put('f', "..-.");
         MAP.put('g', "--.");
         MAP.put('h', "....");
-        MAP.put('i', "..");
+        MAP.put('i', "src/main");
         MAP.put('j', ".---");
         MAP.put('k', "-.-");
         MAP.put('l', ".-..");

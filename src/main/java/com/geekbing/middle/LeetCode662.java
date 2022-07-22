@@ -49,7 +49,7 @@ public class LeetCode662 {
     }
 
 
-    public static class Node extends TreeNode {
+    private static class Node extends TreeNode {
         int idx;
 
         public Node(TreeNode node, int idx) {
@@ -60,7 +60,7 @@ public class LeetCode662 {
         }
     }
 
-    public static class TreeNode {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;

@@ -1,9 +1,8 @@
 package com.geekbing.middle;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
 
 /**
  * @author bing
@@ -41,18 +40,6 @@ public class LeetCode515 {
         return result;
     }
 
-    public static void main(String[] args) {
-        LeetCode515 leetCode515 = new LeetCode515();
-
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(3);
-        root.right = new TreeNode(2);
-        root.left.left = new TreeNode(5);
-        root.left.right = new TreeNode(3);
-        root.right.right = new TreeNode(9);
-        System.out.println(leetCode515.largestValues(root));
-    }
-
     private static class TreeNode {
         int val;
         TreeNode left;
@@ -61,5 +48,20 @@ public class LeetCode515 {
         TreeNode(int x) {
             val = x;
         }
+    }
+
+    @Test
+    public void testCase1() {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(2);
+        root.left.left = new TreeNode(5);
+        root.left.right = new TreeNode(3);
+        root.right.right = new TreeNode(9);
+
+        LeetCode515 leetCode515 = new LeetCode515();
+        List<Integer> ans = leetCode515.largestValues(root);
+        List<Integer> expert = new ArrayList<>(Arrays.asList(1, 3, 9));
+        assert expert.equals(ans);
     }
 }
