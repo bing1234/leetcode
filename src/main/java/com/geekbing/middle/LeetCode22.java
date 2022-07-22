@@ -1,5 +1,7 @@
 package com.geekbing.middle;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.*;
 
 public class LeetCode22 {
@@ -28,7 +30,8 @@ public class LeetCode22 {
         return new ArrayList<>(ans);
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void testCase1() {
         LeetCode22 leetCode22 = new LeetCode22();
         System.out.println(leetCode22.generateParenthesis(3));
     }

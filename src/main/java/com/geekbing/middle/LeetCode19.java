@@ -1,5 +1,8 @@
 package com.geekbing.middle;
 
+/**
+ * @author bing
+ */
 public class LeetCode19 {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null) {
