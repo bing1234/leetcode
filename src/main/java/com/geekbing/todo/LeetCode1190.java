@@ -10,21 +10,7 @@ public class LeetCode1190 {
         if (s.length() < 2) {
             return s;
         }
-        int left = 0, right = s.length() - 1;
-        while (left < right) {
-            while (left < right && s.charAt(left) != '(' && s.charAt(left) != ')') {
-                left++;
-            }
-            while (left < right && s.charAt(right) != '(' && s.charAt(right) != ')') {
-                right--;
-            }
-            if (left >= right) {
-                return s;
-            }
-            String sub = s.substring(left + 1, right);
-            sub = reverse(sub);
-            return s.substring(0, left) + reverseParentheses(sub) + s.substring(right + 1);
-        }
+
         return s;
     }
 
@@ -58,5 +44,11 @@ public class LeetCode1190 {
     public void testCase4() {
         LeetCode1190 leetCode1190 = new LeetCode1190();
         assert "apmnolkjihgfedcbq".equals(leetCode1190.reverseParentheses("a(bcdefghijkl(mno)p)q"));
+    }
+
+    @Test
+    public void testCase5() {
+        LeetCode1190 leetCode1190 = new LeetCode1190();
+        assert "sxmdll(q)eki(x)".equals(leetCode1190.reverseParentheses("sxmdllqekix"));
     }
 }
