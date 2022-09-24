@@ -1,5 +1,8 @@
 package com.geekbing.easy;
 
+/**
+ * @author bing
+ */
 public class LeetCode14 {
     public String longestCommonPrefix(String[] strs) {
         String ans = "";
