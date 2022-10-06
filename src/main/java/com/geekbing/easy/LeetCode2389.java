@@ -10,35 +10,41 @@ import java.util.Arrays;
 public class LeetCode2389 {
     public int[] answerQueries(int[] nums, int[] queries) {
         int[] ans = new int[queries.length];
+        Arrays.sort(nums);
+        int[] sums = preSum(nums);
         for (int i = 0; i < queries.length; i++) {
-            ans[i] = maxSubSumLength(nums, queries[i]);
+            ans[i] = maxSubSumLength(sums, queries[i]) + 1;
         }
         return ans;
     }
 
+    private int[] preSum(int[] nums) {
+        int sum = 0;
+        int[] preSum = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            preSum[i] = sum;
+        }
+        return preSum;
+    }
+
     private int maxSubSumLength(int[] nums, int query) {
-        int right = 0;
-        // 找到第一个小于query的数字
-        while (right < nums.length && nums[right] > query) {
-            right++;
-        }
-        if (right == nums.length) {
-            return 0;
-        }
-
-        int sum = nums[right], left = right, ans = 1;
-        while (right < nums.length) {
-            while (right + 1 < nums.length && sum + nums[right + 1] <= query) {
-                right++;
-                sum += nums[right];
-                ans = Math.max(ans, right - left + 1);
-            }
-
-            if (sum <= query) {
-                ans = Math.max(ans, right - left + 1);
+        int left = 0, right = nums.length - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < query) {
+                left = mid + 1;
+            } else if (nums[mid] == query) {
+                return mid;
+            } else {
+                right = mid - 1;
             }
         }
-        return ans;
+        if (nums[left] > query) {
+            return left - 1;
+        } else {
+            return left;
+        }
     }
 
     @Test
