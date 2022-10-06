@@ -16,10 +16,11 @@ public class LeetCode2418 {
         for (int i = 0; i < heights.length; i++) {
             map.put(heights[i], names[i]);
         }
-        heights = Arrays.stream(heights).boxed().sorted(Comparator.reverseOrder()).mapToInt(Integer::intValue).toArray();
+        Arrays.sort(heights);
         String[] ans = new String[heights.length];
-        for (int i = 0; i < heights.length; i++) {
-            ans[i] = map.get(heights[i]);
+        int idx = 0;
+        for (int i = heights.length - 1; i >= 0; i--) {
+            ans[idx++] = map.get(heights[i]);
         }
         return ans;
     }
