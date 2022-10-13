@@ -2,21 +2,26 @@ package com.geekbing.easy;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
- * todo
- *
  * @author bing
  */
 public class LeetCode2423 {
     public boolean equalFrequency(String word) {
-        Map<Character, Integer> map = new HashMap<>();
+        int[] bucket = new int[26];
         for (char c : word.toCharArray()) {
-            map.put(c, map.getOrDefault(c, 0) + 1);
+            bucket[c - 'a']++;
         }
-        if (map.keySet().size() == 1) {
-            return true;
+        for (int i = 0; i < bucket.length; i++) {
+            if (bucket[i] == 0) {
+                continue;
+            }
+            bucket[i]--;
+            if (Arrays.stream(bucket).filter(num -> num > 0).distinct().count() < 2) {
+                return true;
+            }
+            bucket[i]++;
         }
         return false;
     }
