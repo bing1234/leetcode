@@ -3,6 +3,7 @@ package com.geekbing.easy;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -11,12 +12,13 @@ import java.util.stream.Collectors;
  */
 public class LeetCode2441 {
     public int findMaxK(int[] nums) {
-        Set<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+        Set<Integer> set = new HashSet<>();
         int ans = -1;
-        for (Integer num : set) {
-            if (num > 0 && set.contains(-num) && Math.abs(num) > ans) {
+        for (int num : nums) {
+            if (set.contains(-num) && Math.abs(num) > ans) {
                 ans = Math.abs(num);
             }
+            set.add(num);
         }
         return ans;
     }
