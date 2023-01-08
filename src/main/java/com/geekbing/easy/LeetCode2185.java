@@ -9,7 +9,52 @@ import java.util.Arrays;
  */
 public class LeetCode2185 {
     public int prefixCount(String[] words, String pref) {
-        return (int) Arrays.stream(words).filter(word -> word.startsWith(pref)).count();
+        // return (int) Arrays.stream(words).filter(word -> word.startsWith(pref)).count();
+        Trie trie = new Trie();
+        for (String word : words) {
+            trie.insert(word);
+        }
+        return trie.search(pref);
+    }
+
+    private static class Trie {
+        Node root;
+
+        public Trie() {
+            root = new Node();
+        }
+
+        public void insert(String word) {
+            Node cur = root;
+            for (char c : word.toCharArray()) {
+                if (cur.child[c - 'a'] == null) {
+                    cur.child[c - 'a'] = new Node();
+                }
+                cur = cur.child[c - 'a'];
+                cur.cnt++;
+            }
+        }
+
+        public int search(String pref) {
+            Node cur = root;
+            for (char c : pref.toCharArray()) {
+                if (cur.child[c - 'a'] == null) {
+                    return 0;
+                }
+                cur = cur.child[c - 'a'];
+            }
+            return cur.cnt;
+        }
+    }
+
+    private static class Node {
+        Node[] child;
+        int cnt;
+
+        public Node() {
+            child = new Node[26];
+            cnt = 0;
+        }
     }
 
     @Test
