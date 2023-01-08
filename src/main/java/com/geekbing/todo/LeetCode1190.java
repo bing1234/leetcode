@@ -2,22 +2,34 @@ package com.geekbing.todo;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * @author bing
  */
 public class LeetCode1190 {
     public String reverseParentheses(String s) {
-        if (s.length() < 2) {
-            return s;
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c != ')') {
+                stack.push(c);
+            } else {
+                List<Character> list = new ArrayList<>();
+                while (stack.peek() != '(') {
+                    list.add(stack.pop());
+                }
+                // 弹出(
+                stack.pop();
+                for (Character ch : list) {
+                    stack.push(ch);
+                }
+            }
         }
-
-        return s;
-    }
-
-    private String reverse(String s) {
         StringBuilder ans = new StringBuilder();
-        for (int i = s.length() - 1; i >= 0; i--) {
-            ans.append(s.charAt(i));
+        while (!stack.isEmpty()) {
+            ans.insert(0, stack.pop());
         }
         return ans.toString();
     }
@@ -49,6 +61,6 @@ public class LeetCode1190 {
     @Test
     public void testCase5() {
         LeetCode1190 leetCode1190 = new LeetCode1190();
-        assert "sxmdll(q)eki(x)".equals(leetCode1190.reverseParentheses("sxmdllqekix"));
+        assert "sxmdllqekix".equals(leetCode1190.reverseParentheses("sxmdll(q)eki(x)"));
     }
 }
